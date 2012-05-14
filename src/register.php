@@ -20,8 +20,8 @@ echo "<FONT COLOR='#E30102' >Image text doesn't matched</font>";
 <META Http-Equiv="Pragma" Content="no-cache" /> 
 <META Http-Equiv="Expires" Content="0" /> 
 <TITLE>Register </TITLE>
-	<script LANGUAGE=JavaScript TYPE=text/javascript src="check.js"></script>
-	<LINK REL="stylesheet" HREF="kapil.css" TYPE="text/css">
+	<script LANGUAGE=JavaScript TYPE=text/javascript src="javascript/check.js"></script>
+	<LINK REL="stylesheet" HREF="css/kapil.css" TYPE="text/css">
 	
 </HEAD>
 

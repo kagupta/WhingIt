@@ -1,5 +1,7 @@
+<div class="rounded-corners">
+
 <div class="panel_header">
-<h1>Countdown</h1>
+<h1>What's Happening!?</h1>
 </div>
 
 <div class="eventbox">
@@ -20,4 +22,7 @@
 
 <div class="eventbox">
   event5
+</div>
+
+
 </div>
