@@ -1,15 +1,6 @@
 <?php
 
-//connect to the database
-$con = mysql_connect("localhost", "root", "root");
-
-if(!$con)
-{
-	echo "Could not connect";
-	die('Could not connect: ' . mysql_error());
-}
-
-mysql_select_db("whingit", $con);
+require("dbconnect.php");
 
 $eventTab = mysql_query("SELECT * FROM events");
 $attendTab = mysql_query("SELECT * FROM attend");
@@ -61,7 +52,7 @@ while($row = mysql_fetch_array($eventTab))
 {	
    echo $row['name']; //. " " . $row['LastName'];
    echo "<br />";
-   echo $row['location']; 
+   echo $row['user_location']; 
    // code to check the logged in user so that the correct attend options are displayed.
    //$user_id=$session->data['user_id'];
    //$checkuser = mysql_query("SELECT * FROM attend where attendee=$user_id")

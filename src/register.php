@@ -4,10 +4,10 @@ header("Pragma: no-cache");
 
 session_start();
 
-#include("header.php");
+include("header.php");
 if(isset($_SESSION['fail_reg']) && $_SESSION['fail_reg']==1)
 {
-echo "<FONT COLOR='#E30102' >User ID already taken up</font>";
+echo "<FONT COLOR='#E30102' >Email ID already taken up</font>";
 }
 if(isset($_SESSION['fail_reg']) && $_SESSION['fail_reg']==2)
 {
@@ -32,8 +32,8 @@ echo "<FONT COLOR='#E30102' >Image text doesn't matched</font>";
 	<table cellspacing=0 cellpadding=0 border=0 width=731 height=44 align=center class=top_bar>
 		<tr height=44>
 			<td width=16></td>
-			<td width=300 class=f15><B>New user? Register for Online Store</B></td> 
-			<td align=right class=f15 width=415>Already have a User Id? <B><A HREF="login.php">Sign in</A></B>&nbsp;&nbsp;&nbsp;</td>
+			<td width=300 class=f15><B>New user? Register for WhingIt</B></td> 
+			<td align=right class=f15 width=415>Already registered? <B><A HREF="login.php">Sign in</A></B>&nbsp;&nbsp;&nbsp;</td>
 		</tr>
 	</table>
 <!--TOP BAR ENDS-->
@@ -63,7 +63,7 @@ echo "<FONT COLOR='#E30102' >Image text doesn't matched</font>";
 			<td colspan=6  height=8  align="left" valign="middle"><div class=divcss id="check_availability" valign="middle" style='display:none;position:relative; visibility: hidden;'></div></td>
 		</tr>
 		<tr><td height=5></td></tr>
-		<tr>
+<!--		<tr>
 			<td></td>
 			<td valign=middle><FONT FACE="Verdana" SIZE =-2 COLOR="#E30102">*</FONT></td>
 			<td class=f13>Choose your ID</td>
@@ -71,7 +71,7 @@ echo "<FONT COLOR='#E30102' >Image text doesn't matched</font>";
 			<td><INPUT TYPE="text" NAME="login" value=""  style="width:185px;" maxlength="30" ></td>
 			<td></td>
 			<td>&nbsp;</td>
-		</tr>
+		</tr> -->
 				<tr>
 			<td height=8></td>
 		</tr>
@@ -268,7 +268,7 @@ echo "<FONT COLOR='#E30102' >Image text doesn't matched</font>";
 <!--Footer begins-->
 		<table cellspacing=0 cellpadding=0 border=0 align=center width=731>
 			<tr>
-				<?php #include("footer.php"); 
+				<?php include("footer.php"); 
 				?>
 			</tr>
 		</table>

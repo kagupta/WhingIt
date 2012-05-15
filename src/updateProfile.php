@@ -5,7 +5,7 @@ header("Pragma: no-cache");
 
 session_start();
 
-#include("header.php");
+include("header.php");
 include("dbconnect.php");
 $user=$_SESSION['username'];
 $sql="select * from customer where customer_login= '$user'";
@@ -60,11 +60,11 @@ $rows=mysql_num_rows($result);
 			<td width=1></td>
 			<td width=272><FONT CLASS=f12 COLOR="#868686"> &nbsp;e.g. Kapil Gupta</FONT></td>
 		</tr>
-		<tr >
+<!--		<tr >
 
 			<td><INPUT TYPE="text" NAME="login" value="<?php echo $_SESSION['username']; ?>"  style="display:none"></td>
 
-		</tr>
+		</tr> -->
 
 		<tr>
 			<td></td>
@@ -108,7 +108,7 @@ $rows=mysql_num_rows($result);
           <td class=f13 valign=middle><FONT FACE="Verdana" SIZE =-2 COLOR="#E30102">*</FONT></td>
           <td class=f13>Email Address </td>
           <td class=f13><B>:</B></td>
-          <td><INPUT TYPE="text" NAME="email" value="<?php echo mysql_result($result,0,'email');?>" style="width:185px;" maxlength="61"></td>
+          <td><INPUT TYPE="text" NAME="email" value="<?php echo mysql_result($result,0,'email');?>" style="width:185px;" maxlength="61" readonly="readonly"></td>
           <td></td>
           <td>&nbsp;</td>
 	  </tr>
@@ -170,7 +170,7 @@ $rows=mysql_num_rows($result);
           <td class=f13>Country</td>
           <td class=f13><B>:</B></td>
           <td colspan=3><SELECT NAME="country" style="width:183px;" >
-              <option label="Select" value="<?php echo mysql_result($result,0,'location');?>"><?php echo mysql_result($result,0,'location');?></option>
+              <option label="Select" value="<?php echo mysql_result($result,0,'user_location');?>"><?php echo mysql_result($result,0,'user_location');?></option>
               <option label="China" value="China">China</option>
 			  <option label="India" value="India">India</option>
               <option label="United States" value="United States">United States</option>
@@ -218,7 +218,7 @@ $rows=mysql_num_rows($result);
 <!--Footer begins-->
 		<table cellspacing=0 cellpadding=0 border=0 align=center width=731>
 			<tr>
-				<?php #include("footer.php"); 
+				<?php include("footer.php"); 
 				?>
 			</tr>
 		</table>

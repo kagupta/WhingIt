@@ -7,7 +7,7 @@ session_start();
 <html>
 <body  >
 
-<?php #include('header.php'); 
+<?php include('header.php'); 
 
 						   $flg=0;
 						   if(isset($_GET['flg'])){ $flg=$_GET['flg']; }
@@ -46,10 +46,10 @@ session_start();
                               <tr> <td colspan="2" align="center">  <b>  
 								<font size="4">  Sign In</font></b></td> </tr>
  
-                               <tr> <td nowrap> <div align="right"> <b> <span class="gaia le lbl"> Username: </span> 
+                               <tr> <td nowrap> <div align="right"> <b> <span class="gaia le lbl"> Email: </span> 
 								</b> </div> </td> 
                                     <td>     
-                                         <input name="username" class="gaia le val" id="Email" size="18" style="font-weight: 700"><b>
+                                         <input name="email" class="gaia le val" id="Email" size="18" style="font-weight: 700"><b>
 											</b>  
                                        
                                     </td> 
@@ -100,7 +100,7 @@ session_start();
  </div>
 
  </div>
-<?php #include("footer.php"); 
+<?php include("footer.php"); 
 ?>
 </body>
 <?

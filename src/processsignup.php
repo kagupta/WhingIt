@@ -12,9 +12,9 @@ require("dbconnect.php");
 #user name integrity
 #*******************
 
-      if((empty($_POST['login'])==0) || (is_string($_POST['login'])==false))
+      if((empty($_POST['email'])==0) || (is_string($_POST['email'])==false))
         {
-                $query ="select customer_login from customer";
+                $query ="select user_id from customer";
                 $result = mysql_query($query) or die(mysql_error());
 
                 $num_results=mysql_num_rows($result);
@@ -23,12 +23,12 @@ require("dbconnect.php");
                 $flag=0;
 				
                 for($i=0 ; $i<$num_results ; $i++)
-                { //echo mysql_result($result,$i,"customer_login"),"  ",$_POST['login']; 
-                        if(strcmp($_POST['login'],mysql_result($result,$i,"customer_login"))==0)
+                { //echo mysql_result($result,$i,"user_id"),"  ",$_POST['login']; 
+                        if(strcmp($_POST['email'],mysql_result($result,$i,"user_email"))==0)
                         {//echo "name is not unique";
                                 $flag=1;
 								$_SESSION['fail_reg']=1;
-								//echo "User Name already taken up";
+								//echo "User email already taken up";
 								break;
 								
                         }
@@ -42,8 +42,8 @@ require("dbconnect.php");
 					$location=addslashes($_POST['country']);
 					$email=addslashes($_POST['email']);
 					$balance=addslashes($_POST['balance']);
-					$customer_login=addslashes($_POST['login']);
-					$customer_password=addslashes($_POST['passwd']);
+					$user_id=addslashes($_POST['login']);
+					$user_password=addslashes($_POST['passwd']);
 					$city=addslashes($_POST['city']);
 					$address=addslashes($_POST['streetAddress']);
 					$gender=addslashes($_POST['gender']);
@@ -51,8 +51,8 @@ require("dbconnect.php");
 					#integrity test of the information entered ends here
 
 					#Entering the information in the table to sign up
-				  $query ="INSERT INTO customer ( customer_name , age , location , email , customer_login , customer_password, city, address, gender ) 
-				  VALUES ("."'$name' ,"."$age ,"." '$location' ,"." '$email' ,"." '$customer_login' ,"." '$customer_password', "." '$city' ,"." '$address' ,"." '$gender' "." )";
+				  $query ="INSERT INTO customer ( user_name , age , user_location , email , user_id , user_password, city, address, gender ) 
+				  VALUES ("."'$name' ,"."$age ,"." '$location' ,"." '$email' ,"." '$user_id' ,"." '$user_password', "." '$city' ,"." '$address' ,"." '$gender' "." )";
 					echo $query;		
 					$result=mysql_query($query) or die("query failed:".mysql_error());
 			
