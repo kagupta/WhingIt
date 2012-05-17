@@ -1,0 +1,218 @@
+html {font-size: 100%;}
+
+body {
+   background: url(../../res/images/bg.gif) fixed;
+   background-repeat: repeat-x;
+   font-family: Calibri;
+   font-size: 0.8125em;
+	background-color: #e6f6ff;/*#b2e4f3;/*#cccdce;*/
+	margin: 0;
+	padding: 0;
+	color: #000;
+}
+
+/* ~~ Element/tag selectors ~~ */
+ul, ol, dl { /* Due to variations between browsers, it's best practices to zero padding and margin on lists. For consistency, you can either specify the amounts you want here, or on the list items (LI, DT, DD) they contain. Remember that what you do here will cascade to the .nav list unless you write a more specific selector. */
+	padding: 0;
+	margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;
+}
+
+h1 {
+   color: #4096c7; /*1890d5; */
+   font-size: 2.3em;
+   margin: 0px;
+   margin-top: -10px;
+   font-weight: bold;
+}
+
+h2 {
+   color: #000000;
+   font-size: 1.4em;
+   margin: 0;
+   padding-bottom: 7px;
+}
+
+a img { /* removes the default blue border */
+	border: none;
+}
+
+/* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
+a:link, a:visited {
+	color: #4096c7; /*18acd7;*/
+	text-decoration: none;
+}
+
+a:hover {
+   text-decoration: underline;
+}
+
+/* Used for rounded corner boxes */
+.rounded-corners {
+   background-color: #FFF;
+   border: 1px solid gray;
+   margin: 0 auto 0;
+   -moz-border-radius: 10px;
+   -webkit-border-radius: 10px;
+   -khtml-border-radius: 10px;
+   behavior: url(/border-radius.htc);
+   border-radius: 10px;
+}
+
+.header {
+	background-color: #1890d5;
+   
+   width: 100%;
+	height: 40px;
+   min-width: 880px;
+	max-height: 50px;
+   
+	position: absolute;
+   top: 0;
+   left: -12;
+   z-index: 1;
+   
+   /* drop shadow and contour look */
+	-moz-box-shadow:    2px 2px 5px #555, inset 0px 17px 15px 1px #86b8d5, inset 0px -17px 15px 0px #126a9d; /*70bfd6,0094bf*/
+	-webkit-box-shadow: 2px 2px 5px #555, inset 0px 17px 15px 1px #86b8d5, inset 0px -17px 15px 0px #126a9d;
+	box-shadow:         2px 2px 5px #555, inset 0px 17px 15px 1px #86b8d5, inset 0px -17px 15px 0px #126a9d;
+}
+
+/* Holds topbar (logo and top menu bar) and contents */
+.container1 {
+   background: url(../../res/images/bg2.gif) fixed;
+   background-repeat: repeat-x;
+	width: 850px;
+	background-color: #f6fcff;
+	margin: 0px auto; /* the auto value on the sides, coupled with the width, centers the layout */
+   position: relative;
+   -moz-box-shadow: 8px 8px 14px #555;
+	-webkit-box-shadow: 8px 8px 14px #555;
+	box-shadow: 8px 8px 14px #555;
+}
+
+/* TOP BAR */
+.top_bar {
+   width: 850px;
+   height: 40px;
+   position: absolute;
+   float: right;
+   z-index: 3;
+}
+
+.logo {
+   width: 170px;
+   height: 40px;
+   padding-top: 5px;
+   float: left;
+}
+
+.menu_bar {
+   width: 530px;
+   height: 40px;
+   float: right;
+}
+
+p.menu_bar {
+   width: 500px;
+   height: 1em;
+   text-align: right;
+   color: #FFF;
+   padding-top: 1em;
+}
+
+/* ~~this fixed width container surrounds the other divs~~ */
+.container {
+   padding-top: 40px;
+   margin: 0 auto;
+}
+
+/* ~~ These are the columns for the layout. ~~ */
+
+/* SIDEBAR */
+.sidebar1 {
+	width: 250px;
+   height: 100%;
+	padding: 10px;
+   padding-right: 0px;
+   float: left;
+}
+
+.user_panel {
+   height: 140px;
+   padding: 8px 11px 8px 11px;
+}
+
+.categories {
+   font-size: 1.3em;
+   padding: 10px;
+   padding-bottom: 0px;
+   font-weight: bold;
+}
+
+/* CONTENT */
+.content {
+   width: 560px;  
+	padding: 10px;
+   padding-bottom: 0px;
+   float: left;
+}
+
+.panel_header {
+   padding: 8px;
+   padding-bottom: 0px;
+}
+
+.eventbox { 
+   height: 86px;
+   padding: 8px 11px 8px 11px;
+   border-top: 1px solid gray;
+}
+
+.countdown {
+   height: 330px;
+   max-height: 330px;
+   overflow: hidden;
+}
+
+.feed {
+   margin-top: 10px;
+   margin-bottom: 10px;
+}
+
+/* ~~ The footer ~~ */
+.footer {
+   padding: 10px;
+   padding-top: 3px;
+	position: relative;/* this gives IE6 hasLayout to properly clear */
+	clear: both;
+   border-top: 1px solid gray;
+}
+
+.left-align {
+   float: left;
+}
+
+.right-align {
+   float: right;
+}
+
+
+/* ~~ miscellaneous float/clear classes ~~ */
+.fltrt {  /* this class can be used to float an element right in your page. The floated element must precede the element it should be next to on the page. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* this class can be used to float an element left in your page. The floated element must precede the element it should be next to on the page. */
+	float: left;
+   margin-right: 8px;
+}
+.clearfloat { /* this class can be placed on a <br /> or empty div as the final element following the last floated div (within the #container) if the #footer is removed or taken out of the #container */
+	clear:both;
+	height:0;
+	font-size: 1em;
+	line-height: 0px;
+}
