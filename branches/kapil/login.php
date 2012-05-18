@@ -3,11 +3,6 @@ if(!isset($_SESSION))
 { 
 session_start(); 
 }
-?>
-<html>
-<body  >
-
-<?php include('header.php'); 
 
 						   $flg=0;
 						   if(isset($_GET['flg'])){ $flg=$_GET['flg']; }
@@ -19,13 +14,14 @@ session_start();
                               <tr> <td colspan="2" align="center">  <b>  
 								<font size="4" color="#993333" >  "Error in Login. Try Again" </font></b></td> </tr></table>';
 							 }
-							?>
+							 
+?>
 	<br>
  
 
 <div  id="show1">
 
- <table border="0" cellpadding="0" cellspacing="0" width="907" height="187" id="table1">
+ <table border="0" cellpadding="0" cellspacing="0" width="907" height="387" id="table1">
 	<!-- MSTableType="nolayout" -->
 	<tr>
 	  <td width="779">
@@ -34,7 +30,7 @@ session_start();
         <td valign=top>
 
         <!-- login box -->
-         <form action="getin.php" method="post" >
+         <form action="/whingit/branches/kapil/getin.php" method="post" >
         <div align="center">
         <table class=form-noindent cellspacing=3 cellpadding=5 width="52%" border=1 bordercolordark=#0000FF bgcolor=#E8EEFA>
           <tr bgcolor=#E8EEFA>
@@ -80,7 +76,7 @@ session_start();
 										<td align="center" height="33.0" valign="bottom" nowrap class="gaia le fpwd"> 
 										<p align="left"><b>New User:&nbsp; </b></td> 
 										<td align="center" height="33.0" valign="bottom" nowrap class="gaia le fpwd">  
-										<B><a href="register.php"><font size="4">Sign Up</font></a></B></td> 
+										<B><a href="/whingit/branches/kapil/register.php"><font size="4">Sign Up</font></a></B></td> 
 								</tr>
                               </table>
                            
@@ -100,9 +96,7 @@ session_start();
  </div>
 
  </div>
-<?php include("footer.php"); 
-?>
-</body>
+
 <?
 if(isset($HTTP_POST_VARS['signin']))
 {
@@ -114,4 +108,3 @@ if(isset($HTTP_POST_VARS['signin']))
         }
 }
 ?>
-</html>

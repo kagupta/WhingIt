@@ -1,11 +1,23 @@
 <?php include './src/php/header.php'; ?>
 
-<?php include './src/php/sidebar.php'; ?>
+<?php if(!isset($_SESSION['LOGGEDIN']) || $_SESSION['LOGGEDIN']==0)
+			{
+				include '../branches/kapil/login.php'; 
+			}
 
-  <div class="content">
-		<?php include './src/php/countdown.php'; ?>
+	else if(isset($_SESSION['LOGGEDIN']) && $_SESSION['LOGGEDIN']==1)
+			{
 
-		<?php include './src/php/feed.php'; ?>
-  </div>
+				include './src/php/sidebar.php'; 
+?>
 
-<?php include './src/php/footer.php'; ?>
+			  <div class="content">
+					<?php include './src/php/countdown.php'; ?>
+
+					<?php include './src/php/feed.php'; ?>
+			  </div>
+
+<?php 
+			}
+			include './src/php/footer.php'; 
+?>

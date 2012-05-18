@@ -4,7 +4,7 @@ header("Pragma: no-cache");
 
 session_start();
 
-include("header.php");
+include("../../trunk/src/php/header.php");
 if(isset($_SESSION['fail_reg']) && $_SESSION['fail_reg']==1)
 {
 echo "<FONT COLOR='#E30102' >Email ID already taken up</font>";
@@ -36,6 +36,7 @@ echo "<FONT COLOR='#E30102' >Image text doesn't matched</font>";
 			<td align=right class=f15 width=415>Already registered? <B><A HREF="login.php">Sign in</A></B>&nbsp;&nbsp;&nbsp;</td>
 		</tr>
 	</table>
+	<br>
 <!--TOP BAR ENDS-->
 
 	<table cellspacing=0 cellpadding=0 border=0 width=731 height=54 align=center class=main_form>
@@ -268,7 +269,7 @@ echo "<FONT COLOR='#E30102' >Image text doesn't matched</font>";
 <!--Footer begins-->
 		<table cellspacing=0 cellpadding=0 border=0 align=center width=731>
 			<tr>
-				<?php include("footer.php"); 
+				<?php include("../../trunk/src/php/footer.php"); 
 				?>
 			</tr>
 		</table>
