@@ -1,3 +1,5 @@
+<div class="sidebar1">
+
 <div class="rounded-corners">
   <div class="user_panel">
     user_panel<br />
@@ -26,3 +28,5 @@
   <a href="#">Hobbies</a>
 
 </div>
+
+</div><!-- end .sidebar1 -->
