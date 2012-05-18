@@ -1,11 +1,15 @@
-<?php include './src/php/header.php'; ?>
+<?php
 
-<?php include './src/php/sidebar.php'; ?>
+include './src/php/header.php';
+include './src/php/sidebar.php';
 
-  <div class="content">
-		<?php include './src/php/countdown.php'; ?>
+echo "<div class=\"content\">";
 
-		<?php include './src/php/feed.php'; ?>
-  </div>
+include './src/php/countdown.php';
+include './src/php/feed.php';
 
-<?php include './src/php/footer.php'; ?>
+echo "</div>";
+
+include './src/php/footer.php';
+
+?>
