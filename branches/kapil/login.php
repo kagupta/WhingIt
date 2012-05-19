@@ -30,7 +30,7 @@ session_start();
         <td valign=top>
 
         <!-- login box -->
-         <form action="/whingit/branches/kapil/getin.php" method="post" >
+         <form action="../branches/kapil/getin.php" method="post" >
         <div align="center">
         <table class=form-noindent cellspacing=3 cellpadding=5 width="52%" border=1 bordercolordark=#0000FF bgcolor=#E8EEFA>
           <tr bgcolor=#E8EEFA>

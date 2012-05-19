@@ -12,7 +12,7 @@ session_start();
 <!-- TemplateEndEditable -->
 <!-- TemplateBeginEditable name="head" -->
 <!-- TemplateEndEditable -->
-<link rel="stylesheet" type="text/css" href="/whingit/trunk/src/css/style.css" />
+<link rel="stylesheet" type="text/css" href="./src/css/style.css" />
 </head>
 
 <body>
@@ -23,7 +23,7 @@ session_start();
 <div class="top_bar">
 
 <div class="logo">
-  <a href="/whingit/trunk/"><img src="/whingit/trunk/res/images/logo.gif" height="30px"/></a>
+  <a href="./index.php"><img src="./res/images/logo.gif" height="30px"/></a>
 </div>
 
 <div class="menu_bar">
@@ -31,7 +31,7 @@ session_start();
 <?php   if(isset($_SESSION['LOGGEDIN']) && $_SESSION['LOGGEDIN']==1)
 		
 		 {
-		 echo '<a href="/whingit/branches/kapil/logout.php" title="Logout"><font style="font-weight:bold;"  color="#000000">Log Out</font></a>'; 
+		 echo '<a href="../branches/kapil/logout.php" title="Logout"><font style="font-weight:bold;"  color="#000000">Log Out</font></a>'; 
 			
 		}
 ?>
