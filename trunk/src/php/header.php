@@ -31,7 +31,7 @@ session_start();
 <?php   if(isset($_SESSION['LOGGEDIN']) && $_SESSION['LOGGEDIN']==1)
 		
 		 {
-		 echo '<a href="../branches/kapil/logout.php" title="Logout"><font style="font-weight:bold;"  color="#000000">Log Out</font></a>'; 
+		 echo '<a href="./src/php/logout.php" title="Logout"><font style="font-weight:bold;"  color="#000000">Log Out</font></a>'; 
 			
 		}
 ?>

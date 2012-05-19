@@ -2,7 +2,7 @@
 
 <?php if(!isset($_SESSION['LOGGEDIN']) || $_SESSION['LOGGEDIN']==0)
 			{
-				include '../branches/kapil/login.php'; 
+				include './src/php/login.php'; 
 			}
 
 	else if(isset($_SESSION['LOGGEDIN']) && $_SESSION['LOGGEDIN']==1)
