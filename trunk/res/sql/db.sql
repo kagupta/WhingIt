@@ -75,3 +75,14 @@ CREATE TABLE `tagLookup` (
   ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- ---------------------------------------------------------------------------------------
+--
+-- Table for Event Description
+--
+CREATE TABLE `description` (
+  `eventID` int(11) NOT NULL,
+  `about` varchar(240),
+  PRIMARY KEY (`eventID`),
+  FOREIGN KEY (`eventID`) REFERENCES events(`id`)
+  ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
