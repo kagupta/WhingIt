@@ -14,7 +14,7 @@ require("dbconnect.php");
 
       if((empty($_POST['email'])==0) || (is_string($_POST['email'])==false))
         {
-                $query ="select user_id from customer";
+                $query ="select user_email from user";
                 $result = mysql_query($query) or die(mysql_error());
 
                 $num_results=mysql_num_rows($result);
@@ -41,8 +41,6 @@ require("dbconnect.php");
 					$age=date("Y")-addslashes($_POST['DOB_Year']);
 					$location=addslashes($_POST['country']);
 					$email=addslashes($_POST['email']);
-					$balance=addslashes($_POST['balance']);
-					$user_id=addslashes($_POST['login']);
 					$user_password=addslashes($_POST['passwd']);
 					$city=addslashes($_POST['city']);
 					$address=addslashes($_POST['streetAddress']);
@@ -51,8 +49,8 @@ require("dbconnect.php");
 					#integrity test of the information entered ends here
 
 					#Entering the information in the table to sign up
-				  $query ="INSERT INTO customer ( user_name , age , user_location , email , user_id , user_password, city, address, gender ) 
-				  VALUES ("."'$name' ,"."$age ,"." '$location' ,"." '$email' ,"." '$user_id' ,"." '$user_password', "." '$city' ,"." '$address' ,"." '$gender' "." )";
+				  $query ="INSERT INTO user ( user_name , age , user_location , user_email , user_password, city, address, gender ) 
+				  VALUES ("."'$name' ,"."$age ,"." '$location' ,"." '$email' ,"." '$user_password', "." '$city' ,"." '$address' ,"." '$gender' "." )";
 					echo $query;		
 					$result=mysql_query($query) or die("query failed:".mysql_error());
 			
@@ -61,7 +59,7 @@ require("dbconnect.php");
 					{
 						   $_SESSION['REGISTER']=1;
 						  
-							header("Location: login.php");
+							header("Location: /whingit/trunk/index.php");
 					}
                     else
 					{
@@ -70,10 +68,13 @@ require("dbconnect.php");
                 }
 
         }
+       else
+			{
+			   echo "some error occured";
+		}
 
 
-
-header("Location: login.php");
+#header("Location: /whingit/trunk/index.php");
 require("closedb.php");
 
 ?>

@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-if(!isset($_SESSION['SESSION'])) require("session_init.php");
+$_SESSION['SESSION']=true;
+$_SESSION['LOGGEDIN']="";
 
 include("dbconnect.php");
 $loggedin =0 ; 
@@ -20,15 +21,15 @@ $worked = mysql_fetch_row($result);
 if($worked)
    {
    $_SESSION['LOGGEDIN']=1;
-   $sql="Select id from user where user_email='$user_email' and user_password='$password'  ";
+   $sql="Select id, user_name from user where user_email='$user_email' and user_password='$password'  ";
    $result=mysql_query($sql) or die("query failed:".mysql_error());
    
    $_SESSION['id'] = mysql_result($result,0,'id');
-   $_SESSION['username']=$_POST["username"];
-  
+   $_SESSION['username']=mysql_result($result,0,'user_name');
+	$_SESSION['email']	= $user_email;
    $loggedin =1 ; 
    
-	header("Location: index.php");
+	header("Location: /whingit/trunk/index.php");
 
 	exit;
    }

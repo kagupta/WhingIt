@@ -5,11 +5,18 @@ header("Pragma: no-cache");
 
 session_start();
 
-include("header.php");
+include("../../trunk/src/php/header.php");
 include("dbconnect.php");
-$user=$_SESSION['username'];
-$sql="select * from customer where customer_login= '$user'";
 
+if(isset($_SESSION['email']))
+{
+	$email=$_SESSION['email'];
+	$sql="select * from user where user_email= '$email'";
+}
+else
+{
+	header("Location: /whingit/trunk/index.php");
+}
 $result=mysql_query($sql) or die ("<BR>Error in retrieving data");
 $rows=mysql_num_rows($result);
 
@@ -56,7 +63,7 @@ $rows=mysql_num_rows($result);
 			<td width=17 class=f13 valign=middle><FONT FACE="Verdana" SIZE =-2 COLOR="#E30102">*</FONT></td>
 			<td width=160 class=f13>Name</td>
 			<td width=14 class=f13><B>:</B></td>
-			<td width=190><INPUT TYPE="text" NAME="name" value="<?php echo mysql_result($result,0,'customer_name');?>" style="width:185px;" maxlength="61"></td>
+			<td width=190><INPUT TYPE="text" NAME="name" value="<?php echo mysql_result($result,0,'user_name');?>" style="width:185px;" maxlength="61"></td>
 			<td width=1></td>
 			<td width=272><FONT CLASS=f12 COLOR="#868686"> &nbsp;e.g. Kapil Gupta</FONT></td>
 		</tr>
@@ -78,7 +85,7 @@ $rows=mysql_num_rows($result);
 			<td><FONT FACE="Verdana" SIZE =-2 COLOR="#E30102">*</FONT></td>
 			<td class=f13>Password</td>
 			<td class=f13><B>:</B></td>
-			<td><INPUT TYPE="password" NAME="passwd" value="<?php echo mysql_result($result,0,'customer_password');?>" style="width:185px;" maxlength="12"></td>
+			<td><INPUT TYPE="password" NAME="passwd" value="<?php echo mysql_result($result,0,'user_password');?>" style="width:185px;" maxlength="12"></td>
 			<td></td>
 			<td>
 				<table cellspacing=0 cellpadding=0 border=0>
@@ -98,17 +105,17 @@ $rows=mysql_num_rows($result);
 			<td class=f13>Confirm your Password</td>
 			<td class=f13><B>:</B></td>
 			<td>
-			<INPUT TYPE="password" NAME="confirm_passwd" value="<?php echo mysql_result($result,0,'customer_password');?>"  maxlength="12" size="25"></td>
+			<INPUT TYPE="password" NAME="confirm_passwd" value="<?php echo mysql_result($result,0,'user_password');?>"  maxlength="12" size="25"></td>
 		</tr>
 		<tr>
 			<td height=8></td>
 		</tr>
 		<tr>
           <td></td>
-          <td class=f13 valign=middle><FONT FACE="Verdana" SIZE =-2 COLOR="#E30102">*</FONT></td>
+          <td class=f13 valign=middle></td>
           <td class=f13>Email Address </td>
           <td class=f13><B>:</B></td>
-          <td><INPUT TYPE="text" NAME="email" value="<?php echo mysql_result($result,0,'email');?>" style="width:185px;" maxlength="61" readonly="readonly"></td>
+          <td><INPUT TYPE="text" NAME="email" value="<?php echo mysql_result($result,0,'user_email');?>" style="width:185px;" maxlength="61" readonly="readonly"></td>
           <td></td>
           <td>&nbsp;</td>
 	  </tr>
@@ -218,7 +225,7 @@ $rows=mysql_num_rows($result);
 <!--Footer begins-->
 		<table cellspacing=0 cellpadding=0 border=0 align=center width=731>
 			<tr>
-				<?php include("footer.php"); 
+				<?php include("../../trunk/src/php/footer.php");
 				?>
 			</tr>
 		</table>

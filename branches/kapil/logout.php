@@ -14,7 +14,8 @@ $loggedin =0 ;
 unset($_SESSION['LOGGEDIN']);
 $_SESSION=array();
 session_destroy();
-unset($_COOKIE[session_name()]);
-@header("Location: index.php");
+unset($_COOKIE[session_name()]); 
+
+@header("Location: /whingit/trunk/index.php");
 ?>
  
