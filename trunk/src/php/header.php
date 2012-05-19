@@ -23,7 +23,7 @@ session_start();
 <div class="top_bar">
 
 <div class="logo">
-  <a href="/whingit/trunk/index.php"><img src="/whingit/trunk/res/images/logo.gif" height="30px"/></a>
+  <a href="/whingit/trunk/"><img src="/whingit/trunk/res/images/logo.gif" height="30px"/></a>
 </div>
 
 <div class="menu_bar">
