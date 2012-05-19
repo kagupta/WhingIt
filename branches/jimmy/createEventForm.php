@@ -118,6 +118,8 @@ while($row = mysql_fetch_array($result))
 <tr> 
 <td class="bodytext"> </td> 
 <td align="left" valign="top"><input type="submit" name="Submit" value="Create"></td> 
+<td align="left" valign="top"><input type="submit" name="Delete" value="Delete"></td> 
+<!--hello test test-->
 
 </tr> 
 </table> 
