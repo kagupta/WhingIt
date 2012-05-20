@@ -202,6 +202,42 @@ function is_valid_day(entered_month,entered_day,entered_year)	{
 	}
 	return true;
 }
+function checkPass()
+{
+
+	var str = document.forms[0].Passwd.value;
+	if ((str == "") || (str.length < 1))
+	{
+		alert("\nPlease enter your password.")
+		document.forms[0].Passwd.focus();
+		return false;
+	}
+	return true;
+}
+function checkEmail()
+{
+
+	var str = document.forms[0].Email.value;
+	if ((str == "") || (str.length < 1))
+	{
+		alert("\nPlease enter your email.")
+		document.forms[0].Email.focus();
+		return false;
+	}
+	return true;
+}
+
+
+function validateLogin(FormName)	{
+
+ // check altemail Address
+		if(!checkEmail()) {
+			return false;
+	}
+	if (checkPass() == false)	{	// Checks the password and Confirm Password
+		return false;
+	}
+}
 
 function validate(FormName)	{
 

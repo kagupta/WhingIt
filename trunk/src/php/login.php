@@ -20,7 +20,7 @@ session_start();
  
 
 <div  id="show1">
-
+<script LANGUAGE=JavaScript TYPE=text/javascript src="/src/javascript/check.js"></script>
  <table border="0" cellpadding="0" cellspacing="0" width="907" height="387" id="table1">
 	<!-- MSTableType="nolayout" -->
 	<tr>
@@ -30,7 +30,7 @@ session_start();
         <td valign=top>
 
         <!-- login box -->
-         <form action="./src/php/getin.php" method="post" >
+         <form action="./src/php/getin.php" method="post" name="login_user">
         <div align="center">
         <table class=form-noindent cellspacing=3 cellpadding=5 width="52%" border=1 bordercolordark=#0000FF bgcolor=#E8EEFA>
           <tr bgcolor=#E8EEFA>
@@ -55,7 +55,7 @@ session_start();
 									<p align="left"><b> <span class="gaia le lbl"> Password: </span> 
 									</b> </td> 
                                      <td> 
-                                          <input type="password" name="password" class="gaia le val" id="Passwd" size="18" style="font-weight: 700"><b>
+                                          <input type="password" name="password" class="gaia le val" id="Passwd" size="18" style="font-weight: 700" ><b>
 											</b>
                                           
                                      </td> 
@@ -69,7 +69,7 @@ session_start();
                                   
                                        <p align="center"> 
                                   
-                                       <input type="submit" name="signin" value="Sign In" class="gaia le button" style="border-style: outset; border-width: 3px" ><b>
+                                       <input type="submit" name="signin" value="Sign In" class="gaia le button" style="border-style: outset; border-width: 3px"  onclick="return validateLogin('login_user');"><b>
 										</b>
                                        </td> </tr>     
                                      <tr>

@@ -35,7 +35,7 @@ if($worked)
    }
 else
    {
-	header("Location: login.php?flg=1");
+	header("Location: ../../index.php?flg=1");
 	exit;
   }
 

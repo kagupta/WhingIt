@@ -33,7 +33,7 @@ echo "<FONT COLOR='#E30102' >Image text doesn't matched</font>";
 		<tr height=44>
 			<td width=16></td>
 			<td width=300 class=f15><B>New user? Register for WhingIt</B></td> 
-			<td align=right class=f15 width=415>Already registered? <B><A HREF="login.php">Sign in</A></B>&nbsp;&nbsp;&nbsp;</td>
+			<td align=right class=f15 width=415>Already registered? <B><A HREF="../../index.php">Sign in</A></B>&nbsp;&nbsp;&nbsp;</td>
 		</tr>
 	</table>
 	<br>
