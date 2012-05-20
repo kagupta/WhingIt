@@ -8,12 +8,10 @@ include("header.php");
 if(isset($_SESSION['fail_reg']) && $_SESSION['fail_reg']==1)
 {
 echo "<FONT COLOR='#E30102' >Email ID already taken up</font>";
-$_SESSION['fail_reg']=0;
 }
 if(isset($_SESSION['fail_reg']) && $_SESSION['fail_reg']==2)
 {
 echo "<FONT COLOR='#E30102' >Image text doesn't matched</font>";
-$_SESSION['fail_reg']=0;
 }
 ?>
 <HTML>

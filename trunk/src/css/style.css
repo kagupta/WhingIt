@@ -54,7 +54,9 @@ a:hover {
 .rounded-corners {
    background-color: #FFF;
    border: 1px solid gray;
-   margin: 0 auto 0;
+   margin: 0 auto;
+   margin-bottom: 10px;
+   
    -moz-border-radius: 10px;
    -webkit-border-radius: 10px;
    -khtml-border-radius: 10px;
@@ -173,14 +175,12 @@ p.menu_bar {
 }
 
 .countdown {
-   height: 330px;
-   max-height: 330px;
+   height: 305px;
    overflow: hidden;
 }
 
 .feed {
-   margin-top: 10px;
-   margin-bottom: 10px;
+   overflow: hidden;
 }
 
 /* ~~ The footer ~~ */

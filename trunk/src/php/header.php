@@ -13,6 +13,22 @@ session_start();
 <!-- TemplateBeginEditable name="head" -->
 <!-- TemplateEndEditable -->
 <link rel="stylesheet" type="text/css" href="/src/css/style.css" />
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" src="/src/javascript/animatedcollapse.js"></script>
+<script type="text/javascript" src="/src/javascript/paneladjust.js"></script>
+
+<script type="text/javascript">
+
+animatedcollapse.addDiv('countdown_outer', 'fade=0,speed=300')
+animatedcollapse.addDiv('feed_outer', 'fade=0,speed=300')
+
+animatedcollapse.init()
+</script>
+
+
+
+
 </head>
 
 <body>

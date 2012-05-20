@@ -14,26 +14,25 @@ require("dbconnect.php");
 
       if((empty($_POST['email'])==0) || (is_string($_POST['email'])==false))
         {
-				$email = $_POST['email'];
-                $query ="select user_email from user where user_email='$email'";
+                $query ="select user_email from user";
                 $result = mysql_query($query) or die(mysql_error());
 
                 $num_results=mysql_num_rows($result);
 				
            
                 $flag=0;
-				echo $num_results;
-                if($num_results!=0)
+				
+                for($i=0 ; $i<$num_results ; $i++)
                 { //echo mysql_result($result,$i,"user_id"),"  ",$_POST['login']; 
-                        //echo "name is not unique";
+                        if(strcmp($_POST['email'],mysql_result($result,$i,"user_email"))==0)
+                        {//echo "name is not unique";
                                 $flag=1;
 								$_SESSION['fail_reg']=1;
 								//echo "User email already taken up";
-								header("Location: register.php");
 								break;
 								
-                        
-						
+                        }
+						header("Location: register.php");
                 } 
                 if($flag==0)
                 {
@@ -52,7 +51,7 @@ require("dbconnect.php");
 					#Entering the information in the table to sign up
 				  $query ="INSERT INTO user ( user_name , age , user_location , user_email , user_password, city, address, gender ) 
 				  VALUES ("."'$name' ,"."$age ,"." '$location' ,"." '$email' ,"." '$user_password', "." '$city' ,"." '$address' ,"." '$gender' "." )";
-					//echo $query;		
+					echo $query;		
 					$result=mysql_query($query) or die("query failed:".mysql_error());
 			
 					
