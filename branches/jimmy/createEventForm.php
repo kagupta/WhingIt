@@ -4,10 +4,12 @@ if (!$link) {
 	die('Could not connect to MySQL: ' . mysql_error()); 
 } 
 mysql_select_db("whingit", $link);
+
 $result = mysql_query("SELECT * FROM tags");
 
 ?>
 
+<!-- Calls createEvent.php to add event in form to database -->
 <form action="createEvent.php" method="post"> 
 <table width="400" border="0" cellspacing="0" cellpadding="0"> 
 
@@ -30,7 +32,8 @@ while($row = mysql_fetch_array($result))
   <?php
   }
 ?>
-</select> 
+</select>
+</td>
 </tr>
 
 
@@ -118,8 +121,7 @@ while($row = mysql_fetch_array($result))
 <tr> 
 <td class="bodytext"> </td> 
 <td align="left" valign="top"><input type="submit" name="Submit" value="Create"></td> 
-<td align="left" valign="top"><input type="submit" name="Delete" value="Delete"></td> 
-<!--hello test test-->
+
 
 </tr> 
 </table> 
