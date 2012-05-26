@@ -14,6 +14,7 @@ function isFullName()	{
 
 
 function isPass()	{
+	
 	var str = document.forms[0].passwd.value;
 	if ((str == "") || (str.length < 6))
 	{
@@ -244,9 +245,11 @@ function validate(FormName)	{
 	if ( isFullName() == false )	{	 // Checks the First Name and Last Name
 		return false;			
 	} // End of check first and Last Name
-	if((isLogin() == false) )	{	// Checks the Login Id
-			return false;
-		}
+
+	
+	//if((isLogin() == false) )	{	// Checks the Login Id
+//			return false;
+//		}
 
 	if (isPass() == false)	{	// Checks the password and Confirm Password
 		return false;

@@ -59,7 +59,9 @@ animatedcollapse.init()
 			{
 				?>
 				<b><br><font color="#000000">Welcome </font> <i>
-				<font size="3" color="#000000"><?php echo $_SESSION['username']?></font></i></b><br>
+				<font size="3" color="#000000"><?php echo $_SESSION['username']?></font></i></b>
+				<font style="font-weight:bold;" color="#000000">&nbsp;&nbsp;&nbsp;<a href="/src/php/updateProfile.php" color="#ffff00"> profile </a></font>
+				
 	         <?php 
 		    }
 			if(isset($_SESSION['REGISTER']) && $_SESSION['REGISTER']==1)
@@ -73,12 +75,12 @@ animatedcollapse.init()
 			{
 				$_SESSION['updated']=0;
 				?>
-				<b><font color="#000000">Profile Successfully Updated.</font></b><p><br>
+				<font color="#000000">Profile Successfully Updated.</font><br>
 			<?php 
 		    }
 			?>
 
-
+<br>
 </div>
 
 <div class="container">

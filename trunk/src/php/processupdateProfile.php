@@ -8,6 +8,15 @@ session_start();
 
 require("dbconnect.php");
 
+$user_password=addslashes($_POST['passwd']);
+$email=addslashes($_POST['email']);
+
+$result = MYSQL_QUERY("SELECT * from user WHERE user_email='$email' and user_password='$user_password' ");
+
+$worked = mysql_fetch_row($result);
+
+if($worked)
+{
 			$name=addslashes($_POST['name']);
 			$age=date("Y")-addslashes($_POST['DOB_Year']);
 			$location=addslashes($_POST['country']);
@@ -32,7 +41,13 @@ require("dbconnect.php");
 							header("Location: ../../index.php");
 					} 
 			header("Location: ../../index.php");
+}
+else
+{
+	$_SESSION['msg']  = "Incorrect Password";
+	header("Location: updateProfile.php");
 
+}
 require("closedb.php");
 
 ?>

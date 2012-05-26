@@ -28,7 +28,7 @@ if($worked)
    $_SESSION['username']=mysql_result($result,0,'user_name');
 	$_SESSION['email']	= $user_email;
    $loggedin =1 ; 
-   
+   $_SESSION['msg'] = "";
 	header("Location: ../../index.php");
 
 	exit;

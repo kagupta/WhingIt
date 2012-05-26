@@ -35,13 +35,22 @@ $rows=mysql_num_rows($result);
 
 <BODY leftmargin=0 marginwidth=0 marginheight=0 topmargin=0 rightmargin=0 bottommargin=0>
 
-<FORM action="processupdateProfile.php" METHOD="POST" name="register_user" onsubmit="return validate('mail_db');">
+<FORM action="processupdateProfile.php" METHOD="POST" name="edit_user" onsubmit="return validate('edit_user');">
 
 <!--TOP BAR BEGINS-->
 	<table cellspacing=0 cellpadding=0 border=0 width=731 height=44 align=center class=top_bar>
 		<tr height=44>
 			<td width=16></td>
-			<td width=300 class=f15><b>Update Profile</b></td>
+			<td width=300 class=f15><b>
+<?php 
+if(isset( $_SESSION['msg']))
+{
+   echo "<FONT SIZE=2 COLOR='#E30102'>"; echo $_SESSION['msg']; echo "</FONT>";
+   $_SESSION['msg'] = "";
+}
+?>
+
+</b></td>
 			<td align=right class=f15 width=415>&nbsp;</td> 
 		</tr>
 	</table>
@@ -85,7 +94,7 @@ $rows=mysql_num_rows($result);
 			<td><FONT FACE="Verdana" SIZE =-2 COLOR="#E30102">*</FONT></td>
 			<td class=f13>Password</td>
 			<td class=f13><B>:</B></td>
-			<td><INPUT TYPE="password" NAME="passwd" value="<?php echo mysql_result($result,0,'user_password');?>" style="width:185px;" maxlength="12"></td>
+			<td><INPUT TYPE="password" NAME="passwd" value="" style="width:185px;" maxlength="12"></td>
 			<td></td>
 			<td>
 				<table cellspacing=0 cellpadding=0 border=0>
@@ -105,7 +114,7 @@ $rows=mysql_num_rows($result);
 			<td class=f13>Confirm your Password</td>
 			<td class=f13><B>:</B></td>
 			<td>
-			<INPUT TYPE="password" NAME="confirm_passwd" value="<?php echo mysql_result($result,0,'user_password');?>"  maxlength="12" size="25"></td>
+			<INPUT TYPE="password" NAME="confirm_passwd" value=""  maxlength="12" size="25"></td>
 		</tr>
 		<tr>
 			<td height=8></td>
@@ -165,7 +174,10 @@ $rows=mysql_num_rows($result);
 			<td class=f13>Gender</td>
 			<td class=f13><B>:</B></td>
 			<td colspan=3>
-			<SELECT NAME="gender"><Option value="m"  >Male<Option value="f" >Female</SELECT>
+			<?php $gender = mysql_result($result,0,'gender') ?>
+			<SELECT NAME="gender" > 
+			<Option value="f" <?php if($gender=="f") echo 'selected="selected" '; ?> >Female</Option>
+			<Option value="m"  <?php if($gender=="m") echo 'selected="selected" '; ?> >Male</Option></SELECT>
 		</td>
 		</tr>
 		<tr>
@@ -176,19 +188,18 @@ $rows=mysql_num_rows($result);
           <td><FONT FACE="Verdana" SIZE =-2 COLOR="#E30102">*</FONT></td>
           <td class=f13>Country</td>
           <td class=f13><B>:</B></td>
+		  <?php $country = mysql_result($result,0,'user_location') ?>
           <td colspan=3><SELECT NAME="country" style="width:183px;" >
-              <option label="Select" value="<?php echo mysql_result($result,0,'user_location');?>"><?php echo mysql_result($result,0,'user_location');?></option>
-              <option label="China" value="China">China</option>
-			  <option label="India" value="India">India</option>
-              <option label="United States" value="United States">United States</option>
-              <option label="United Kingdom" value="United Kingdom">United Kingdom</option>
-              <option label="Canada" value="Canada">Canada</option>
-              <option label="Singapore" value="Singapore">Singapore</option>
-              <option label="Malaysia" value="Malaysia">Malaysia</option>
-              <option label="Australia" value="Australia">Australia</option>
-              <option label="Saudia Arabia" value="Saudia Arabia">Saudia Arabia</option>
-              <option label="United Arab Emirates" value="United Arab Emirates">United Arab Emirates</option>
-              <option label="South Africa" value="South Africa">South Africa</option>
+             <option label="China" value="China"  <?php if($country=="China") echo 'selected="selected" '; ?> >China</option>
+			  <option label="India" value="India" <?php if($country=="India") echo 'selected="selected" '; ?> >India</option>
+              <option label="United States" value="United States" <?php if($country=="United States") echo 'selected="selected" '; ?> >United States</option>
+              <option label="United Kingdom" value="United Kingdom" <?php if($country=="United Kingdom") echo 'selected="selected" '; ?> >United Kingdom</option>
+              <option label="Canada" value="Canada" <?php if($country=="Canada") echo 'selected="selected" '; ?> >Canada</option>
+              <option label="Singapore" value="Singapore" <?php if($country=="Singapore") echo 'selected="selected" '; ?> >Singapore</option>
+              <option label="Malaysia" value="Malaysia" <?php if($country=="Malaysia") echo 'selected="selected" '; ?> >Malaysia</option>
+              <option label="Australia" value="Australia" <?php if($country=="Australia") echo 'selected="selected" '; ?> >Australia</option>
+              <option label="Saudia Arabia" value="Saudia Arabia" <?php if($country=="Saudia Arabia") echo 'selected="selected" '; ?> >Saudia Arabia</option>
+              <option label="South Africa" value="South Africa" <?php if($country=="South Africa") echo 'selected="selected" '; ?> >South Africa</option>
           </SELECT></td>
 	  </tr>
 		<tr>
@@ -214,7 +225,7 @@ $rows=mysql_num_rows($result);
 		<tr>
 			<td></td>
 			<td colspan=6>
-			<FONT FACE="Verdana" SIZE =-2 COLOR="#797979">*</FONT>&nbsp;<FONT CLASS=f10 COLOR="#868686">We’ll be sending you the system notifications and promotional mailers based on the interest you declare while registration.</FONT>
+			<FONT FACE="Verdana" SIZE =-2 COLOR="#797979">*</FONT>&nbsp;<FONT CLASS=f10 COLOR="#868686">We'll be sending you the system notifications and promotional mailers based on the interest you declare while registration.</FONT>
 			</td>
 		</tr>
 		<tr>
