@@ -1,7 +1,4 @@
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-CREATE DATABASE IF NOT EXISTS `whingit`;
-DROP DATABASE `whingit`;
-
 --
 -- Database: `whingit`
 --
@@ -92,7 +89,7 @@ CREATE TABLE `description` (
 --
 -- Table for Images 
 --
-CREATE TABLE `uIamge` (
+CREATE TABLE `uImage` (
   `id` int(11) NOT NULL,
   content MEDIUMBLOB NOT NULL,
   PRIMARY KEY (`id`),
@@ -100,7 +97,7 @@ CREATE TABLE `uIamge` (
   ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `eIamge` (
+CREATE TABLE `eImage` (
   `id` int(11) NOT NULL,
   content MEDIUMBLOB NOT NULL,
   PRIMARY KEY (`id`),
