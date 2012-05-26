@@ -12,11 +12,10 @@ if(!$con)
 mysql_select_db("whingit", $con);
 $eventTab = mysql_query("SELECT * FROM events");
 $attendTab = mysql_query("SELECT * FROM attend");
-$userTab = mysql_query("SELECT * FROM user");
+//$userTab = mysql_query("SELECT * FROM user");
 date_default_timezone_set('America/Los_Angeles');
 $time = date('h:i:s a', time());
 $time = date("H:i:s", strtotime($time));
-//echo $currentDate;
 $absTime = strtotime("now");
 $currentYear=array();
 $currentMonth=array();
@@ -37,7 +36,7 @@ function time_diff($s){
     } 
     if($m>59){ 
         $hr = (int)($m/60); 
-        $m = $m-($hr*60); // min left over nd
+        $m = $m-($hr*60); // min left over 
         $td = "$hr hr"; if($hr>1) $td .= "s"; 
         if($m>0) $td .= ", $m min"; 
     } 
@@ -59,7 +58,7 @@ function getAttendees($eventId) {
 	$count = 0;
 	while($row2 = mysql_fetch_array($result2)) {
 		if($count < 3) {
-			echo $row2['firstName'] . " " . $row2['lastName'];
+			echo $row2['user_name'];
 			echo "<br />";
 		}
 		$count = $count + 1;
@@ -113,6 +112,9 @@ mysql_close($con);
          
          //hours
          hours=Math.floor(amount/3600);
+		 if (hours >= 12) {
+			hours = hours - 12;
+		 }
          amount=amount%3600;
          
          //minutes
