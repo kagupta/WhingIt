@@ -22,6 +22,7 @@ CREATE TABLE `user` (
   `user_password` varchar(10) DEFAULT NULL,
   `gender` varchar(1) NOT NULL,
    `id` int(11) NOT NULL AUTO_INCREMENT,
+  `imageID` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 -- ---------------------------------------------------------------------------------------
@@ -85,6 +86,15 @@ CREATE TABLE `description` (
   PRIMARY KEY (`eventID`),
   FOREIGN KEY (`eventID`) REFERENCES events(`id`)
   ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+-- ---------------------------------------------------------------------------------------
+--
+-- Table for Images 
+--
+CREATE TABLE `image` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  content MEDIUMBLOB NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
