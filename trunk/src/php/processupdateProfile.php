@@ -33,12 +33,29 @@ if($worked)
 
 					$result=mysql_query($sql) or die("query failed:".mysql_error());
 
+					$result = MYSQL_QUERY("SELECT id from user WHERE user_email='$email' ");
+					$id = mysql_result($result,0,'id');
+					
+					if($result && $_FILES['userfile']['size'] > 0)
+					{
+						$tmpName  = $_FILES['userfile']['tmp_name'];
+						$fp      = fopen($tmpName, 'r');
+						$content = fread($fp, filesize($tmpName));
+						$content = addslashes($content);
+						fclose($fp);
+						$query = "INSERT INTO uimage (id, content ) VALUES ( '$id', '$content')";
+						
+						$result=mysql_query($query) or die('Inserting image failed');
+						
+					} 
+
+
 
 					if($result)
 					{
 						   $_SESSION['updated']=1;
 						  
-							header("Location: ../../index.php");
+						header("Location: ../../index.php");
 					} 
 			header("Location: ../../index.php");
 }

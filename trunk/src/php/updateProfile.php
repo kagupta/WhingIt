@@ -35,7 +35,7 @@ $rows=mysql_num_rows($result);
 
 <BODY leftmargin=0 marginwidth=0 marginheight=0 topmargin=0 rightmargin=0 bottommargin=0>
 
-<FORM action="processupdateProfile.php" METHOD="POST" name="edit_user" onsubmit="return validate('edit_user');">
+<FORM action="processupdateProfile.php" METHOD="POST" name="edit_user" onsubmit="return validate('edit_user');" enctype="multipart/form-data">
 
 <!--TOP BAR BEGINS-->
 	<table cellspacing=0 cellpadding=0 border=0 width=731 height=44 align=center class=top_bar>
@@ -202,6 +202,22 @@ if(isset( $_SESSION['msg']))
               <option label="South Africa" value="South Africa" <?php if($country=="South Africa") echo 'selected="selected" '; ?> >South Africa</option>
           </SELECT></td>
 	  </tr>
+
+		<tr>
+			<td height=8></td>
+		</tr>
+	  		<tr>
+			<td></td>
+			 <td><FONT FACE="Verdana" SIZE =-2 COLOR="#E30102"></FONT></td>
+			<td class=f13>Profile Image</td>
+			<td class=f13><B>:</B></td>
+			<td colspan=1>
+				<input type="hidden" name="MAX_FILE_SIZE" value="1000000">
+			
+				<input name="userfile" type="file" id="userfile" >
+			</td>
+		</tr>
+
 		<tr>
 			<td height=8></td>
 		</tr>

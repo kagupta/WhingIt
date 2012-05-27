@@ -28,7 +28,7 @@ $_SESSION['fail_reg']=0;
 </HEAD>
 
 <BODY leftmargin=0 marginwidth=0 marginheight=0 topmargin=0 rightmargin=0 bottommargin=0>
-<FORM action="processsignup.php" METHOD="POST" name="register_user" onsubmit="return validate('register_user');">
+<FORM action="processsignup.php" METHOD="POST" name="register_user" onsubmit="return validate('register_user');" enctype="multipart/form-data">
 
 <!--TOP BAR BEGINS-->
 	<table cellspacing=0 cellpadding=0 border=0 width=731 height=44 align=center class=top_bar>
@@ -47,7 +47,7 @@ $_SESSION['fail_reg']=0;
 		</tr>
 		<tr>
 			<td width=77></td>
-			<td colspan=6 class=f13><FONT COLOR="#E30102">Fields marked with <FONT FACE="Verdana" SIZE =-2 COLOR="#E30102">(*)</FONT> are compulsory. This information is a must for successful account creation.</FONT></td>
+			<td colspan=6 class=f13><FONT COLOR="#E30102">Fields marked with <FONT FACE="Verdana" SIZE =-2 COLOR="#E30102">(*)</FONT> are required. This information is a must for successful account creation.</FONT></td>
 		</tr>
 				<tr>
 			<td height=17></td>
@@ -239,6 +239,25 @@ $_SESSION['fail_reg']=0;
               <option label="South Africa" value="South Africa">South Africa</option>
           </SELECT></td>
 	  </tr>
+
+		<tr>
+			<td height=8></td>
+		</tr>
+	  		<tr>
+			<td></td>
+			 <td><FONT FACE="Verdana" SIZE =-2 COLOR="#E30102"></FONT></td>
+			<td class=f13>Profile Image</td>
+			<td class=f13><B>:</B></td>
+			<td colspan=1>
+				<input type="hidden" name="MAX_FILE_SIZE" value="1000000">
+			
+				<input name="userfile" type="file" id="userfile" >
+			</td>
+		</tr>
+
+		<tr>
+			<td height=15></td>
+		</tr>
 		<tr>
 			<td height=8></td>
 		</tr>

@@ -10,7 +10,7 @@
     user_panel<br />
   </div>
 </div>
-
+<img src="/src/php/image.php?uid=13">
 <div class="categories">
   <h2>Categories</h2>
 
