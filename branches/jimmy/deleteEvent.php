@@ -6,10 +6,11 @@ if (!$link) {
 echo 'Connection OK<br />'; 
 
 mysql_select_db("whingit", $link);
-	
-	//test
+
+	//test: printing out current events table
 	echo "Current Events Table";
 	  echo "<br />";
+	  
 	$result = mysql_query("SELECT * FROM events");
 
 	while($row = mysql_fetch_array($result))
@@ -20,8 +21,6 @@ mysql_select_db("whingit", $link);
  
 $i = 1;
 while(1){
-	echo "<br />";
-	echo $i;
 	if(isset($_POST['delete' . $i])){
 		mysql_query("DELETE FROM events WHERE id =$i");
 		break;
@@ -30,7 +29,7 @@ while(1){
 }
 
 
-	//test
+	//test: printing things out to see what is in events table
 	echo "Current Events Table";
 	  echo "<br />";
 	$result = mysql_query("SELECT * FROM events");
@@ -41,5 +40,8 @@ while(1){
 	  echo "<br />";
 	  }
 
+  
 mysql_close($link);
 ?> 
+
+<button onclick="window.location.href='myEventsPage.php'">Back to Events Page</button>

@@ -9,10 +9,11 @@ $result = mysql_query("SELECT * FROM tags");
 
 ?>
 
-<!-- Calls createEvent.php to add event in form to database -->
+<!-- Calls createEvent.php to add event in form to database on submit -->
 <form action="createEvent.php" method="post"> 
 <table width="400" border="0" cellspacing="0" cellpadding="0"> 
 
+<!--  -->
 <tr> 
 <td width="29%" class="bodytext">Event name:
 </td> 
@@ -120,7 +121,8 @@ while($row = mysql_fetch_array($result))
 </tr> 
 <tr> 
 <td class="bodytext"> </td> 
-<td align="left" valign="top"><input type="submit" name="Submit" value="Create"></td> 
+<td align="left" valign="top">
+<input type="submit" name="Submit" value="Create"></td> 
 
 
 </tr> 
