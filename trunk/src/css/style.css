@@ -172,14 +172,18 @@ p.menu_bar {
    height: 86px;
    padding: 8px 11px 8px 11px;
    border-top: 1px solid gray;
+   overflow: hidden;
 }
 
 .countdown {
-   height: 305px;
+   height: 100%;
+   max-height: 305px;
    overflow: hidden;
 }
 
 .feed {
+   height: 100%;
+   max-height: 515px;
    overflow: hidden;
 }
 

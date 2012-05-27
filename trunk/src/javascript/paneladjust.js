@@ -1,29 +1,29 @@
 function panel_growshrink(divId1, divId2) {
-   // toggle divId1
-   // if divId1 shrink -> divId2 grow 
-   // if divId1 grow   -> divId2 shrink 
-   
-   if (document.getElementById(divId2+"_outer").style.height != "1px") {
-      var $temp = divId1
-      divId1 = divId2
-      divId2 = $temp
-   }
-   
+   // If divId1 is not expanded (or divId2 is not hidden)
+   // then hide divId2 and expand divId1
+   // else shrink divId1 and show divId2
+   var $DEFAULT_COUNTDOWN_HEIGHT = "305";
+   var $DEFAULT_LIVEFEED_HEIGHT  = "515";
    var $height = "0"
-   var $divId1_outer = divId1 + "_outer"
    
-   // toggle divId1
-   animatedcollapse.toggle($divId1_outer)
+   // toggle divId2
+   var $divId2_outer = divId2 + "_outer"
+   animatedcollapse.toggle($divId2_outer)
    
-   // figure out if regular height or extended
-   if (divId2 == "countdown")
-      $height = "305"
+   // Regular max-height depending on panel
+   if (divId1 == "countdown")
+      $height = $DEFAULT_COUNTDOWN_HEIGHT + "px";
    else
-      $height = "100%"
+      $height = $DEFAULT_LIVEFEED_HEIGHT + "px";
    
-   if (document.getElementById($divId1_outer).style.height != "1px")
-      $height = "600"
-
-   $( "#"+divId2 ).animate({
-      height: $height},300)
+   // if divId2 becoming hidden (height!="1px") then expand divId1
+   // else make divId1 normal size
+   if (document.getElementById($divId2_outer).style.height != "1px") {
+      document.getElementById(divId1).style.maxHeight = "none";
+      //$("#"+divId1).animate({height: '100%'}, 300);
+   } else {
+      document.getElementById(divId1).style.maxHeight = $height;
+      //$("#"+divId1).animate({height: 'auto'}, 300);
+   }
+   $("#"+divId1).animate({height: 'auto'}, 300);
 }
