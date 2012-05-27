@@ -35,11 +35,10 @@
         if((($temp2 - $absTime) < 10830) && (($temp2 - $absTime) > 0)) {
     ?>
           <div class="eventbox">
+            <img src="photo.jpg" width="70" height="70" style="margin: 5px 10px 10px 0px; float:left;vertical-align: bottom;">
           <?php
-            echo $row['name'];
-            echo "<div id=\"".$currentCounter."\"></div>";
-            echo "<br />";
-            echo "<br />";
+            echo "<h2 class=\"eventbox_text\">" . $row['name'] . "</h2>";
+            echo "<div class=\"timer\" id=\"".$currentCounter."\"></div>";
             getAttendees($row['id']);
           ?>
           </div>

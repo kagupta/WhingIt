@@ -16,17 +16,13 @@
 ?>
 
       <div class="eventbox">
+      <img src="photo.jpg" width="70" height="70" style="margin: 5px 10px 10px 0px; float:left;vertical-align: bottom;">
       <?php
-        echo $row['name']; //. " " . $row['LastName'];
-        echo "<br />";
-        echo $row['location']; 
-        echo "<br />";
-        echo $row['time'];
+        echo "<h1 class=\"eventbox_text\">" . $row['name'] . "</h1>"; //. " " . $row['LastName'];
+        echo "<h2 class=\"eventbox_text\">" . $row['location'] . "</h2>"; 
         // code to check the logged in user so that the correct attend options are displayed.
         //$user_id=$session->data['user_id'];
         //$checkuser = mysql_query("SELECT * FROM attend where attendee=$user_id")
-        echo "<br />";
-        echo "<br />";
         getAttendees($row['id']);
       ?>
       </div>	

@@ -22,7 +22,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 h1 {
-   color: #4096c7; /*1890d5; */
+   /*color: #4096c7; /*1890d5; */
    font-size: 2.3em;
    margin: 0px;
    margin-top: -10px;
@@ -52,7 +52,7 @@ a:hover {
 
 /* Used for rounded corner boxes */
 .rounded-corners {
-   background-color: #FFF;
+   background-color: #FFFFFF;
    border: 1px solid gray;
    margin: 0 auto;
    margin-bottom: 10px;
@@ -166,24 +166,43 @@ p.menu_bar {
 .panel_header {
    padding: 8px;
    padding-bottom: 0px;
+   color: #4096c7;
+   background-color: #FFFFFF;
+   
+   -moz-border-radius-topleft: 10px;
+   -moz-border-radius-topright: 10px;
+   behavior: url(/border-radius.htc);
+   border-top-left-radius: 10px;
+   border-top-right-radius: 10px;
+
 }
 
-.eventbox { 
-   height: 86px;
-   padding: 8px 11px 8px 11px;
-   border-top: 1px solid gray;
-   overflow: hidden;
+.panel_header:hover {
+   padding: 8px;
+   padding-bottom: 0px;
+   color: #FFFFFF;
+   background-color: #4096c7;
+
 }
+
+/*.panel_header:hover {
+   color: #ffffff;
+   padding: 8px;
+   padding-bottom: 0px;
+   background-color: #4096c7; 
+   
+   z-index: -1;
+}*/
 
 .countdown {
    height: 100%;
-   max-height: 305px;
+   max-height: 345px;
    overflow: hidden;
 }
 
 .feed {
    height: 100%;
-   max-height: 515px;
+   max-height: 540px;
    overflow: hidden;
 }
 
@@ -203,7 +222,6 @@ p.menu_bar {
 .right-align {
    float: right;
 }
-
 
 /* ~~ miscellaneous float/clear classes ~~ */
 .fltrt {  /* this class can be used to float an element right in your page. The floated element must precede the element it should be next to on the page. */

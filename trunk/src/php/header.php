@@ -10,6 +10,7 @@
   <title>Whingit</title>
 
   <link rel="stylesheet" type="text/css" href="/src/css/style.css" />
+  <link rel="stylesheet" type="text/css" href="/src/css/eventbox.css" />
 
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
   <script type="text/javascript" src="/src/javascript/animatedcollapse.js"></script>

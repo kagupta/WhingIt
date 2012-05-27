@@ -2,8 +2,8 @@ function panel_growshrink(divId1, divId2) {
    // If divId1 is not expanded (or divId2 is not hidden)
    // then hide divId2 and expand divId1
    // else shrink divId1 and show divId2
-   var $DEFAULT_COUNTDOWN_HEIGHT = "305";
-   var $DEFAULT_LIVEFEED_HEIGHT  = "515";
+   var $DEFAULT_COUNTDOWN_HEIGHT = "345";
+   var $DEFAULT_LIVEFEED_HEIGHT  = "540";
    var $height = "0"
    
    // toggle divId2

@@ -1,0 +1,29 @@
+.eventbox { 
+   height: 80px;
+   padding: 8px 11px 8px 11px;
+   border-top: 1px solid gray;
+   overflow: hidden;
+}
+
+h1.eventbox_text {
+   color: #000000;
+   font-weight: bolder;
+   font-size: 2em;
+   padding: 0;
+   margin: 0;
+}
+
+h2.eventbox_text {
+   color: #000000;
+   font-weight: bolder;
+   font-size: 1.2em;
+   padding: 0;
+   margin: 0;
+}
+
+.timer {
+   font-weight: bolder;
+   font-size: 2.5em;
+   padding: 0;
+   margin: 0;
+}
