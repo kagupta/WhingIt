@@ -53,7 +53,6 @@
 				?>
 				<b><br><font color="#000000">Welcome </font> <i>
 				<font size="3" color="#000000"><?php echo $_SESSION['username']?></font></i></b>
-				<font style="font-weight:bold;" color="#000000">&nbsp;&nbsp;&nbsp;<a href="/src/php/updateProfile.php" color="#ffff00"> profile </a></font>
 				
 	         <?php 
 		    }
