@@ -44,7 +44,7 @@ if (!$link) {
 
 mysql_select_db("whingit", $link);
 	//MUST SET USERID TO THE CURRENT USER
-	$userID = 1;
+	$userID = $_SESSION['id'];
 	$eventName = $_POST['eventName'];
 	$tags = $_POST['tag'];
 	print_r($tags);

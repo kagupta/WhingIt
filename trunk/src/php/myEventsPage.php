@@ -46,9 +46,9 @@ if (!$link) {
 	die('Could not connect to MySQL: ' . mysql_error()); 
 } 
 
-//$user = $_SESSION['id'];
+$user = $_SESSION['id'];
 //MUST CHANGE USER ID TO GET CURRENT USERID INSTEAD
-$user = 1;
+//$user = 1;
 mysql_select_db("whingit", $link);
 $result = mysql_query("SELECT * FROM events WHERE creator = '$user'");
 
@@ -69,6 +69,8 @@ while($row = mysql_fetch_array($result))
 mysql_close($link);
 ?>
 </table>
+
+</form>
 <button onclick="window.location.href='createEventForm.php'">Create an Event</button>
 <!--Footer begins-->
 		<table cellspacing=0 cellpadding=0 border=0 align=center width=731>
@@ -78,4 +80,3 @@ mysql_close($link);
 			</tr>
 		</table>
 <!--Footer ends-->
-</form>
