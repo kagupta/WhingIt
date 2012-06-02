@@ -5,12 +5,11 @@
 
   <img src="/src/php/image.php?uid=<?php 
   
- /* if($_SESSION['id'])
+  if(isset($_SESSION['id']))
   {
 	$id = $_SESSION['id'];
   }
-  
-  else */
+  else 
   {
 	$id = 0;
   }

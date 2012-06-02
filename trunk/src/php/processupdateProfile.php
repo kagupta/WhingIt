@@ -43,7 +43,7 @@ if($worked)
 						$content = fread($fp, filesize($tmpName));
 						$content = addslashes($content);
 						fclose($fp);
-						$query = "INSERT INTO uimage (id, content ) VALUES ( '$id', '$content')";
+						$query = "UPDATE uimage SET content='$content' WHERE id='$id'";
 						
 						$result=mysql_query($query) or die('Inserting image failed');
 						
