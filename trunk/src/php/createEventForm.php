@@ -36,21 +36,47 @@ $rows=mysql_num_rows($result);
 <BODY leftmargin=0 marginwidth=0 marginheight=0 topmargin=0 rightmargin=0 bottommargin=0>
 
 <!--TOP BAR BEGINS-->
-<!--
-<head>
+
 <script type "text/javascript">
 function validateForm()
 {
-var x=document.forms["createEventForm"]["eventName"].value;
-if (x==null || x=="")
+  var x=document.forms["createEventForm"]["eventName"].value;
+  if (x==null || x=="")
   {
   alert("Event name must be filled out");
   return false;
   }
+/*
+  var len=document.forms["createEventForm"]["tag[]"].length;
+  var i=0;
+  for(i=0; i<len;i++)
+  {
+  
+  }
+  for()
+  if (true)
+  {
+  alert("1" +x + "asdf must be filled out");
+  return false;
+  }  
+  */
+  var x=document.forms["createEventForm"]["location"].value;
+  if (x==null || x=="")
+  {
+  alert("Location must be filled out");
+  return false;
+  }
+  
+  var x=document.forms["createEventForm"]["description"].value;
+  if (x==null || x=="")
+  {
+  alert("Description must be filled out");
+  return false;
+  }
+  
 }
 </script>
-</head>
-  -->
+
 <?php 
 $link = mysql_connect('localhost','root',''); 
 if (!$link) { 

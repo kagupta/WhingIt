@@ -16,7 +16,9 @@
   echo $id;
   ?>" width=120 height = 120>
     <br />
-    <font style="font-weight:bold;" color="#000000">&nbsp;&nbsp;&nbsp;<a href="/src/php/updateProfile.php" color="#ffff00"> Update profile </a></font>
+    <font style="font-weight:bold;" color="#000000">&nbsp;&nbsp;&nbsp;<a href="/src/php/updateProfile.php" color="#ffff00"> Update profile </a></font><br />
+	<font style="font-weight:bold;" color="#000000">&nbsp;&nbsp;&nbsp;<a href="/src/php/createEventForm.php" color="#ffff00"> Create Event </a></font><br />
+ 	<font style="font-weight:bold;" color="#000000">&nbsp;&nbsp;&nbsp;<a href="/src/php/myEventsPage.php" color="#ffff00"> View My Event </a></font><br />
 				
 
   </div>
