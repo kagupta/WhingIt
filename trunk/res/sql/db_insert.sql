@@ -10,16 +10,16 @@ INSERT INTO `user` (user_email, user_name, user_password) VALUES('sechen', 'Sean
 INSERT INTO `user` (user_email, user_name, user_password) VALUES('spark', 'Sean Parker', 'seanseanparker');
 INSERT INTO `user` (user_email, user_name, user_password) VALUES('vbhalodi', 'Viral Bhalodia', 'password'); 
 
-INSERT INTO `events` (name, time, location, creator) VALUES ('Event 1', '2012-05-27 05:30:00', 'Location 1', 3); 
-INSERT INTO `events` (name, time, location, creator) VALUES ('Event 2', '2012-05-27 06:30:00', 'Location 2', 10); 
-INSERT INTO `events` (name, time, location, creator) VALUES ('Happy Hour 1', '2012-05-27 07:30:00', 'Atlanta', 5); 
-INSERT INTO `events` (name, time, location, creator) VALUES ('Happy Hour 2', '2012-05-27 09:30:00', 'Las Vegas', 6); 
-INSERT INTO `events` (name, time, location, creator) VALUES ('Games 1', '2012-05-27 13:30:00', 'TBA 2', 7); 
-INSERT INTO `events` (name, time, location, creator) VALUES ('Games 2', '2012-05-27 12:30:00', 'TBA 1', 3); 
-INSERT INTO `events` (name, time, location, creator) VALUES ('Blah Blah 1', '2012-05-27 13:30:00', 'UCSD Scripps', 3); 
-INSERT INTO `events` (name, time, location, creator) VALUES ('Blah Blah 2', '2012-05-27 11:30:00', 'UCSD Rec Room', 4); 
-INSERT INTO `events` (name, time, location, creator) VALUES ('Final 1', '2012-05-27 10:30:00', 'Somewhere 1', 1); 
-INSERT INTO `events` (name, time, location, creator) VALUES ('Final 2', '2012-05-27 09:30:00', 'Somewhere 2', 2); 
+INSERT INTO `events` (name, time, location, creator) VALUES ('Event 1', '2012-06-02 19:30:00', 'Location 1', 3); 
+INSERT INTO `events` (name, time, location, creator) VALUES ('Event 2', '2012-06-02 20:30:00', 'Location 2', 10); 
+INSERT INTO `events` (name, time, location, creator) VALUES ('Happy Hour 1', '2012-06-02 19:30:00', 'Atlanta', 5); 
+INSERT INTO `events` (name, time, location, creator) VALUES ('Happy Hour 2', '2012-06-02 20:30:00', 'Las Vegas', 6); 
+INSERT INTO `events` (name, time, location, creator) VALUES ('Games 1', '2012-06-02 21:30:00', 'TBA 2', 7); 
+INSERT INTO `events` (name, time, location, creator) VALUES ('Games 2', '2012-06-02 22:30:00', 'TBA 1', 3); 
+INSERT INTO `events` (name, time, location, creator) VALUES ('Blah Blah 1', '2012-06-02 22:30:00', 'UCSD Scripps', 3); 
+INSERT INTO `events` (name, time, location, creator) VALUES ('Blah Blah 2', '2012-06-02 23:30:00', 'UCSD Rec Room', 4); 
+INSERT INTO `events` (name, time, location, creator) VALUES ('Final 1', '2012-06-02 23:30:00', 'Somewhere 1', 1); 
+INSERT INTO `events` (name, time, location, creator) VALUES ('Final 2', '2012-06-02 22:30:00', 'Somewhere 2', 2); 
 
 INSERT INTO `tags` (tag) VALUES ('other');
 INSERT INTO `tags` (tag) VALUES ('free food');

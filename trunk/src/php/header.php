@@ -16,6 +16,7 @@
   <script type="text/javascript" src="/src/javascript/animatedcollapse.js"></script>
   <script type="text/javascript" src="/src/javascript/paneladjust.js"></script>
   <script type="text/javascript" src="/src/javascript/Timer.js"></script>
+  <script type="text/javascript" src="/src/javascript/loadscroll.js"></script>
   <script type="text/javascript">
     animatedcollapse.addDiv('countdown_outer', 'fade=0,speed=300')
     animatedcollapse.addDiv('feed_outer', 'fade=0,speed=300')

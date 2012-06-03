@@ -3,6 +3,7 @@ function GetCount(ddate,iid){
    
    dateNow = new Date();
    amount = ddate.getTime() - dateNow.getTime();
+   
    delete dateNow;
 
    if(amount < 0){

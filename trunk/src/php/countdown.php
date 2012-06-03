@@ -1,17 +1,10 @@
 <?php
-  include './src/php/event_functions.php';
-  $con = mysql_connect("localhost", "root", "");    //connect to the database
-
-  if(!$con){
-    echo "Could not connect";
-    die('Could not connect: ' . mysql_error());
-  }
-
-  mysql_select_db("whingit", $con);
+  include '/src/php/event_functions.php';
+  include '/src/php/dbconnect.php';
   
   date_default_timezone_set('America/Los_Angeles');  
   //$eventTab = mysql_query("SELECT * FROM events WHERE time - NOW() > 0 AND DATE_SUB(time,INTERVAL 3 HOUR) < NOW() ORDER BY UNIX_TIMESTAMP(time)");
-  $eventTab = mysql_query("SELECT * FROM events");
+  $eventTab = mysql_query("SELECT * FROM events ORDER BY time");
   $absTime = strtotime("now");
 ?>
 
@@ -40,6 +33,8 @@
             echo "<h2 class=\"eventbox_text\">" . $row['name'] . "</h2>";
             echo "<div class=\"timer\" id=\"".$currentCounter."\"></div>";
             getAttendees($row['id']);
+            echo "<br />";
+            getDescription($row['id']); 
           ?>
           </div>
     <?php
@@ -54,7 +49,7 @@
       window.onload = function() {
       <?php
         //$eventTab = mysql_query("SELECT * FROM events WHERE time - NOW() > 0 AND DATE_SUB(time,INTERVAL 3 HOUR) < NOW() ORDER BY UNIX_TIMESTAMP(time)");
-        $eventTab = mysql_query("SELECT * FROM events");
+        $eventTab = mysql_query("SELECT * FROM events ORDER BY time");
         $currentCounter = 0;
         while($row = mysql_fetch_array($eventTab)) { 
           
@@ -65,9 +60,9 @@
             GetCount(<?php echo "new Date(".date("Y",$temp2).","
                                           .date("m",$temp2).","
                                           .date("d",$temp2).","
-                                          .date("h",$temp2).","
+                                          .date("H",$temp2).","
                                           .date("i",$temp2).","
-                                          .date("s",$temp2)."),'$currentCounter'"; ?>);
+                                          .date("s",$temp2).",0),'$currentCounter'"; ?>);
       <?php    
             $currentCounter = $currentCounter + 1;
           }
