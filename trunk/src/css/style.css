@@ -44,6 +44,7 @@ a img { /* removes the default blue border */
 a:link, a:visited {
 	color: #4096c7; /*18acd7;*/
 	text-decoration: none;
+  border: 0px;
 }
 
 a:hover {

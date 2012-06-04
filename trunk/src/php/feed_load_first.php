@@ -1,7 +1,9 @@
 <div class="rounded-corners" id="feed_outer">
+  <a href="#">
   <div class="panel_header rounded-topcorners" onclick="animatedcollapse.toggle('countdown_outer')">
     <h1>What's Happening!?</h1>
   </div>
+  </a>
   <div class="feed" id="feed"> 
     <div id="feed_notify">
       <?php 
