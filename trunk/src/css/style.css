@@ -128,7 +128,7 @@ a:hover {
 }
 
 .menu_bar {
-   width: 530px;
+   width: 100px;
    height: 40px;
    float: right;
 }
@@ -166,6 +166,7 @@ a:hover {
 .user_panel {
    height: 140px;
    padding: 8px 11px 8px 11px;
+   font-weight: bold;
 }
 
 .categories {

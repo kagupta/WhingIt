@@ -23,12 +23,13 @@ if($worked)
 			$email=addslashes($_POST['email']);
 			$gender=addslashes($_POST['gender']);
 			$user_password=addslashes($_POST['passwd']);
-
+  
+      $_SESSION['username'] = $name;
 			//echo $name," ",$age," cnrty=== ",$location," ",$interests," ",$email," ",$balance," ",$customer_login," ",$customer_password;
 			#integrity test of the information entered ends here
 
 			#Entering the information in the table to sign up
-			$sql="UPDATE `user` SET `age` = '$age', `user_location` = '$location', `user_password` = '$user_password', `gender` = '$gender' WHERE `user_email` = '$email' ";
+			$sql="UPDATE `user` SET `user_name` = '$name', `age` = '$age', `user_location` = '$location', `user_password` = '$user_password', `gender` = '$gender' WHERE `user_email` = '$email' ";
 			   
 
 					$result=mysql_query($sql) or die("query failed:".mysql_error());
