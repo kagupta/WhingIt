@@ -38,16 +38,20 @@ if($worked)
 					$id = mysql_result($result,0,'id');
 					
 					if($result && $_FILES['userfile']['size'] > 0)
-					{
+					{	
 						$tmpName  = $_FILES['userfile']['tmp_name'];
 						$fp      = fopen($tmpName, 'r');
 						$content = fread($fp, filesize($tmpName));
 						$content = addslashes($content);
 						fclose($fp);
-						$query = "UPDATE uimage SET content='$content' WHERE id='$id'";
+						$result = MYSQL_QUERY("SELECT * from uimage WHERE id='$id' ");
+						if(mysql_num_rows($result) > 0)
+							$query = "UPDATE uimage SET content='$content' WHERE id='$id'";
+						else
+							$query =  "INSERT INTO uimage (id, content ) VALUES ( '$id', '$content')";
 						
 						$result=mysql_query($query) or die('Inserting image failed');
-						
+						echo $result;
 					} 
 
 
