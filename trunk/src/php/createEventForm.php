@@ -18,24 +18,10 @@ else
 	header("Location: ../../index.php");
 }
 $result=mysql_query($sql) or die ("<BR>Error in retrieving data");
-$rows=mysql_num_rows($result);
 
-
+ include 'sidebar.php';
 ?>
-<HTML>
-<HEAD>
-<META Http-Equiv="Cache-Control" Content="no-cache" /> 
-<META Http-Equiv="Pragma" Content="no-cache" /> 
-<META Http-Equiv="Expires" Content="0" /> 
-<TITLE>Register </TITLE>
-	<script LANGUAGE=JavaScript TYPE=text/javascript src="../javascript/check.js"></script>
-	
-	
-</HEAD>
 
-<BODY leftmargin=0 marginwidth=0 marginheight=0 topmargin=0 rightmargin=0 bottommargin=0>
-
-<!--TOP BAR BEGINS-->
 
 <script type "text/javascript">
 function validateForm()
@@ -77,33 +63,27 @@ function validateForm()
 }
 </script>
 
-<?php 
-$link = mysql_connect('localhost','root',''); 
-if (!$link) { 
-	die('Could not connect to MySQL: ' . mysql_error()); 
-} 
-mysql_select_db("whingit", $link);
+<?php $result = mysql_query("SELECT * FROM tags"); ?>
 
-$result = mysql_query("SELECT * FROM tags");
-
-?>
-
+<div class="content">
 <!-- Calls createEvent.php to add event in form to database on submit -->
 <form name = "createEventForm" action="createEvent.php" method="post" onsubmit="return validateForm()"> 
-<table width="400" border="0" cellspacing="0" cellpadding="0"> 
-
+<table width="400" border="0" cellspacing="2" cellpadding="0" align=center> 
+<tr>
+  <td height="15"></td>
+</tr>
 <!--  -->
 <tr> 
 <td width="29%" class="bodytext">Event name:
 </td> 
-<td width="71%"><input name="eventName" type="text" id="eventName" size="32">
+<td colspan="5" width="71%"><input name="eventName" type="text" id="eventName" size="32">
 </td> 
 </tr> 
 
 <tr> 
 <td class="bodytext">Tags:
 </td> 
-<td><select name="tag[]" multiple="multiple" size = 10>
+<td colspan="5"><select name="tag[]" multiple="multiple" size = 10>
 <?php 
 while($row = mysql_fetch_array($result))
   {
@@ -118,7 +98,9 @@ while($row = mysql_fetch_array($result))
 
 
 <tr>
-<td> 
+<td>Date:
+</td>
+<td colspan="2"> 
 <select name=month value=''>Select Month</option>
 <option value='01'>January</option>
 <option value='02'>February</option>
@@ -135,7 +117,7 @@ while($row = mysql_fetch_array($result))
 </select>
 </td>
 
-<td>
+<td width="40px">
 <select name=day >
 <option value='01'>01</option>
 <option value='02'>02</option>
@@ -171,7 +153,7 @@ while($row = mysql_fetch_array($result))
 </select>
 </td>
 
-<td>Year(yyyy)</td>
+<td align="right" width="100px">Year(yyyy):</td>
 <td>
 <input type=text name=year size=2 value=2012>
 </td>
@@ -180,9 +162,9 @@ while($row = mysql_fetch_array($result))
 <tr>
 <td class ="bodytext">Time(hh:mm):
 </td>
-<td><input name = "time" type="text" id ="time" size = 4>
+<td width="30px"><input name = "time" type="text" id ="time" size = 4>
 </td>
-<td>
+<td width="30px">
 <select name = "ampm">
 <option value = "am">AM</option>
 <option value = "pm">PM</option>
@@ -191,29 +173,24 @@ while($row = mysql_fetch_array($result))
 
 <tr> 
 <td class="bodytext">Location:</td> 
-<td><input name="location" type="text" id="location" size="32"></td> 
+<td colspan="5"><input name="location" type="text" id="location" size="32"></td> 
 </tr>  
 
 <tr> 
 <td class="bodytext">Description:</td> 
-<td><textarea name="description" cols="45" rows="6" id="description" class="bodytext"></textarea></td> 
+<td colspan="5"><textarea name="description" cols="45" rows="6" id="description" class="bodytext"></textarea></td> 
 </tr> 
 <tr> 
 <td class="bodytext"> </td> 
-<td align="left" valign="top">
+<td align="left" valign="top" colspan="3">
 <input type="submit" name="Submit" value="Create"></td> 
 
 
 </tr> 
 </table> 
-
-<!--Footer begins-->
-		<table cellspacing=0 cellpadding=0 border=0 align=center width=731>
-			<tr>
-				<?php include("footer.php");
-				?>
-			</tr>
-		</table>
-<!--Footer ends-->
-
 </form>
+
+</div>
+<!--Footer begins-->
+<?php include("footer.php");?>
+<!--Footer ends-->

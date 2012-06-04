@@ -9,7 +9,7 @@
 ?>
 
 <div class="rounded-corners" id="countdown_outer">
-  <div class="panel_header" onclick="animatedcollapse.toggle('feed_outer')"><!--onclick="panel_growshrink('countdown','feed')">-->
+  <div class="panel_header rounded-topcorners" onclick="animatedcollapse.toggle('feed_outer')">
     <h1>Countdown</h1>
   </div>
   

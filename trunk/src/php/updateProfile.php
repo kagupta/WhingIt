@@ -22,39 +22,8 @@ $rows=mysql_num_rows($result);
 
 
 ?>
-<HTML>
-<HEAD>
-<META Http-Equiv="Cache-Control" Content="no-cache" /> 
-<META Http-Equiv="Pragma" Content="no-cache" /> 
-<META Http-Equiv="Expires" Content="0" /> 
-<TITLE>Register </TITLE>
-	<script LANGUAGE=JavaScript TYPE=text/javascript src="../javascript/check.js"></script>
-	
-	
-</HEAD>
-
-<BODY leftmargin=0 marginwidth=0 marginheight=0 topmargin=0 rightmargin=0 bottommargin=0>
 
 <FORM action="processupdateProfile.php" METHOD="POST" name="edit_user" onsubmit="return validate('edit_user');" enctype="multipart/form-data">
-
-<!--TOP BAR BEGINS-->
-	<table cellspacing=0 cellpadding=0 border=0 width=731 height=44 align=center class=top_bar>
-		<tr height=44>
-			<td width=16></td>
-			<td width=300 class=f15><b>
-<?php 
-if(isset( $_SESSION['msg']))
-{
-   echo "<FONT SIZE=2 COLOR='#E30102'>"; echo $_SESSION['msg']; echo "</FONT>";
-   $_SESSION['msg'] = "";
-}
-?>
-
-</b></td>
-			<td align=right class=f15 width=415>&nbsp;</td> 
-		</tr>
-	</table>
-<!--TOP BAR ENDS-->
 
 	<table cellspacing=0 cellpadding=0 border=0 width=731 height=54 align=center class=main_form>
 		<tr>
@@ -62,7 +31,7 @@ if(isset( $_SESSION['msg']))
 		</tr>
 		<tr>
 			<td width=77></td>
-			<td colspan=6 class=f13><FONT COLOR="#E30102">Fields marked with <FONT FACE="Verdana" SIZE =-2 COLOR="#E30102">(*)</FONT> are compulsory. This information is a must for successful account creation.</FONT></td>
+			<td colspan=6 class=f13><FONT COLOR="#E30102">Fields marked with <FONT FACE="Verdana" SIZE =-2 COLOR="#E30102">(*)</FONT> are required. This information is a must for successful account creation.</FONT></td>
 		</tr>
 				<tr>
 			<td height=17></td>
@@ -248,16 +217,8 @@ if(isset( $_SESSION['msg']))
 			<td height=15></td>
 		</tr>
 	</table>
+</FORM>
 
 <!--Footer begins-->
-		<table cellspacing=0 cellpadding=0 border=0 align=center width=731>
-			<tr>
-				<?php include("footer.php");
-				?>
-			</tr>
-		</table>
+<?php include("footer.php");?>
 <!--Footer ends-->
-
-</FORM>
-</body>
-</html>

@@ -1,5 +1,5 @@
 <div class="rounded-corners" id="feed_outer">
-  <div class="panel_header" onclick="animatedcollapse.toggle('countdown_outer')"><!--onclick="panel_growshrink('feed','countdown')">-->
+  <div class="panel_header rounded-topcorners" onclick="animatedcollapse.toggle('countdown_outer')">
     <h1>What's Happening!?</h1>
   </div>
   <div class="feed" id="feed"> 

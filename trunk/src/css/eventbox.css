@@ -3,8 +3,6 @@
    padding: 8px 11px 8px 11px;
    border-top: 1px solid gray;
    overflow: hidden;
-   margin-bottom: -1px;
-   border-bottom: 1px solid gray;
 }
 
 h1.eventbox_text {
@@ -33,8 +31,6 @@ h2.eventbox_text {
 .notification {
    line-height: 4em;
    border-top: 1px solid gray;
-   border-bottom: 1px solid gray;
-   margin-bottom: -1px;
    overflow: hidden;
    background-color: #EEEEEE;
    text-align: center;
@@ -47,8 +43,6 @@ h2.eventbox_text {
 .noevents {
    line-height: 6em;
    border-top: 1px solid gray;
-   border-bottom: 1px solid gray;
-   margin-bottom: -1px;
    overflow: hidden;
    text-align: center;
 }

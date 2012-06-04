@@ -17,6 +17,7 @@
   <script type="text/javascript" src="/src/javascript/paneladjust.js"></script>
   <script type="text/javascript" src="/src/javascript/Timer.js"></script>
   <script type="text/javascript" src="/src/javascript/loadscroll.js"></script>
+  <script type="text/javascript" src="/src/javascript/check.js"></script>
   <script type="text/javascript">
     animatedcollapse.addDiv('countdown_outer', 'fade=1,speed=300')
     animatedcollapse.addDiv('feed_outer', 'fade=1,speed=300')
@@ -38,16 +39,16 @@
   </div>
 
   <div class="menu_bar">
-    <p class="menu_bar">
 <?php if(isset($_SESSION['LOGGEDIN']) && $_SESSION['LOGGEDIN']==1)
 		
 		 {
-		 echo '<a href="/src/php/logout.php" title="Logout"><font style="font-weight:bold;"  color="#000000">Log Out</font></a>'; 
-			
+?>
+    <div class="logout_box rounded-topcorners">
+      <a href="/src/php/logout.php" title="Logout">Log Out</a>
+    </div>
+<?php
 		}
 ?>
-    
-    </p>
   </div>
 
 <?php if(isset($_SESSION['LOGGEDIN']) && $_SESSION['LOGGEDIN']==1)
@@ -75,7 +76,6 @@
 			?>
 
   <br>
-</div>
+  </div>
 
-<div class="container">
-  <?php //include './src/php/event_functions.php'; ?>
+  <div class="container">
