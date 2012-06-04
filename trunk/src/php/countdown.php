@@ -9,10 +9,11 @@
 ?>
 
 <div class="rounded-corners" id="countdown_outer">
+  <a href="#">
   <div class="panel_header rounded-topcorners" onclick="animatedcollapse.toggle('feed_outer')">
     <h1>Countdown</h1>
   </div>
-  
+  </a>
   <div class="countdown" id="countdown">
     <div id="countdown_notify">
       <?php 
@@ -27,10 +28,10 @@
         if((($temp2 - $absTime) < 10830) && (($temp2 - $absTime) > 0)) {
     ?>
           <div class="eventbox">
-            <img src="photo.jpg" width="70" height="70" style="margin: 5px 10px 10px 0px; float:left;vertical-align: bottom;">
+            <img src="/res/images/photo.jpg" width="70" height="70" style="margin: 5px 10px 10px 0px; float:left;vertical-align: bottom;">
             
             <h2 class="eventbox_text"> <?php echo $row['name']; ?> </h2>
-            <div class="timer" id=" <?php echo $currentCounter; ?> "></div>
+            <div class="timer" id="timer<?php echo $currentCounter; ?>"></div>
             <?php 
               getAttendees($row['id']);
               echo "<br />";
@@ -59,7 +60,6 @@
         $eventTab = mysql_query("SELECT * FROM events ORDER BY time");
         $currentCounter = 0;
         while($row = mysql_fetch_array($eventTab)) { 
-          
           $temp2  = strtotime($row['time']);
           if((($temp2 - $absTime) < 10830) && (($temp2 - $absTime) > 0)) {
 
@@ -69,7 +69,7 @@
                                           .date("d",$temp2).","
                                           .date("H",$temp2).","
                                           .date("i",$temp2).","
-                                          .date("s",$temp2).",0),'$currentCounter'"; ?>);
+                                          .date("s",$temp2).",0),'timer$currentCounter'"; ?>);
       <?php    
             $currentCounter = $currentCounter + 1;
           }
