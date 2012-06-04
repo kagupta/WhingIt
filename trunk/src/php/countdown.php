@@ -9,19 +9,18 @@
 ?>
 
 <div class="rounded-corners" id="countdown_outer">
-  <div class="panel_header" onclick="panel_growshrink('countdown','feed')">
+  <div class="panel_header" onclick="animatedcollapse.toggle('feed_outer')"><!--onclick="panel_growshrink('countdown','feed')">-->
     <h1>Countdown</h1>
   </div>
   
   <div class="countdown" id="countdown">
-  
+    <div id="countdown_notify">
+      <?php 
+        $_GET['parent_id'] = 'countdown_notify';
+        include '/src/php/async_bar.php';
+      ?>
+    </div>
     <?php
-      if (mysql_num_rows($eventTab) == 0) {
-        echo "<div class=\"eventbox\">";
-        echo "No events right now! Try adding some!";
-        echo "</div>";
-      }
-
       $currentCounter = 0;
       while($row = mysql_fetch_array($eventTab)) {
         $temp2  = strtotime($row['time']);
@@ -29,17 +28,25 @@
     ?>
           <div class="eventbox">
             <img src="photo.jpg" width="70" height="70" style="margin: 5px 10px 10px 0px; float:left;vertical-align: bottom;">
-          <?php
-            echo "<h2 class=\"eventbox_text\">" . $row['name'] . "</h2>";
-            echo "<div class=\"timer\" id=\"".$currentCounter."\"></div>";
-            getAttendees($row['id']);
-            echo "<br />";
-            getDescription($row['id']); 
-          ?>
+            
+            <h2 class="eventbox_text"> <?php echo $row['name']; ?> </h2>
+            <div class="timer" id=" <?php echo $currentCounter; ?> "></div>
+            <?php 
+              getAttendees($row['id']);
+              echo "<br />";
+              getDescription($row['id']); 
+            ?>
           </div>
     <?php
             $currentCounter = $currentCounter + 1;
         } 
+      }
+      if ($currentCounter == 0) {
+    ?>
+        <div class="noevents">
+          <h2>No events right now! Try adding some!</h2>
+        </div>
+    <?php
       }
     ?>
     

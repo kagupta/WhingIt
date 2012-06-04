@@ -87,13 +87,15 @@ a:hover {
 .container1 {
    background: url(../../res/images/bg2.gif) fixed;
    background-repeat: repeat-x;
-	width: 850px;
-	background-color: #f6fcff;
-	margin: 0px auto; /* the auto value on the sides, coupled with the width, centers the layout */
+	 width: 850px;
+	 background-color: #f6fcff;
+	 margin: 0px auto; /* the auto value on the sides, coupled with the width, centers the layout */
    position: relative;
    -moz-box-shadow: 8px 8px 14px #555;
 	-webkit-box-shadow: 8px 8px 14px #555;
 	box-shadow: 8px 8px 14px #555;
+   
+   margin-bottom: 50px;
 }
 
 /* TOP BAR */
@@ -128,6 +130,7 @@ p.menu_bar {
 
 /* ~~this fixed width container surrounds the other divs~~ */
 .container {
+   min-height: 700px;
    padding-top: 40px;
    margin: 0 auto;
 }
@@ -168,6 +171,8 @@ p.menu_bar {
    padding-bottom: 0px;
    color: #4096c7;
    background-color: #FFFFFF;
+   margin-bottom: -1px;
+   border-bottom: 1px solid gray;
    
    -moz-border-radius-topleft: 10px;
    -moz-border-radius-topright: 10px;
@@ -178,8 +183,6 @@ p.menu_bar {
 }
 
 .panel_header:hover {
-   padding: 8px;
-   padding-bottom: 0px;
    color: #FFFFFF;
    background-color: #4096c7;
 
@@ -213,6 +216,7 @@ p.menu_bar {
 	position: relative;/* this gives IE6 hasLayout to properly clear */
 	clear: both;
    border-top: 1px solid gray;
+   padding-bottom:20px;
 }
 
 .left-align {
