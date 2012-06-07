@@ -83,7 +83,9 @@ mysql_select_db("whingit", $link);
 		mysql_query("INSERT INTO tagLookup (eventID, tagID) VALUES ('$lastinsert' ,'$tag')");
 	}
 
-
+	//add self to attendee table
+	mysql_query("INSERT INTO attend (id, attendee, status) VALUES ('$lastinsert','$userID',1)");
+	
 	//looking at output of events table to see if event was added
 	echo "Current Events Table";
 	  echo "<br />";
