@@ -23,9 +23,10 @@ $result=mysql_query($sql) or die ("<BR>Error in retrieving data");
 ?>
 
 
-<script type "text/javascript">
+<script type="text/javascript">
 function validateForm()
 {
+
   //check event name entered
   var x=document.forms["createEventForm"]["eventName"].value;
   if (x==null || x=="")
@@ -117,21 +118,6 @@ function toggleStatus() {
 		document.forms["createEventForm"]["time"].value=time;
 		document.forms["createEventForm"]["ampm"].value=ampm;
 		
-		document.forms["createEventForm"]["month"].readOnly=true;
-		document.forms["createEventForm"]["day"].readOnly=true;
-		document.forms["createEventForm"]["year"].readOnly=true;
-		document.forms["createEventForm"]["time"].readOnly=true;
-		document.forms["createEventForm"]["ampm"].readOnly=true;
-		
-	
-	/*
-	else {
-		document.forms["createEventForm"]["month"].readOnly=false;
-		document.forms["createEventForm"]["day"].readOnly=false;
-		document.forms["createEventForm"]["year"].readOnly=false;
-		document.forms["createEventForm"]["time"].readOnly=false;
-		document.forms["createEventForm"]["ampm"].readOnly=false;
-	}*/
 }
 </script>
 

@@ -23,31 +23,24 @@ $rows=mysql_num_rows($result);
 include 'sidebar.php';
 
 ?>
-<HTML>
-<HEAD>
-<META Http-Equiv="Cache-Control" Content="no-cache" /> 
-<META Http-Equiv="Pragma" Content="no-cache" /> 
-<META Http-Equiv="Expires" Content="0" /> 
-<TITLE>Register </TITLE>
-	<script LANGUAGE=JavaScript TYPE=text/javascript src="../javascript/check.js"></script>
-	<script type="text/javascript">
+<script type="text/javascript">
 function validateForm()
 {
   //check event name entered
-  var x=document.forms["createEventForm"]["eventName"].value;
+  var x=document.forms["updateEventForm"]["eventName"].value;
   if (x==null || x=="")
   {
     alert("Event name must be filled out");
     return false;
   }
-
+  
   //check tags selected
-  var len=document.forms["createEventForm"]["tag[]"].length;
+  var len=document.forms["updateEventForm"]["tag[]"].length;
   var i=0;
   var select=false;
   for(i=0; i<len;i++)
   {
-    if(document.forms["createEventForm"]["tag[]"][i].selected)
+    if(document.forms["updateEventForm"]["tag[]"][i].selected)
 	{
 	  select = true;
 	}
@@ -59,7 +52,7 @@ function validateForm()
   }
   
   //check valid date/time entered
-  var entered_time=document.forms["createEventForm"]["time"].value;
+  var entered_time=document.forms["updateEventForm"]["time"].value;
   if (entered_time==null || entered_time=="")
   {
     alert("Event time must be filled out");
@@ -67,13 +60,13 @@ function validateForm()
   }
   
   
-  var entered_year = parseInt(document.forms["createEventForm"]["year"].value,10);
-  var entered_month = parseInt(document.forms["createEventForm"]["month"].value,10);
-  var entered_day = parseInt(document.forms["createEventForm"]["day"].value,10);
+  var entered_year = parseInt(document.forms["updateEventForm"]["year"].value,10);
+  var entered_month = parseInt(document.forms["updateEventForm"]["month"].value,10);
+  var entered_day = parseInt(document.forms["updateEventForm"]["day"].value,10);
   var time_split = entered_time.split(":");
   var entered_hour = parseInt(time_split[0],10);
   var entered_min = parseInt(time_split[1],10);
-  if(document.forms["createEventForm"]["ampm"].value == "pm"){
+  if(document.forms["updateEventForm"]["ampm"].value == "pm"){
 	 entered_hour = entered_hour + 12;
   }
   var entered = new Date(entered_year, entered_month-1, entered_day, entered_hour, entered_min, 0 , 0);
@@ -86,7 +79,7 @@ function validateForm()
   }
   
   //check location entered
-  var x=document.forms["createEventForm"]["location"].value;
+  var x=document.forms["updateEventForm"]["location"].value;
   if (x==null || x=="")
   {
     alert("Location must be filled out");
@@ -94,7 +87,7 @@ function validateForm()
   }
   
   //check description entered
-  var x=document.forms["createEventForm"]["description"].value;
+  var x=document.forms["updateEventForm"]["description"].value;
   if (x==null || x=="")
   {
     alert("Description must be filled out");
@@ -105,7 +98,6 @@ function validateForm()
 
 function toggleStatus() {
 
-	if(document.forms["createEventForm"]["toggle"].checked){
 		var date = new Date();
 		var month = '0'+(date.getMonth() + 1);
 		var day = '0' +  date.getDate();
@@ -122,37 +114,16 @@ function toggleStatus() {
 		document.forms["createEventForm"]["year"].value= date.getFullYear();
 		document.forms["createEventForm"]["time"].value=time;
 		document.forms["createEventForm"]["ampm"].value=ampm;
-		
-		document.forms["createEventForm"]["month"].readOnly=true;
-		document.forms["createEventForm"]["day"].readOnly=true;
-		document.forms["createEventForm"]["year"].readOnly=true;
-		document.forms["createEventForm"]["time"].readOnly=true;
-		document.forms["createEventForm"]["ampm"].readOnly=true;
-		
-	} else {
-		document.forms["createEventForm"]["month"].readOnly=false;
-		document.forms["createEventForm"]["day"].readOnly=false;
-		document.forms["createEventForm"]["year"].readOnly=false;
-		document.forms["createEventForm"]["time"].readOnly=false;
-		document.forms["createEventForm"]["ampm"].readOnly=false;
-	}
+
 }
 </script>
 	
-	
-</HEAD>
-
-<BODY leftmargin=0 marginwidth=0 marginheight=0 topmargin=0 rightmargin=0 bottommargin=0>
-
-<!--TOP BAR BEGINS-->
 <?php 
 //should redirect to updateEvent.php on submit
 $link = mysql_connect('localhost','root',''); 
 if (!$link) { 
 	die('Could not connect to MySQL: ' . mysql_error()); 
 } 
-echo 'Connection OK<br />'; 
-
 mysql_select_db("whingit", $link);
 
 //MUST CHANGE EVENT variable!!!
@@ -188,21 +159,21 @@ $event = $i;
 
 <div class="content">
 
-<form action="updateEvent.php" method="post" onsubmit="return validateForm()"> 
-<table width="400" border="0" cellspacing="0" cellpadding="0"> 
+<form name = "updateEventForm" action="updateEvent.php" method="post" onsubmit="return validateForm()"> 
+<table width="400" border="0" cellspacing="2" cellpadding="0" align=center> 
 <input type="hidden" name="eventNumber" value="<?php echo $event?>"/>
 <tr> 
 <td height="15"></td>
 <td width="29%" class="bodytext">Event name:
 </td> 
-<td colspan="5"><input name="eventName" value = "<?php echo $data['name']?>" type="text" id="eventName" size="32">
+<td colspan="5" width="71%"><input name="eventName" value = "<?php echo $data['name']?>" type="text" id="eventName" size="32">
 </td> 
 </tr> 
 
 <tr> 
 <td class="bodytext">Tags:
 </td> 
-<td><select name="tag[]" multiple="multiple" size = 5>
+<td colspan="5"><select name="tag[]" multiple="multiple" size = 10>
 <?php 
 while($row = mysql_fetch_array($tagsTable))
   {
@@ -313,12 +284,9 @@ Date:</td>
 </form>
 
 <button onclick="window.location.href='myEventsPage.php'">Back to My Events</button>
-<!--Footer begins-->
-		<table cellspacing=0 cellpadding=0 border=0 align=center width=731>
-			<tr>
-				<?php include("footer.php");
-				?>
-			</tr>
-		</table>
-<!--Footer ends-->
+
 </div>
+
+<!--Footer begins-->
+<?php include("footer.php");?>
+<!--Footer ends-->
