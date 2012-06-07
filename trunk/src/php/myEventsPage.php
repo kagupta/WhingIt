@@ -24,6 +24,8 @@ include 'sidebar.php';
 ?>
 
 <div class="content">
+<form action="" name="myEvents" method="post"> 
+<table width="450" border="0" cellspacing="0" cellpadding="0"> 
 
 <?php 
 //should either redirect to updateEventForm.php or deleteEvent.php on submit

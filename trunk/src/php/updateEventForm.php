@@ -20,6 +20,7 @@ else
 $result=mysql_query($sql) or die ("<BR>Error in retrieving data");
 $rows=mysql_num_rows($result);
 
+include 'sidebar.php';
 
 ?>
 <HTML>
@@ -29,6 +30,114 @@ $rows=mysql_num_rows($result);
 <META Http-Equiv="Expires" Content="0" /> 
 <TITLE>Register </TITLE>
 	<script LANGUAGE=JavaScript TYPE=text/javascript src="../javascript/check.js"></script>
+	<script type="text/javascript">
+function validateForm()
+{
+  //check event name entered
+  var x=document.forms["createEventForm"]["eventName"].value;
+  if (x==null || x=="")
+  {
+    alert("Event name must be filled out");
+    return false;
+  }
+
+  //check tags selected
+  var len=document.forms["createEventForm"]["tag[]"].length;
+  var i=0;
+  var select=false;
+  for(i=0; i<len;i++)
+  {
+    if(document.forms["createEventForm"]["tag[]"][i].selected)
+	{
+	  select = true;
+	}
+  }
+  if (!select)
+  {
+    alert("Must select tags for event.");
+    return false;
+  }
+  
+  //check valid date/time entered
+  var entered_time=document.forms["createEventForm"]["time"].value;
+  if (entered_time==null || entered_time=="")
+  {
+    alert("Event time must be filled out");
+    return false;
+  }
+  
+  
+  var entered_year = parseInt(document.forms["createEventForm"]["year"].value,10);
+  var entered_month = parseInt(document.forms["createEventForm"]["month"].value,10);
+  var entered_day = parseInt(document.forms["createEventForm"]["day"].value,10);
+  var time_split = entered_time.split(":");
+  var entered_hour = parseInt(time_split[0],10);
+  var entered_min = parseInt(time_split[1],10);
+  if(document.forms["createEventForm"]["ampm"].value == "pm"){
+	 entered_hour = entered_hour + 12;
+  }
+  var entered = new Date(entered_year, entered_month-1, entered_day, entered_hour, entered_min, 0 , 0);
+  var now = new Date();
+  entered.setMinutes(entered.getMinutes()+30);
+  if (entered<now)
+  {
+    alert("time is invalid: event in past");
+    return false;
+  }
+  
+  //check location entered
+  var x=document.forms["createEventForm"]["location"].value;
+  if (x==null || x=="")
+  {
+    alert("Location must be filled out");
+    return false;
+  }
+  
+  //check description entered
+  var x=document.forms["createEventForm"]["description"].value;
+  if (x==null || x=="")
+  {
+    alert("Description must be filled out");
+    return false;
+  }
+  
+}
+
+function toggleStatus() {
+
+	if(document.forms["createEventForm"]["toggle"].checked){
+		var date = new Date();
+		var month = '0'+(date.getMonth() + 1);
+		var day = '0' +  date.getDate();
+		var hour = date.getHours();
+		var mins = '0' + date.getMinutes();
+		var ampm = 'am';
+		if(hour>12){
+			ampm='pm';
+			hour = hour - 12;
+		}
+		var time = hour + ':' + mins.slice(-2);
+		document.forms["createEventForm"]["month"].value= month.slice(-2);
+		document.forms["createEventForm"]["day"].value=day.slice(-2);
+		document.forms["createEventForm"]["year"].value= date.getFullYear();
+		document.forms["createEventForm"]["time"].value=time;
+		document.forms["createEventForm"]["ampm"].value=ampm;
+		
+		document.forms["createEventForm"]["month"].readOnly=true;
+		document.forms["createEventForm"]["day"].readOnly=true;
+		document.forms["createEventForm"]["year"].readOnly=true;
+		document.forms["createEventForm"]["time"].readOnly=true;
+		document.forms["createEventForm"]["ampm"].readOnly=true;
+		
+	} else {
+		document.forms["createEventForm"]["month"].readOnly=false;
+		document.forms["createEventForm"]["day"].readOnly=false;
+		document.forms["createEventForm"]["year"].readOnly=false;
+		document.forms["createEventForm"]["time"].readOnly=false;
+		document.forms["createEventForm"]["ampm"].readOnly=false;
+	}
+}
+</script>
 	
 	
 </HEAD>
@@ -77,15 +186,16 @@ $event = $i;
  $year = date('Y', $phpdate);
 ?>
 
+<div class="content">
 
-
-<form action="updateEvent.php" method="post"> 
+<form action="updateEvent.php" method="post" onsubmit="return validateForm()"> 
 <table width="400" border="0" cellspacing="0" cellpadding="0"> 
 <input type="hidden" name="eventNumber" value="<?php echo $event?>"/>
 <tr> 
+<td height="15"></td>
 <td width="29%" class="bodytext">Event name:
 </td> 
-<td width="71%"><input name="eventName" value = "<?php echo $data['name']?>" type="text" id="eventName" size="32">
+<td colspan="5"><input name="eventName" value = "<?php echo $data['name']?>" type="text" id="eventName" size="32">
 </td> 
 </tr> 
 
@@ -111,12 +221,10 @@ while($row = mysql_fetch_array($tagsTable))
 
 
 <tr>
-<td> 
-<select name=month value='
-<?php 
-//$row['time']
-?>'>
-Select Month</option>
+<td>
+Date:</td>
+<td colspan="2"> 
+<select name=month value=''>
 <option value='01'<?php if ($month =="January") echo "selected = 'selected'"; ?>>January</option>
 <option value='02'<?php if ($month =="February") echo "selected = 'selected'"; ?>>February</option>
 <option value='03'<?php if ($month =="March") echo "selected = 'selected'"; ?>>March</option>
@@ -132,7 +240,7 @@ Select Month</option>
 </select>
 </td>
 
-<td>
+<td width="40px">
 <select name=day >
 <option value='01'<?php if ($day =="01") echo "selected = 'selected'"; ?>>01</option>
 <option value='02'<?php if ($day =="02") echo "selected = 'selected'"; ?>>02</option>
@@ -168,7 +276,7 @@ Select Month</option>
 </select>
 </td>
 
-<td>Year(yyyy)</td>
+<td align="right" width="100px">Year(yyyy)</td>
 <td>
 <input type=text name=year size=2 value = "<?php echo $year?>">
 </td>
@@ -177,9 +285,9 @@ Select Month</option>
 <tr>
 <td class ="bodytext">Time(hh:mm):
 </td>
-<td><input name = "time" value = "<?php echo $mysqldate = date( 'h:i', $phpdate );?>"type="text" id ="time" size = 4>
+<td width="30px"><input name = "time" value = "<?php echo $mysqldate = date( 'h:i', $phpdate );?>"type="text" id ="time" size = 4>
 </td>
-<td>
+<td width="30px">
 <select name = "ampm">
 <option value = "am" <?php if ($ampm =="AM") echo "selected = 'selected'"; ?>>AM</option>
 <option value = "pm" <?php if ($ampm =="PM") echo "selected = 'selected'"; ?>>PM</option>
@@ -188,7 +296,7 @@ Select Month</option>
 
 <tr> 
 <td class="bodytext">Location:</td> 
-<td><input name="location" value = "<?php echo $data['location']?>" type="text" id="location" size="32"></td> 
+<td colspan="5"><input name="location" value = "<?php echo $data['location']?>" type="text" id="location" size="32"></td> 
 </tr>  
 
 <tr> 
@@ -197,13 +305,13 @@ Select Month</option>
 </tr> 
 <tr> 
 <td class="bodytext"> </td> 
-<td align="left" valign="top"><input type="submit" name="update" value="Update"></td> 
+<td align="left" valign="top" colspan="3"><input type="submit" name="update" value="Update"></td> 
 
 
 </tr> 
 </table> 
-
 </form>
+
 <button onclick="window.location.href='myEventsPage.php'">Back to My Events</button>
 <!--Footer begins-->
 		<table cellspacing=0 cellpadding=0 border=0 align=center width=731>
@@ -213,3 +321,4 @@ Select Month</option>
 			</tr>
 		</table>
 <!--Footer ends-->
+</div>

@@ -26,40 +26,112 @@ $result=mysql_query($sql) or die ("<BR>Error in retrieving data");
 <script type "text/javascript">
 function validateForm()
 {
+  //check event name entered
   var x=document.forms["createEventForm"]["eventName"].value;
   if (x==null || x=="")
   {
-  alert("Event name must be filled out");
-  return false;
+    alert("Event name must be filled out");
+    return false;
   }
-/*
+
+  //check tags selected
   var len=document.forms["createEventForm"]["tag[]"].length;
   var i=0;
+  var select=false;
   for(i=0; i<len;i++)
   {
-  
+    if(document.forms["createEventForm"]["tag[]"][i].selected)
+	{
+	  select = true;
+	}
   }
-  for()
-  if (true)
+  if (!select)
   {
-  alert("1" +x + "asdf must be filled out");
-  return false;
-  }  
-  */
+    alert("Must select tags for event.");
+    return false;
+  }
+  
+  //check valid date/time entered
+  var entered_time=document.forms["createEventForm"]["time"].value;
+  if (entered_time==null || entered_time=="")
+  {
+    alert("Event time must be filled out");
+    return false;
+  }
+  
+  
+  var entered_year = parseInt(document.forms["createEventForm"]["year"].value,10);
+  var entered_month = parseInt(document.forms["createEventForm"]["month"].value,10);
+  var entered_day = parseInt(document.forms["createEventForm"]["day"].value,10);
+  var time_split = entered_time.split(":");
+  var entered_hour = parseInt(time_split[0],10);
+  var entered_min = parseInt(time_split[1],10);
+  if(document.forms["createEventForm"]["ampm"].value == "pm"){
+	 entered_hour = entered_hour + 12;
+  }
+  var entered = new Date(entered_year, entered_month-1, entered_day, entered_hour, entered_min, 0 , 0);
+  var now = new Date();
+  entered.setMinutes(entered.getMinutes()+30);
+  if (entered<now)
+  {
+    alert("time is invalid: event in past");
+    return false;
+  }
+  
+  //check location entered
   var x=document.forms["createEventForm"]["location"].value;
   if (x==null || x=="")
   {
-  alert("Location must be filled out");
-  return false;
+    alert("Location must be filled out");
+    return false;
   }
   
+  //check description entered
   var x=document.forms["createEventForm"]["description"].value;
   if (x==null || x=="")
   {
-  alert("Description must be filled out");
-  return false;
+    alert("Description must be filled out");
+    return false;
   }
   
+}
+
+function toggleStatus() {
+
+	//if(document.forms["createEventForm"]["toggle"].checked){
+	
+		var date = new Date();
+		var month = '0'+(date.getMonth() + 1);
+		var day = '0' +  date.getDate();
+		var hour = date.getHours();
+		var mins = '0' + date.getMinutes();
+		var ampm = 'am';
+		if(hour>12){
+			ampm='pm';
+			hour = hour - 12;
+		}
+		var time = hour + ':' + mins.slice(-2);
+		document.forms["createEventForm"]["month"].value= month.slice(-2);
+		document.forms["createEventForm"]["day"].value=day.slice(-2);
+		document.forms["createEventForm"]["year"].value= date.getFullYear();
+		document.forms["createEventForm"]["time"].value=time;
+		document.forms["createEventForm"]["ampm"].value=ampm;
+		
+		document.forms["createEventForm"]["month"].readOnly=true;
+		document.forms["createEventForm"]["day"].readOnly=true;
+		document.forms["createEventForm"]["year"].readOnly=true;
+		document.forms["createEventForm"]["time"].readOnly=true;
+		document.forms["createEventForm"]["ampm"].readOnly=true;
+		
+	
+	/*
+	else {
+		document.forms["createEventForm"]["month"].readOnly=false;
+		document.forms["createEventForm"]["day"].readOnly=false;
+		document.forms["createEventForm"]["year"].readOnly=false;
+		document.forms["createEventForm"]["time"].readOnly=false;
+		document.forms["createEventForm"]["ampm"].readOnly=false;
+	}*/
 }
 </script>
 
@@ -96,12 +168,22 @@ while($row = mysql_fetch_array($result))
 </td>
 </tr>
 
+<tr>
+<td>
+Use Current Time/Date:
+</td>
+<td>
+<!-- <input id="toggleElement" type="button" name="toggle" value="Now" onclick="toggleStatus()" /> -->
+<input type="button" value="Now" onclick="toggleStatus()" />
+</td>
+</tr>
 
 <tr>
 <td>Date:
 </td>
 <td colspan="2"> 
 <select name=month value=''>Select Month</option>
+<option value='00'>--</option>
 <option value='01'>January</option>
 <option value='02'>February</option>
 <option value='03'>March</option>
@@ -119,6 +201,7 @@ while($row = mysql_fetch_array($result))
 
 <td width="40px">
 <select name=day >
+<option value='00'>--</option>
 <option value='01'>01</option>
 <option value='02'>02</option>
 <option value='03'>03</option>
