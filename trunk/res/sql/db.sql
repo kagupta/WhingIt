@@ -18,7 +18,6 @@ CREATE TABLE `user` (
   `first_name` varchar(100) DEFAULT NULL,
   `last_name` varchar(100) DEFAULT NULL,
   `city` varchar(31) NOT NULL,
-  `address` varchar(31) NOT NULL,
   `dob_year` decimal(4,0) DEFAULT NULL,
   `dob_month` decimal(2,0) DEFAULT NULL,
   `dob_day` decimal(2,0) DEFAULT NULL,
@@ -118,16 +117,16 @@ INSERT INTO `uimage` (`id`, `content`) VALUES
 -- Insert Data into Tables 
 -- ---------------------------------------------------------------------------------------
 
-INSERT INTO `user` (user_email, user_name, user_password) VALUES('ad', 'Ansum Dholakia', 'blahblah');
-INSERT INTO `user` (user_email, user_name, user_password) VALUES('ak47', 'AK Kumar', 'qwerty');
-INSERT INTO `user` (user_email, user_name, user_password) VALUES('bgrif', 'Blake Griffin', 'clippers');  
-INSERT INTO `user` (user_email, user_name, user_password) VALUES('jimmyclackers', 'Jonathan Lam', 'clackers');
-INSERT INTO `user` (user_email, user_name, user_password) VALUES('kgupta', 'KAPS Gupta', 'word');  
-INSERT INTO `user` (user_email, user_name, user_password) VALUES('kobeBryant', 'Kobe Bryant', 'lakers'); 
-INSERT INTO `user` (user_email, user_name, user_password) VALUES('sechan', 'Sean Chan', 'seanseanchan'); 
-INSERT INTO `user` (user_email, user_name, user_password) VALUES('sechen', 'Sean Chen', 'seanseanchen'); 
-INSERT INTO `user` (user_email, user_name, user_password) VALUES('spark', 'Sean Parker', 'seanseanparker');
-INSERT INTO `user` (user_email, user_name, user_password) VALUES('vbhalodi', 'Viral Bhalodia', 'password'); 
+INSERT INTO `user` (user_email, first_name, user_password) VALUES('ad', 'Ansum Dholakia', 'blahblah');
+INSERT INTO `user` (user_email, first_name, user_password) VALUES('ak47', 'AK Kumar', 'qwerty');
+INSERT INTO `user` (user_email, first_name, user_password) VALUES('bgrif', 'Blake Griffin', 'clippers');  
+INSERT INTO `user` (user_email, first_name, user_password) VALUES('jimmyclackers', 'Jonathan Lam', 'clackers');
+INSERT INTO `user` (user_email, first_name, user_password) VALUES('kgupta', 'KAPS Gupta', 'word');  
+INSERT INTO `user` (user_email, first_name, user_password) VALUES('kobeBryant', 'Kobe Bryant', 'lakers'); 
+INSERT INTO `user` (user_email, first_name, user_password) VALUES('sechan', 'Sean Chan', 'seanseanchan'); 
+INSERT INTO `user` (user_email, first_name, user_password) VALUES('sechen', 'Sean Chen', 'seanseanchen'); 
+INSERT INTO `user` (user_email, first_name, user_password) VALUES('spark', 'Sean Parker', 'seanseanparker');
+INSERT INTO `user` (user_email, first_name, user_password) VALUES('vbhalodi', 'Viral Bhalodia', 'password'); 
 
 INSERT INTO `events` (name, time, location, creator) VALUES ('Event 2', '2012-06-02 20:30:00', 'Location 2', 10); 
 INSERT INTO `events` (name, time, location, creator) VALUES ('Eent 1', '2012-06-01 19:30:00', 'Location 1', 3); 

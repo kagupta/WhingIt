@@ -54,7 +54,7 @@ require("dbconnect.php");
 
 					#Entering the information in the table to sign up
 				  $query ="INSERT INTO user ( first_name, last_name, dob_year, dob_month, dob_day , user_location , user_email , user_password, city, address, gender ) 
-				  VALUES ('$name' , $lname, $dob_year, $dob_month, $dob_day, '$location' , '$email' , '$user_password', '$city' , '$address' , '$gender'  )";
+				  VALUES ('$name' , '$lname', '$dob_year', '$dob_month', '$dob_day', '$location' , '$email' , '$user_password', '$city' , '$address' , '$gender'  )";
 					//echo $query;		
 					$result=mysql_query($query) or die("query failed:".mysql_error());
 			
