@@ -119,6 +119,27 @@ mysql_select_db("whingit", $link);
 	
 	echo "Event updated!";
 
+   // updating image
+   // $id = event id that we are currently updating
+   if($_FILES['userfile']['size'] > 0)
+			{	
+				$tmpName  = $_FILES['userfile']['tmp_name'];
+				$fp      = fopen($tmpName, 'r');
+				$content = fread($fp, filesize($tmpName));
+				$content = addslashes($content);
+				fclose($fp);
+				$result = MYSQL_QUERY("SELECT * from eimage WHERE id='$eventID' ");
+				if(mysql_num_rows($result) > 0)
+					$query = "UPDATE eimage SET content='$content' WHERE id='$eventID'";
+				else
+					$query =  "INSERT INTO eimage (id, content ) VALUES ( '$eventID', '$content')";
+				
+				$result=mysql_query($query) or die('Updating event image failed');
+				echo $result;
+			} 
+
+
+
 mysql_close($link);
 ?> 
 

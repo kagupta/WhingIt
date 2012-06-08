@@ -125,7 +125,7 @@ function toggleStatus() {
 
 <div class="content">
 <!-- Calls createEvent.php to add event in form to database on submit -->
-<form name = "createEventForm" action="createEvent.php" method="post" onsubmit="return validateForm()"> 
+<form name = "createEventForm" action="createEvent.php" method="post" onsubmit="return validateForm()"  enctype="multipart/form-data"> 
 <table width="400" border="0" cellspacing="2" cellpadding="0" align=center> 
 <tr>
   <td height="15"></td>
@@ -249,6 +249,15 @@ Use Current Time/Date:
 <td class="bodytext">Description:</td> 
 <td colspan="5"><textarea name="description" cols="45" rows="6" id="description" class="bodytext"></textarea></td> 
 </tr> 
+
+	<tr>
+			
+			<td class="bodytext">Event Image</td>
+			<td colspan="5">
+			   <input name="userfile" type="file" id="userfile" >
+			</td>
+	</tr>
+
 <tr> 
 <td class="bodytext"> </td> 
 <td align="left" valign="top" colspan="3">

@@ -274,6 +274,15 @@ Date:</td>
 <td class="bodytext">Description:</td> 
 <td><textarea name="description" type="text "cols="45" rows="6" id="description" class="bodytext"><?php echo $data2['about']?></textarea></td> 
 </tr> 
+
+	<tr>
+			
+			<td class="bodytext">Event Image</td>
+			<td colspan="5">
+			   <input name="userfile" type="file" id="userfile" >
+			</td>
+	</tr>
+
 <tr> 
 <td class="bodytext"> </td> 
 <td align="left" valign="top" colspan="3"><input type="submit" name="update" value="Update"></td> 

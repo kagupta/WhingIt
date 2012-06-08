@@ -108,6 +108,24 @@ mysql_select_db("whingit", $link);
 	
 	echo "Event added!";
 
+ // event image insertion
+ // $id = current event id that is inserted
+  $id = $lastinsert ;
+   if($_FILES['userfile']['size'] > 0)
+	 {
+		$tmpName  = $_FILES['userfile']['tmp_name'];
+		$fp      = fopen($tmpName, 'r');
+		$content = fread($fp, filesize($tmpName));
+		$content = addslashes($content);
+		fclose($fp);
+		$query = "INSERT INTO eimage (id, content ) VALUES ( '$id', '$content')";
+
+		$result=mysql_query($query) or die('Inserting event image failed');
+
+	  } 
+
+
+
 mysql_close($link);
 ?> 
 
