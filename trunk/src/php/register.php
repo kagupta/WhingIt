@@ -55,12 +55,23 @@ $_SESSION['fail_reg']=0;
 		<tr>
 			<td width=77></td>
 			<td width=17 class=f13 valign=middle><FONT FACE="Verdana" SIZE =-2 COLOR="#E30102">*</FONT></td>
-			<td width=160 class=f13>Name</td>
+			<td width=160 class=f13>First Name</td>
 			<td width=14 class=f13><B>:</B></td>
 			<td width=190><INPUT TYPE="text" NAME="name" value="" style="width:185px;" maxlength="61"></td>
 			<td width=1></td>
 			<td width=272><FONT CLASS=f12 COLOR="#868686"> &nbsp;e.g. Kapil</FONT></td>
 		</tr>
+
+		<tr>
+			<td></td>
+			<td><FONT FACE="Verdana" SIZE =-2 COLOR="#E30102">*</FONT></td>
+			<td class=f13>Last Name</td>
+			<td class=f13><B>:</B></td>
+			<td colspan=3>
+			<INPUT TYPE="text" NAME="lname" value="" style="width:185px;" maxlength="31">
+			</td>
+	     </tr>
+
 		<tr>
 			<td></td>
 			<td colspan=6  height=8  align="left" valign="middle"><div class=divcss id="check_availability" valign="middle" style='display:none;position:relative; visibility: hidden;'></div></td>
@@ -192,16 +203,8 @@ $_SESSION['fail_reg']=0;
 		<tr>
 			<td height=8></td>
 		</tr>
-		<tr>
-			<td></td>
-			<td><FONT FACE="Verdana" SIZE =-2 COLOR="#E30102">*</FONT></td>
-			<td class=f13>Street Address</td>
-			<td class=f13><B>:</B></td>
-			<td colspan=3>
-			<INPUT TYPE="text" NAME="streetAddress" value="" style="width:185px;" maxlength="31">
-			</td>
-	     </tr>
-		</td>
+
+		
 		</tr>
 		<tr>
 			<td height=8></td>
@@ -271,7 +274,10 @@ $_SESSION['fail_reg']=0;
 		</tr>
 		<tr>
 			<td colspan=4></td>
-			<td colspan=3><input type='hidden' name='FormName' value=''><input type='hidden' name='service' value=''><INPUT TYPE="submit" name="Register" value="Register Me" style="border-style: outset; border-width: 3px" >&nbsp;&nbsp;<INPUT TYPE="reset" name="Cancel" value="Cancel" style="border-style: outset; border-width: 3px"></TD>
+			<td colspan=3><input type='hidden' name='FormName' value=''><input type='hidden' name='service' value=''><INPUT TYPE="submit" name="Register" value="Register Me" style="border-style: outset; border-width: 3px" >&nbsp;&nbsp;
+			<input type="button" name="Cancel" value="Cancel" onclick="window.location = '../../index.php' " style="border-style: outset; border-width: 3px" />
+
+			</TD>
 		</tr>
 		<tr>
 			<td height=5></td>

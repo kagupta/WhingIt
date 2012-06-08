@@ -15,7 +15,8 @@ USE `whingit`;
 -- Table For Users
 -- 
 CREATE TABLE `user` (
-  `user_name` varchar(100) DEFAULT NULL,
+  `first_name` varchar(100) DEFAULT NULL,
+  `last_name` varchar(100) DEFAULT NULL,
   `city` varchar(31) NOT NULL,
   `address` varchar(31) NOT NULL,
   `age` decimal(3,0) DEFAULT NULL,

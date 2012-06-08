@@ -7,7 +7,7 @@
 
   //function to display people attending events
   function getAttendees($eventId) {
-    $users = mysql_query("SELECT user_name FROM user, attend WHERE user.id=attend.attendee AND attend.id=$eventId");
+    $users = mysql_query("SELECT first_name FROM user, attend WHERE user.id=attend.attendee AND attend.id=$eventId");
     $total = mysql_num_rows($users);
     
     switch($total) {
@@ -15,12 +15,12 @@
         echo "No one";
         break;
       case 1: // One person going
-        echo mysql_result($users,0,'user_name');
+        echo mysql_result($users,0,'first_name');
         break;
       case 2: // Two people going
         $count = 0;
         while($row = mysql_fetch_array($users)) {
-          echo $row['user_name'];
+          echo $row['first_name'];
           if($count == 0)
             echo " and ";
           
@@ -32,7 +32,7 @@
         while($row = mysql_fetch_array($users)) {
           if($count > 1) break;
           
-          echo $row['user_name'] . ", ";
+          echo $row['first_name'] . ", ";
           $count = $count + 1;
         }
         $rem = $total - 2;

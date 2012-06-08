@@ -21,11 +21,11 @@ $worked = mysql_fetch_row($result);
 if($worked)
    {
    $_SESSION['LOGGEDIN']=1;
-   $sql="Select id, user_name from user where user_email='$user_email' and user_password='$password'  ";
+   $sql="Select id, first_name from user where user_email='$user_email' and user_password='$password'  ";
    $result=mysql_query($sql) or die("query failed:".mysql_error());
    
    $_SESSION['id'] = mysql_result($result,0,'id');
-   $_SESSION['username']=mysql_result($result,0,'user_name');
+   $_SESSION['username']=mysql_result($result,0,'first_name');
 	$_SESSION['email']	= $user_email;
    $loggedin =1 ; 
    $_SESSION['msg'] = "";

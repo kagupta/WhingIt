@@ -5,13 +5,23 @@ function isFullName()	{
 	if(   (name1.search(regex_for_name) != -1)  || (name1.search(alt_regex_for_name) != -1 ) ) {
 			return true;
 	} else {
-		alert("Name format invalid");
+		alert("First name format is invalid. Please use alphabets only.");
 		document.forms[0].name.focus();
 		return	false;	
 	}
 
-}
+	var name1 = document.forms[0].lname.value;
+	var regex_for_name	= /^[A-Za-z]+ [A-Za-z]+$/
+	var alt_regex_for_name	= /^[A-Za-z]+$/
+	if(   (name1.search(regex_for_name) != -1)  || (name1.search(alt_regex_for_name) != -1 ) ) {
+			return true;
+	} else {
+		alert("Last name format is invalid. Please use alphabets only.");
+		document.forms[0].lname.focus();
+		return	false;	
+	}
 
+}
 
 function isPass()	{
 	
