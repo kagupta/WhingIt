@@ -40,7 +40,9 @@ require("dbconnect.php");
 				     
                     $name=addslashes($_POST['name']);
 					$lname=addslashes($_POST['lname']);
-					$age=date("Y")-addslashes($_POST['DOB_Year']);
+					$dob_year=addslashes($_POST['DOB_Year']);
+					$dob_month=addslashes($_POST['DOB_Month']);
+					$dob_day=addslashes($_POST['DOB_Day']);
 					$location=addslashes($_POST['country']);
 					$email=addslashes($_POST['email']);
 					$user_password=addslashes($_POST['passwd']);
@@ -51,8 +53,8 @@ require("dbconnect.php");
 					#integrity test of the information entered ends here
 
 					#Entering the information in the table to sign up
-				  $query ="INSERT INTO user ( first_name, last_name, age , user_location , user_email , user_password, city, address, gender ) 
-				  VALUES ('$name' , $lname, $age , '$location' , '$email' , '$user_password', '$city' , '$address' , '$gender'  )";
+				  $query ="INSERT INTO user ( first_name, last_name, dob_year, dob_month, dob_day , user_location , user_email , user_password, city, address, gender ) 
+				  VALUES ('$name' , $lname, $dob_year, $dob_month, $dob_day, '$location' , '$email' , '$user_password', '$city' , '$address' , '$gender'  )";
 					//echo $query;		
 					$result=mysql_query($query) or die("query failed:".mysql_error());
 			

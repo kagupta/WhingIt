@@ -120,27 +120,34 @@ $rows=mysql_num_rows($result);
 			<td height=8></td>
 		</tr>
 		<tr>
+
+			<?php 
+				$dob_year = mysql_result($result,0,'dob_year'); 
+				$dob_month = mysql_result($result,0,'dob_month'); 
+				$dob_day = mysql_result($result,0,'dob_day'); 
+			
+			?>
 			<td></td>
 			<td><FONT FACE="Verdana" SIZE =-2 COLOR="#E30102">*</FONT></td>
 			<td class=f13>Date of Birth</td>
 			<td class=f13><B>:</B></td>
 			<td colspan=3>
 			<SELECT NAME="DOB_Month"><option label="Month" value="">Month</option>
-<option label="Jan" value="1">Jan</option>
-<option label="Feb" value="2">Feb</option>
-<option label="Mar" value="3">Mar</option>
-<option label="Apr" value="4">Apr</option>
-<option label="May" value="5">May</option>
-<option label="Jun" value="6">Jun</option>
-<option label="Jul" value="7">Jul</option>
-<option label="Aug" value="8">Aug</option>
-<option label="Sep" value="9">Sep</option>
-<option label="Oct" value="10">Oct</option>
-<option label="Nov" value="11">Nov</option>
-<option label="Dec" value="12">Dec</option>
+<option label="Jan" value="1" <?php if($dob_month==1) echo 'selected="selected" '; ?> >Jan</option>
+<option label="Feb" value="2" <?php if($dob_month==1) echo 'selected="selected" '; ?> >Feb</option>
+<option label="Mar" value="3" <?php if($dob_month==1) echo 'selected="selected" '; ?> >Mar</option>
+<option label="Apr" value="4" <?php if($dob_month==1) echo 'selected="selected" '; ?> >Apr</option>
+<option label="May" value="5" <?php if($dob_month==1) echo 'selected="selected" '; ?> >May</option>
+<option label="Jun" value="6" <?php if($dob_month==1) echo 'selected="selected" '; ?> >Jun</option>
+<option label="Jul" value="7" <?php if($dob_month==1) echo 'selected="selected" '; ?> >Jul</option>
+<option label="Aug" value="8" <?php if($dob_month==1) echo 'selected="selected" '; ?> >Aug</option>
+<option label="Sep" value="9" <?php if($dob_month==1) echo 'selected="selected" '; ?> >Sep</option>
+<option label="Oct" value="10" <?php if($dob_month==1) echo 'selected="selected" '; ?> >Oct</option>
+<option label="Nov" value="11" <?php if($dob_month==1) echo 'selected="selected" '; ?> >Nov</option>
+<option label="Dec" value="12" <?php if($dob_month==1) echo 'selected="selected" '; ?> >Dec</option>
 </SELECT>
-			<INPUT TYPE="text" NAME="DOB_Day" maxlength="2" style="width:25px;" value="dd" onFocus="Javascript : if(this.value=='dd') this.value='';">
-			<INPUT TYPE="text" NAME="DOB_Year" maxlength="4" style="width:37px;" value="yyyy" onFocus="Javascript : if(this.value=='yyyy') this.value='';">
+			<INPUT TYPE="text" NAME="DOB_Day" maxlength="2" style="width:25px;" value=<?php  echo '\"$dob_day\"' ?> >
+			<INPUT TYPE="text" NAME="DOB_Year" maxlength="4" style="width:37px;" value=<?php  echo '\"$dob_year\"' ?> >
 			</td>
 		</tr>
 		<tr>

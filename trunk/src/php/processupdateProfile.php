@@ -19,18 +19,20 @@ if($worked)
 {
 			$name=addslashes($_POST['name']);
 			$lname=addslashes($_POST['lname']);
-			$age=date("Y")-addslashes($_POST['DOB_Year']);
+			$dob_year=addslashes($_POST['DOB_Year']);
+			$dob_month=addslashes($_POST['DOB_Month']);
+			$dob_day=addslashes($_POST['DOB_Day']);
 			$location=addslashes($_POST['country']);
 			$email=addslashes($_POST['email']);
 			$gender=addslashes($_POST['gender']);
 			$user_password=addslashes($_POST['passwd']);
   
-      $_SESSION['username'] = $name;
-			//echo $name," ",$age," cnrty=== ",$location," ",$interests," ",$email," ",$balance," ",$customer_login," ",$customer_password;
+			$_SESSION['username'] = $name;
+			
 			#integrity test of the information entered ends here
 
 			#Entering the information in the table to sign up
-			$sql="UPDATE `user` SET `first_name` = '$name',`last_name` = '$lname', `age` = '$age', `user_location` = '$location', `user_password` = '$user_password', `gender` = '$gender' WHERE `user_email` = '$email' ";
+			$sql="UPDATE `user` SET `first_name` = '$name',`last_name` = '$lname', `dob_year` = '$dob_year',`dob_month` = '$dob_month',`dob_day` = '$dob_day', `user_location` = '$location', `user_password` = '$user_password', `gender` = '$gender' WHERE `user_email` = '$email' ";
 			   
 
 					$result=mysql_query($sql) or die("query failed:".mysql_error());
