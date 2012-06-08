@@ -47,14 +47,14 @@ require("dbconnect.php");
 					$email=addslashes($_POST['email']);
 					$user_password=addslashes($_POST['passwd']);
 					$city=addslashes($_POST['city']);
-					$address=addslashes($_POST['streetAddress']);
+					
 					$gender=addslashes($_POST['gender']);
 
 					#integrity test of the information entered ends here
 
 					#Entering the information in the table to sign up
-				  $query ="INSERT INTO user ( first_name, last_name, dob_year, dob_month, dob_day , user_location , user_email , user_password, city, address, gender ) 
-				  VALUES ('$name' , '$lname', '$dob_year', '$dob_month', '$dob_day', '$location' , '$email' , '$user_password', '$city' , '$address' , '$gender'  )";
+				  $query ="INSERT INTO user ( first_name, last_name, dob_year, dob_month, dob_day , user_location , user_email , user_password, city, gender ) 
+				  VALUES ('$name' , '$lname', '$dob_year', '$dob_month', '$dob_day', '$location' , '$email' , '$user_password', '$city'  , '$gender'  )";
 					//echo $query;		
 					$result=mysql_query($query) or die("query failed:".mysql_error());
 			

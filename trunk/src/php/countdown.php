@@ -28,7 +28,7 @@
         if((($temp2 - $absTime) < 10830) && (($temp2 - $absTime) > 0)) {
     ?>
           <div class="eventbox">
-            <img src="/res/images/photo.jpg" width="70" height="70" style="margin: 5px 10px 10px 0px; float:left;vertical-align: bottom;">
+            <img  src="/src/php/image.php?eid=<?php echo $row['id'];?>" width="70" height="70" style="margin: 5px 10px 10px 0px; float:left;vertical-align: bottom;">
             
             <h2 class="eventbox_text"> <?php echo $row['name']; ?> </h2>
             <div class="timer" id="timer<?php echo $currentCounter; ?>"></div>
