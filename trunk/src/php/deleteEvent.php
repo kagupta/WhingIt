@@ -32,20 +32,10 @@ if (!$link) {
 } 
 echo 'Connection OK<br />'; 
 
-mysql_select_db("whingit", $link);
+$worked = mysql_select_db("whingit", $link);
 
-	//test: printing out current events table
-	echo "Current Events Table";
-	  echo "<br />";
-	  
-	$result = mysql_query("SELECT * FROM events");
-
-	while($row = mysql_fetch_array($result))
-	  {
-	  echo $row['id'] . " " . $row['name'] . " " . $row['time'] . " " . $row['location'] . " " . $row['creator'];
-	  echo "<br />";
-	  }
  
+if($worked){
 $i = 1;
 while(1){
 	if(isset($_POST['delete' . $i])){
@@ -55,20 +45,17 @@ while(1){
 	$i++;
 }
 
-
-	//test: printing things out to see what is in events table
-	echo "Current Events Table";
-	  echo "<br />";
-	$result = mysql_query("SELECT * FROM events");
-
-	while($row = mysql_fetch_array($result))
-	  {
-	  echo $row['id'] . " " . $row['name'] . " " . $row['time'] . " " . $row['location'] . " " . $row['creator'];
-	  echo "<br />";
-	  }
+$_SESSION['deleteEvent']=1;
+header("Location: myEventsPage.php");
 
   
 mysql_close($link);
+}
+
+else {
+	$_SESSION['msg'] = "Error. Try Again.";
+	header("Location: myEventsPage.php");
+}
 ?> 
 
 <button onclick="window.location.href='myEventsPage.php'">Back to Events Page</button>

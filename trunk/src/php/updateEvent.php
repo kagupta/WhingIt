@@ -43,8 +43,9 @@ if (!$link) {
 } 
 echo 'Connection OK<br />'; 
 
-mysql_select_db("whingit", $link);
+$worked = mysql_select_db("whingit", $link);
 
+if($worked){
 	$eventName = $_POST['eventName'];
 	$tags = $_POST['tag'];
 	print_r($tags);
@@ -69,17 +70,6 @@ mysql_select_db("whingit", $link);
 	echo $location;echo "<br />";
 	echo $description;echo "<br />";
 	
-	//looking at output of events table to see if event was added
-	echo "Current Events Table";
-	  echo "<br />";
-	$result = mysql_query("SELECT * FROM events");
-
-	while($row = mysql_fetch_array($result))
-	  {
-	  echo $row['id'] . " " . $row['name'] . " " . $row['time'] . " " . $row['location'] . " " . $row['creator'];
-	  echo "<br />";
-	  }
-
 	//adds the event to the event table
 	mysql_query("UPDATE events SET name='$eventName', time='$datetime', location='$location'
 	WHERE id='$eventID'");
@@ -97,27 +87,8 @@ mysql_select_db("whingit", $link);
 	}
 	
 
-	//looking at output of events table to see if event was added
-	echo "Current Events Table";
-	  echo "<br />";
-	$result = mysql_query("SELECT * FROM events");
 
-	while($row = mysql_fetch_array($result))
-	  {
-	  echo $row['id'] . " " . $row['name'] . " " . $row['time'] . " " . $row['location'] . " " . $row['creator'];
-	  echo "<br />";
-	  }
-	//testing to see output of taglookup table
-	echo "Current tagLookup Table";
-	  echo "<br />";
-	$result2 = mysql_query("SELECT * FROM tagLookup");
-	while($row = mysql_fetch_array($result2))
-	  {
-	  echo $row['eventID'] . " " . $row['tagID'];
-	  echo "<br />";
-	  }
-	
-	echo "Event updated!";
+
 
    // updating image
    // $id = event id that we are currently updating
@@ -138,9 +109,17 @@ mysql_select_db("whingit", $link);
 				echo $result;
 			} 
 
+	$_SESSION['updateEvent']=1;
+	header("Location: myEventsPage.php");
 
 
 mysql_close($link);
+}
+
+else {
+	$_SESSION['msg'] = "Error. Try Again.";
+	header("Location: updateEventForm.php");
+}
 ?> 
 
 <button onclick="window.location.href='myEventsPage.php'">Back to Events Page</button>

@@ -73,6 +73,27 @@
 				<font color="#000000">Profile Successfully Updated.</font><br>
 			<?php 
 		    }
+			if(isset($_SESSION['createEvent']) && $_SESSION['createEvent']==1)
+			{
+				$_SESSION['createEvent']=0;
+				?>
+				<font color="#FFFFFF">Event Created!</font><br>
+			<?php 
+		    }
+			if(isset($_SESSION['updateEvent']) && $_SESSION['updateEvent']==1)
+			{
+				$_SESSION['updateEvent']=0;
+				?>
+				<font color="#FFFFFF">Event Updated!</font><br>
+			<?php 
+		    }
+			if(isset($_SESSION['deleteEvent']) && $_SESSION['deleteEvent']==1)
+			{
+				$_SESSION['deleteEvent']=0;
+				?>
+				<font color="#FFFFFF">Event Deleted!</font><br>
+			<?php 
+		    }
 			?>
 
   <br>

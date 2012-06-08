@@ -42,7 +42,9 @@ if (!$link) {
 	die('Could not connect to MySQL: ' . mysql_error()); 
 } 
 
-mysql_select_db("whingit", $link);
+$worked = mysql_select_db("whingit", $link);
+
+if($worked){
 	//MUST SET USERID TO THE CURRENT USER
 	$userID = $_SESSION['id'];
 	$eventName = $_POST['eventName'];
@@ -86,27 +88,7 @@ mysql_select_db("whingit", $link);
 	//add self to attendee table
 	mysql_query("INSERT INTO attend (id, attendee, status) VALUES ('$lastinsert','$userID',1)");
 	
-	//looking at output of events table to see if event was added
-	echo "Current Events Table";
-	  echo "<br />";
-	$result = mysql_query("SELECT * FROM events");
 
-	while($row = mysql_fetch_array($result))
-	  {
-	  echo $row['id'] . " " . $row['name'] . " " . $row['time'] . " " . $row['location'] . " " . $row['creator'];
-	  echo "<br />";
-	  }
-	//testing to see output of taglookup table
-	echo "Current tagLookup Table";
-	  echo "<br />";
-	$result2 = mysql_query("SELECT * FROM tagLookup");
-	while($row = mysql_fetch_array($result2))
-	  {
-	  echo $row['eventID'] . " " . $row['tagID'];
-	  echo "<br />";
-	  }
-	
-	echo "Event added!";
 
  // event image insertion
  // $id = current event id that is inserted
@@ -123,13 +105,21 @@ mysql_select_db("whingit", $link);
 		$result=mysql_query($query) or die('Inserting event image failed');
 
 	  } 
-
+	
+	$_SESSION['createEvent']=1;
+	header("Location: ../../index.php");
 
 
 mysql_close($link);
+}
+
+else {
+	$_SESSION['msg'] = "Unable to connect. Try Again.";
+	header("Location: createEventForm.php");
+}
 ?> 
 
-<button onclick="window.location.href='myEventsPage.php'">View My Events</button>
+
 
 <!--Footer begins-->
 		<table cellspacing=0 cellpadding=0 border=0 align=center width=731>
