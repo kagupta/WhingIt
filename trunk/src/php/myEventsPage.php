@@ -44,14 +44,29 @@ $deleteNum = 0;
 
 while($row = mysql_fetch_array($result))
   {
+  ?>
+  <tr>
+  <?php
+  
+  $date = date("l d/m/Y @ h:i A", strtotime($row['time']));
+  ?>
+  <td>
+	<img  src="/src/php/image.php?eid=<?php echo $row['id'];?>" width="70" height="70" style="margin: 5px 10px 10px 0px; float:left;vertical-align: bottom;">
+	</td>
+	<td>
+  <?php
 
-  echo $row['id'] . " " . $row['name'] . "<br />" . $row['time'] . "<br />" . $row['location'] . "<br />";
+  echo $row['name'] . "<br />" . $date . "<br />" . $row['location'] . "<br />";
 	?>
-	
+	</td>
+	<td>
 	<input type="submit" name="update<?php echo $row['id'];?>" value="Update" onclick="document.myEvents.action='updateEventForm.php'">
 	<input type="submit" name="delete<?php echo $row['id'];?>" value="Delete" onclick="document.myEvents.action='deleteEvent.php'">
 	</td><?php
 	echo "<br />";
+	?>
+	</tr>
+	<?php
   }
   
 mysql_close($link);
@@ -59,7 +74,7 @@ mysql_close($link);
 </table>
 
 </form>
-
+<br/>
 <button onclick="window.location.href='createEventForm.php'">Create an Event</button>
 
 </div>
