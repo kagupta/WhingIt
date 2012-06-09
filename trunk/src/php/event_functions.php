@@ -7,7 +7,8 @@
 
   //function to display people attending events
   function getAttendees($eventId) {
-    $users = mysql_query("SELECT first_name FROM user, attend WHERE user.id=attend.attendee AND attend.id=$eventId");
+	$status = 1;
+    $users = mysql_query("SELECT first_name FROM user, attend WHERE user.id=attend.attendee AND attend.id=$eventId AND attend.status=$status");
     $total = mysql_num_rows($users);
     
     switch($total) {
