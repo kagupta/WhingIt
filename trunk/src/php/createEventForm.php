@@ -168,7 +168,7 @@ Use Current Time/Date:
 <td>Date:
 </td>
 <td colspan="2"> 
-<select name=month value=''>Select Month</option>
+<select name=month value=''>
 <option value='00'>--</option>
 <option value='01'>January</option>
 <option value='02'>February</option>

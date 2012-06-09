@@ -59,6 +59,7 @@ mysql_close($link);
 </table>
 
 </form>
+
 <button onclick="window.location.href='createEventForm.php'">Create an Event</button>
 
 </div>

@@ -159,11 +159,13 @@ $event = $i;
 
 <div class="content">
 
-<form name = "updateEventForm" action="updateEvent.php" method="post" onsubmit="return validateForm()"> 
+<form name = "updateEventForm" action="updateEvent.php" method="post" onsubmit="return validateForm()" enctype="multipart/form-data"> 
 <table width="400" border="0" cellspacing="2" cellpadding="0" align=center> 
 <input type="hidden" name="eventNumber" value="<?php echo $event?>"/>
 <tr> 
 <td height="15"></td>
+</tr>
+<tr>
 <td width="29%" class="bodytext">Event name:
 </td> 
 <td colspan="5" width="71%"><input name="eventName" value = "<?php echo $data['name']?>" type="text" id="eventName" size="32">
@@ -192,8 +194,7 @@ while($row = mysql_fetch_array($tagsTable))
 
 
 <tr>
-<td>
-Date:</td>
+<td>Date:</td>
 <td colspan="2"> 
 <select name=month value=''>
 <option value='01'<?php if ($month =="January") echo "selected = 'selected'"; ?>>January</option>
@@ -291,7 +292,8 @@ Date:</td>
 </tr> 
 </table> 
 </form>
-
+<br/>
+<td></td>
 <button onclick="window.location.href='myEventsPage.php'">Back to My Events</button>
 
 </div>
