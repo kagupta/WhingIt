@@ -3,10 +3,9 @@ function GetCount(ddate,iid){
    
    dateNow = new Date();
    amount = ddate.getTime() - dateNow.getTime();
-   
    delete dateNow;
 
-   if(amount < 0){
+   if(amount <= 2591999805){
       document.getElementById(iid).innerHTML="Now!";
    } else{
       amount = Math.floor(amount/1000) % 86400;
@@ -22,15 +21,14 @@ function GetCount(ddate,iid){
       
       //seconds
       secs=Math.floor(amount);
-      
-      out += (hours<10) ? "0"+hours : hours;
-      out += ":";
-      out += (mins<10)  ? "0"+mins  : mins;
-      out += ":";
-      out += (secs<10)  ? "0"+secs  : secs;
+	  out += (hours<10) ? "0"+hours : hours;
+	  out += ":";
+	  out += (mins<10)  ? "0"+mins  : mins;
+	  out += ":";
+	  out += (secs<10)  ? "0"+secs  : secs;
 
-      document.getElementById(iid).innerHTML=out;
+	  document.getElementById(iid).innerHTML=out;
 
-      setTimeout(function(){GetCount(ddate,iid)}, 1000);
+	  setTimeout(function(){GetCount(ddate,iid)}, 1000);
    }
 }
