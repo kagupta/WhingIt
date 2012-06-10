@@ -108,6 +108,9 @@ function toggleStatus() {
 			ampm='pm';
 			hour = hour - 12;
 		}
+		else if(hour == 12) {
+			ampm='pm';
+		}
 		else if(hour<1){
 			hour=12;
 		}
