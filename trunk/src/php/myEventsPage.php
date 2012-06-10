@@ -24,7 +24,7 @@ include 'sidebar.php';
 ?>
 
 <div class="content">
-<form action="" name="myEvents" method="post"> 
+<form action="deleteEvent.php" name="myEvents" method="post"> 
 <table width="450" border="0" cellspacing="0" cellpadding="0"> 
 
 <?php 
@@ -38,36 +38,33 @@ $user = $_SESSION['id'];
 //MUST CHANGE USER ID TO GET CURRENT USERID INSTEAD
 //$user = 1;
 mysql_select_db("whingit", $link);
+
 $result = mysql_query("SELECT * FROM events WHERE creator = '$user'");
+$num_rows = mysql_num_rows($result);
 
-$deleteNum = 0;
-
+if($num_rows==0){
+	echo 'No events created. Try adding some!';
+}
+else {
 while($row = mysql_fetch_array($result))
   {
   ?>
-  <tr>
-  <?php
-  
-  $date = date("l d/m/Y @ h:i A", strtotime($row['time']));
+  <tr><?php $date = date("l F j, Y @ h:i A", strtotime($row['time']));
   ?>
   <td>
 	<img  src="/src/php/image.php?eid=<?php echo $row['id'];?>" width="70" height="70" style="margin: 5px 10px 10px 0px; float:left;vertical-align: bottom;">
 	</td>
 	<td>
-  <?php
-
-  echo $row['name'] . "<br />" . $date . "<br />" . $row['location'] . "<br />";
-	?>
+  <?php echo $row['name'] . "<br />" . $date . "<br />" . $row['location'] . "<br />";?>
 	</td>
 	<td>
 	<input type="submit" name="update<?php echo $row['id'];?>" value="Update" onclick="document.myEvents.action='updateEventForm.php'">
-	<input type="submit" name="delete<?php echo $row['id'];?>" value="Delete" onclick="document.myEvents.action='deleteEvent.php'">
-	</td><?php
-	echo "<br />";
-	?>
+	<input type="submit" name="delete<?php echo $row['id'];?>" value="Delete" onclick="return confirm('Are you sure you want to delete this event?')">
+	</td>
 	</tr>
 	<?php
   }
+}
   
 mysql_close($link);
 ?>
