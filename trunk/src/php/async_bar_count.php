@@ -1,6 +1,6 @@
 <?php
-  error_reporting(E_ALL & ~E_NOTICE);
   $parent_id = $_GET['parent_id'];
+  $numNotify = 0;
 ?>
 
 <div class="notification">
@@ -13,6 +13,7 @@
         break;
     }
   ?>
-  <div class="notify_num" id="<?php echo $parent_id ?>_num"></div>
   
+  There are <a href="javascript:animatedcollapse.toggle('<?php echo $parent_id; ?>')">
+  <?php echo $numNotify; ?></a> new updates.
 </div>

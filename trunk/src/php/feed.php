@@ -2,12 +2,18 @@
 error_reporting(E_ALL & ~E_NOTICE);
 $last_msg_id=$_GET['last_msg_id'];
 $action=$_GET['action'];
+?>
 
-if($action <> "get") {
+  <div id="feed_first_msg_loader"></div>
+
+<?php
+if($action == "push") {
+  include 'feed_load_new.php';
+} elseif($action <> "get") {
   include '/src/php/feed_load_first.php';
 ?>
 
-  <div id="last_msg_loader"></div>
+  <div id="feed_last_msg_loader"></div>
   
 <?php
 } else {
