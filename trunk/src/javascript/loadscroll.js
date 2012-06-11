@@ -8,7 +8,7 @@ $(document).ready(function() {
 			if (data != "") {
 				$(".eventbox:last").after(data); 
 			}
-			$('div#feed_last_msg_loader').empty();
+			$('div#last_msg_loader').empty();
 		});
 	}; 
 

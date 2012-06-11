@@ -18,12 +18,11 @@
   <script type="text/javascript" src="/src/javascript/Timer.js"></script>
   <script type="text/javascript" src="/src/javascript/loadscroll.js"></script>
   <script type="text/javascript" src="/src/javascript/check.js"></script>
-  <script type="text/javascript" src="/src/javascript/feed_updates.js"></script>
   <script type="text/javascript">
     animatedcollapse.addDiv('countdown_outer', 'fade=1,speed=300')
     animatedcollapse.addDiv('feed_outer', 'fade=1,speed=300')
     animatedcollapse.addDiv('countdown_notify', 'fade=1,speed=300,hide=0')
-    animatedcollapse.addDiv('feed_notify', 'fade=1,speed=300,hide=1')
+    animatedcollapse.addDiv('feed_notify', 'fade=1,speed=300,hide=0')
     animatedcollapse.init()
   </script>
   

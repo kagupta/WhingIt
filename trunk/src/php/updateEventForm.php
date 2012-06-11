@@ -108,12 +108,18 @@ function toggleStatus() {
 			ampm='pm';
 			hour = hour - 12;
 		}
+		else if(hour == 12) {
+			ampm='pm';
+		}
+		else if(hour<1){
+			hour=12;
+		}
 		var time = hour + ':' + mins.slice(-2);
-		document.forms["createEventForm"]["month"].value= month.slice(-2);
-		document.forms["createEventForm"]["day"].value=day.slice(-2);
-		document.forms["createEventForm"]["year"].value= date.getFullYear();
-		document.forms["createEventForm"]["time"].value=time;
-		document.forms["createEventForm"]["ampm"].value=ampm;
+		document.forms["updateEventForm"]["month"].value= month.slice(-2);
+		document.forms["updateEventForm"]["day"].value=day.slice(-2);
+		document.forms["updateEventForm"]["year"].value= date.getFullYear();
+		document.forms["updateEventForm"]["time"].value=time;
+		document.forms["updateEventForm"]["ampm"].value=ampm;
 
 }
 </script>
@@ -192,6 +198,15 @@ while($row = mysql_fetch_array($tagsTable))
 </td>
 </tr>
 
+<tr>
+<td>
+Use Current Time/Date:
+</td>
+<td>
+<!-- <input id="toggleElement" type="button" name="toggle" value="Now" onclick="toggleStatus()" /> -->
+<input type="button" value="Now" onclick="toggleStatus()" />
+</td>
+</tr>
 
 <tr>
 <td>Date:</td>

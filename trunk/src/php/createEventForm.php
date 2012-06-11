@@ -111,6 +111,12 @@ function toggleStatus() {
 			ampm='pm';
 			hour = hour - 12;
 		}
+		else if(hour == 12) {
+			ampm='pm';
+		}
+		else if(hour<1){
+			hour=12;
+		}
 		var time = hour + ':' + mins.slice(-2);
 		document.forms["createEventForm"]["month"].value= month.slice(-2);
 		document.forms["createEventForm"]["day"].value=day.slice(-2);

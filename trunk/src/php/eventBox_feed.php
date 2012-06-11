@@ -40,7 +40,7 @@ function attending(eventID, status)
 
 </script>
 
-<div class="eventbox eventbox_feed" id="feed_<?php echo $row['id']; ?>">
+<div class="eventbox" id="<?php echo $row['id']; ?>">
 <img  src="/src/php/image.php?eid=<?php echo $id;?>" width="70" height="70" style="margin: 5px 10px 10px 0px; float:left;vertical-align: bottom;">
 <?php
   echo "<h1 class=\"eventbox_text\">" . $row['name'] . "</h1>";
