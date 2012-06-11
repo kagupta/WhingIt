@@ -3,14 +3,13 @@ function GetCount(ddate,iid){
    
    dateNow = new Date();
    amount = ddate.getTime() - dateNow.getTime();
-   
-   delete dateNow;
 
-   if(amount < 0){
+   delete dateNow;
+   amount = Math.floor(amount/1000) % 86400;
+  
+   if(amount <= 0){
       document.getElementById(iid).innerHTML="Now!";
    } else{
-      amount = Math.floor(amount/1000) % 86400;
-      
       //hours
       hours=Math.floor(amount/3600);
       if (hours >= 12) { hours = hours - 12;}
@@ -22,7 +21,6 @@ function GetCount(ddate,iid){
       
       //seconds
       secs=Math.floor(amount);
-      
       out += (hours<10) ? "0"+hours : hours;
       out += ":";
       out += (mins<10)  ? "0"+mins  : mins;
