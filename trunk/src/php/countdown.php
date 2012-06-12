@@ -5,7 +5,7 @@ $action=$_GET['action'];
 ?>
 
 <div id="countdown_first_msg_loader"></div>
-
+<div id="lala">
 <?php
 if($action <> "push") {
   include '/src/php/countdown_load_first.php';
@@ -13,3 +13,4 @@ if($action <> "push") {
   include 'countdown_load_new.php';
 }
 ?>
+</div>

@@ -39,7 +39,7 @@ $user = $_SESSION['id'];
 //$user = 1;
 mysql_select_db("whingit", $link);
 
-$result = mysql_query("SELECT * FROM events WHERE creator = '$user'");
+$result = mysql_query("SELECT * FROM events WHERE creator = '$user' AND sean<>1");
 $num_rows = mysql_num_rows($result);
 
 if($num_rows==0){

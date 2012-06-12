@@ -78,8 +78,11 @@ if($worked){
 	//add about to description table
 	mysql_query("INSERT INTO description (eventID, about)
 	VALUES ('$lastinsert', '$description')");
-	echo "<br />";
-
+	
+	//add event to the eventsfeed table
+	mysql_query("INSERT INTO eventsfeed (eventID, attendID, time)
+	VALUES ('$lastinsert', '$userID', '$datetime')");
+	
 	//update the events/tags table
 	foreach ($tags as &$tag){
 		mysql_query("INSERT INTO tagLookup (eventID, tagID) VALUES ('$lastinsert' ,'$tag')");

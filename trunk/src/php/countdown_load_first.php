@@ -1,10 +1,10 @@
 <?php
-  include '/src/php/event_functions.php';
-  include '/src/php/dbconnect.php';
+  include 'event_functions.php';
+  include 'dbconnect.php';
   
   date_default_timezone_set('America/Los_Angeles');  
   //$eventTab = mysql_query("SELECT * FROM events WHERE time - NOW() > 0 AND DATE_SUB(time,INTERVAL 3 HOUR) < NOW() ORDER BY UNIX_TIMESTAMP(time)");
-  include '/src/php/countdown_query.php';
+  include 'countdown_query.php';
   $eventTab = $_GET['eventTab'];
   $absTime = strtotime("now");
 ?>
@@ -19,7 +19,7 @@
     <div id="countdown_notify">
       <?php 
         $_GET['parent_id'] = 'countdown_notify';
-        include '/src/php/async_bar.php';
+        include 'async_bar.php';
       ?>
     </div>
     <?php
@@ -30,7 +30,7 @@
 
           // INCLUDE EVENT BOX
           $_GET['event_info'] = $row;
-          include("/src/php/eventBox_countdown.php");
+          include("eventBox_countdown.php");
 
           $currentCounter = $currentCounter + 1;
         } 
@@ -48,10 +48,11 @@
 </div>
     
     <!-- Setup for timers -->
+
     <script type="text/javascript">
       window.onload = function() {
       <?php
-        include '/src/php/countdown_query.php';
+        include 'countdown_query.php';
         $eventTab = $_GET['eventTab'];
         
         while($row = mysql_fetch_array($eventTab)) { 

@@ -27,7 +27,7 @@ if($worked)
 			$gender=addslashes($_POST['gender']);
 			$user_password=addslashes($_POST['passwd']);
   
-			$_SESSION['username'] = $name;
+			$_SESSION['username'] = $name." ".$lname;
 			
 			#integrity test of the information entered ends here
 

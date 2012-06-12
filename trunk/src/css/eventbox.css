@@ -13,6 +13,11 @@ h1.eventbox_text {
    margin: 0;
 }
 
+h1.eventbox_text:hover {
+   color: #4096c7;
+   text-decoration: underline;
+}
+
 h2.eventbox_text {
    color: #000000;
    font-weight: bolder;

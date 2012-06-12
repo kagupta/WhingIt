@@ -39,7 +39,14 @@ if($worked){
 $i = 1;
 while(1){
 	if(isset($_POST['delete' . $i])){
-		mysql_query("DELETE FROM events WHERE id =$i");
+	//	mysql_query("DELETE FROM events WHERE id =$i");
+		mysql_query("UPDATE events SET sean=1 WHERE id=$i");
+    $result1 = mysql_query("SELECT * FROM events WHERE id='$i'");	
+    $row1 = mysql_fetch_array($result1);
+    $chen = $row1['time'];
+    mysql_query("INSERT INTO eventsfeed (eventID,time)
+    VALUES ('$i','$chen')");
+	
 		break;
 	}
 	$i++;

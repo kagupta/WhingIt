@@ -209,6 +209,12 @@ a:hover {
    overflow: hidden;
 }
 
+.category_panel {
+   height: 100%;
+   overflow: hidden;
+}
+
+
 /* ~~ The footer ~~ */
 .footer {
    padding: 10px;

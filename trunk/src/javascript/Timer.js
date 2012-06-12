@@ -4,12 +4,11 @@ function GetCount(ddate,iid){
    dateNow = new Date();
    amount = ddate.getTime() - dateNow.getTime();
    delete dateNow;
+   amount = Math.floor(amount/1000) % 86400;
 
-   if(amount <= 2591999805){
+   if(amount <= 0){
       document.getElementById(iid).innerHTML="Now!";
-   } else{
-      amount = Math.floor(amount/1000) % 86400;
-      
+   } else{  
       //hours
       hours=Math.floor(amount/3600);
       if (hours >= 12) { hours = hours - 12;}

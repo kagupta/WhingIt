@@ -4,7 +4,7 @@
   
   $last_msg_id=$_GET['last_msg_id']; 
   $_GET['mode'] = "new";
-  include('feed_query.php');
+  include('categories_query.php');
   $sql = $_GET['sql'];
   $last_msg_id="";
 

@@ -73,7 +73,10 @@ if($worked){
 	//adds the event to the event table
 	mysql_query("UPDATE events SET name='$eventName', time='$datetime', location='$location'
 	WHERE id='$eventID'");
-
+    
+	//add update to eventsfeed
+	mysql_query("INSERT INTO eventsfeed (eventID, time) VALUES ('$eventID', '$datetime')");
+	
 	//add about to description table
 	mysql_query("UPDATE description SET about='$description'
 	WHERE eventID='$eventID'");

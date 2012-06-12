@@ -41,7 +41,7 @@ $event = $id;
  $day = date('d',$phpdate);
  $year = date('Y', $phpdate);
 ?>
-
+<title><?php echo $data['name'];?></title>
 <div class="eventbox eventbox_feed">
 <table width="300" border="0" cellspacing="2" cellpadding="0" align=center> 
 <input type="hidden" name="eventNumber" value="<?php echo $event?>"/>

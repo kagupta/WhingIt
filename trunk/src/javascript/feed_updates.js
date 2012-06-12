@@ -8,6 +8,8 @@ $.get( '/src/php/feed_count.php?mode=feed', function(data) {
     animatedcollapse.hide('feed_notify');
 });
 $.get( '/src/php/feed_count.php?mode=countdown', function(data) {
+  //$('#lala').load('/src/php/countdown_load_first.php');
+
   $oldRowCount[1] = data,
   animatedcollapse.hide('countdown_notify');
 });
@@ -25,7 +27,7 @@ jQuery(function($){
       "javascript:animatedcollapse.toggle('"+divIDs[0]+"'); updateRowCount('"+divIDs[0]+"');\">"+
       $newEvents+'</a> new '+$updates+'.';
       
-      if ($newEvents != 0) {
+      if ($newEvents > 0) {
         animatedcollapse.show(divIDs[0]);
       } else {
         animatedcollapse.hide(divIDs[0]);
@@ -39,6 +41,14 @@ jQuery(function($){
       $is_are = ($newEvents == 1) ? 'is' : 'are';
       $updates = ($newEvents == 1) ? 'update' : 'updates';
 
+      if ($newEvents > 0) {
+        //document.getElementById("lala").innerHTML = <?php include('/src/php/countdown_load_first.php'); ?>;
+        //$('#lala').load('/src/php/countdown_load_first.php');
+
+        updateRowCount(divIDs[1]);
+      }
+      
+      /*
       document.getElementById(divIDs[1]+'_num').innerHTML = 'There '+$is_are+' <a href="'+
       "javascript:animatedcollapse.toggle('"+divIDs[1]+"'); updateRowCount('"+divIDs[1]+"');\">"+
       $newEvents+'</a> new '+$updates+'.';
@@ -48,7 +58,9 @@ jQuery(function($){
       } else {
         animatedcollapse.hide(divIDs[1]);
       }
+      */
     });
+
   },1000); // 5000ms == 5 seconds
 });
 
@@ -57,7 +69,7 @@ function updateRowCount(divID) {
   $oldRowCount[i] = $newRowCount[i];
   
   if (i == 0) {
-    var ID=$(".eventbox_feed:last").attr("id");
+    var ID=$(".eventbox_feed:first").attr("id");
     $.post("/src/php/feed.php?action=push&last_msg_id"+ID,
 
     function(data){
@@ -66,7 +78,8 @@ function updateRowCount(divID) {
 
       $('div#feed_first_msg_loader').empty();
     });
-  } else {
+  }/* else {
+  
     var $ID = '';
     $("div[id^='count_']").each(function() {
       alert($(this).attr("id"));
@@ -83,4 +96,5 @@ function updateRowCount(divID) {
       $('div#countdown_first_msg_loader').empty();
     });
   }
+  */
 };

@@ -7,14 +7,14 @@ $action=$_GET['action'];
   <div id="feed_first_msg_loader"></div>
 
 <?php
+$_GET['last_msg_id'] = $last_msg_id;
 if($action == "push") {
   include 'feed_load_new.php';
-} elseif($action <> "get") {
+} elseif ($action <> "get") {
   include '/src/php/feed_load_first.php';
 ?>
 
   <div id="feed_last_msg_loader"></div>
-  
 <?php
 } else {
   include 'feed_load_second.php';

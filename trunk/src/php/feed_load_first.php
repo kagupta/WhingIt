@@ -13,8 +13,10 @@
     </div>
 <?php
   require("dbconnect.php");
-  $eventTab = mysql_query("SELECT * FROM events WHERE TIMEDIFF(NOW(),time) > 0 ORDER BY id DESC LIMIT 10");
-
+  $_GET['mode'] = "first";
+  include('feed_query.php');
+  $eventTab = $_GET['sql'];
+  
   while($row = mysql_fetch_array($eventTab)) {
     $_GET['event_info'] = $row;
     include("eventBox_feed.php");

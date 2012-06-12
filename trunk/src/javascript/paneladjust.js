@@ -4,21 +4,25 @@ animatedcollapse.ontoggle = function($, divobj, state){
    var $height = "0"
    var $divId1 = "countdown";
    
-   // Regular max-height depending on panel
-   if (divobj != "countdown") {
-      $height = $DEFAULT_LIVEFEED_HEIGHT + "px";
-      $divId1 = "feed";
-   } else {
-      $height = $DEFAULT_COUNTDOWN_HEIGHT + "px";
-   }
+   if (divobj.id == "countdown_outer" || divobj.id == "feed_outer") {
    
-   // if divId2 becoming hidden (height!="1px") then expand divId1
-   // else make divId1 normal size
-   if (state == "block") {
-      document.getElementById($divId1).style.maxHeight = $height;
-   } else {
-      document.getElementById($divId1).style.maxHeight = "none";
+     // Regular max-height depending on panel
+     if (divobj.id == "countdown_outer") {
+        $height = $DEFAULT_LIVEFEED_HEIGHT + "px";
+        $divId1 = "feed";
+     } else if (divobj.id == "feed_outer") {
+        $height = $DEFAULT_COUNTDOWN_HEIGHT + "px";
+     }
+     
+     // if divId2 becoming hidden (height!="1px") then expand divId1
+     // else make divId1 normal size
+     if (state == "block") {
+        document.getElementById($divId1).style.maxHeight = $height;
+     } else {
+        document.getElementById($divId1).style.maxHeight = "none";
+     }
+   
+   
+      $("#"+$divId1).animate({height: 'auto'}, 400);
    }
-
-   $("#"+$divId1).animate({height: 'auto'}, 400);
 }

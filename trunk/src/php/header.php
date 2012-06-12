@@ -22,7 +22,7 @@
   <script type="text/javascript">
     animatedcollapse.addDiv('countdown_outer', 'fade=1,speed=300')
     animatedcollapse.addDiv('feed_outer', 'fade=1,speed=300')
-    animatedcollapse.addDiv('countdown_notify', 'fade=1,speed=300,hide=0')
+    animatedcollapse.addDiv('countdown_notify', 'fade=1,speed=300,hide=1')
     animatedcollapse.addDiv('feed_notify', 'fade=1,speed=300,hide=1')
     animatedcollapse.init()
   </script>
@@ -44,7 +44,7 @@ function popitup(url) {
   <div class="top_bar">
 
   <div class="logo">
-    <a href="/index.php"><img src="/res/images/logo.gif" height="30px"/></a>
+    <a href="/"><img src="/res/images/logo.gif" height="30px"/></a>
   </div>
 
   <div class="menu_bar">
@@ -63,23 +63,23 @@ function popitup(url) {
 <?php if(isset($_SESSION['LOGGEDIN']) && $_SESSION['LOGGEDIN']==1)
 			{
 				?>
-				<b><br><font color="#000000">Welcome </font> <i>
+				<!--<b><br><font color="#000000">Welcome </font> <i>
 				<font size="3" color="#000000"><?php echo $_SESSION['username']?></font></i></b>
-				
+				-->
 	         <?php 
 		    }
 			if(isset($_SESSION['REGISTER']) && $_SESSION['REGISTER']==1)
 			{
 				$_SESSION['REGISTER']=0;
 				?>
-				<b><br><font color="#000000">Successful Registration.</font></b><p><br>
+				<b><br><font color="#FFFFFF">Successful Registration.</font></b><p><br>
 			<?php 
 		    }
 			if(isset($_SESSION['updated']) && $_SESSION['updated']==1 && isset($_SESSION['LOGGEDIN']) && $_SESSION['LOGGEDIN']==1)
 			{
 				$_SESSION['updated']=0;
 				?>
-				<font color="#000000">Profile Successfully Updated.</font><br>
+				<font color="#FFFFFF">Profile Successfully Updated.</font><br>
 			<?php 
 		    }
 			if(isset($_SESSION['createEvent']) && $_SESSION['createEvent']==1)
