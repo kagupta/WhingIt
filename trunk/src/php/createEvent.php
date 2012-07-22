@@ -73,11 +73,29 @@ if($worked){
 	mysql_query("INSERT INTO events (name, time, location, creator)
 	VALUES ('$eventName', '$datetime', '$location', '$userID')");
 
-	echo $lastinsert = mysql_insert_id();
+	$lastinsert = mysql_insert_id();
 
 	//add about to description table
 	mysql_query("INSERT INTO description (eventID, about)
 	VALUES ('$lastinsert', '$description')");
+	if((preg_match_all("/(#\w+)/", $description, $matches))<>FALSE){
+	// add an entry to tag table and taglookup table
+	//var_dump($matches);
+	//echo $matches[0][0] ; 
+	//$var = $matches[0][0];
+	for ($i = 0; $i < count($matches[0]); $i++) {
+		$var1=$matches[0][$i];
+		$var=substr($var1,1,strlen($var1)-1);
+		//echo $var." ";
+		//echo "INSERT INTO tags (tag) VALUES ('$var')";
+		mysql_query("INSERT INTO tags (tag) VALUES ('$var')");
+		$lastinsert1 = mysql_insert_id();
+		mysql_query("INSERT INTO  taglookup (eventID,tagID) VALUES ('$lastinsert','$lastinsert1')");
+	}
+	
+	//exit(1);
+	}
+	
 	
 	//add event to the eventsfeed table
 	mysql_query("INSERT INTO eventsfeed (eventID, attendID, time)
@@ -109,7 +127,7 @@ if($worked){
 
 	  } 
 	
-	$_SESSION['createEvent']=1;
+	$_SESSION['msg']="Event Created!";
 	header("Location: ../../index.php");
 
 

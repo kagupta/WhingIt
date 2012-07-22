@@ -6,10 +6,12 @@
   $_GET['mode'] = "new";
   include('feed_query.php');
   $sql = $_GET['sql'];
-  $last_msg_id="";
-
+  
   while($row = mysql_fetch_array($sql)) {	
     $_GET['event_info'] = $row;
+	$eventID = $row['eventID'];
     include("eventBox_feed.php");
+	
   }
+  
 ?>

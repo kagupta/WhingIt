@@ -1,5 +1,6 @@
 .eventbox { 
-   height: 80px;
+   min-height: 80px;
+   max-height:140px;
    padding: 8px 11px 8px 11px;
    border-top: 1px solid gray;
    overflow: hidden;

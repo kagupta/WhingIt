@@ -16,18 +16,7 @@ echo "<FONT COLOR='#E30102' >Image text doesn't matched</font>";
 $_SESSION['fail_reg']=0;
 }
 ?>
-<HTML>
-<HEAD>
-<META Http-Equiv="Cache-Control" Content="no-cache" /> 
-<META Http-Equiv="Pragma" Content="no-cache" /> 
-<META Http-Equiv="Expires" Content="0" /> 
-<TITLE>Register </TITLE>
-	<script LANGUAGE=JavaScript TYPE=text/javascript src="../javascript/check.js"></script>
-	
-	
-</HEAD>
 
-<BODY leftmargin=0 marginwidth=0 marginheight=0 topmargin=0 rightmargin=0 bottommargin=0>
 <FORM action="processsignup.php" METHOD="POST" name="register_user" onsubmit="return validate('register_user');" enctype="multipart/form-data">
 
 <!--TOP BAR BEGINS-->
@@ -292,16 +281,7 @@ $_SESSION['fail_reg']=0;
 			<td height=15></td>
 		</tr>
 	</table>
-
-<!--Footer begins-->
-		<table cellspacing=0 cellpadding=0 border=0 align=center width=731>
-			<tr>
-				<?php include("footer.php"); 
-				?>
-			</tr>
-		</table>
-<!--Footer ends-->
-
 </FORM>
-</body>
-</html>
+</div>
+<?php include("footer.php"); 
+				?>

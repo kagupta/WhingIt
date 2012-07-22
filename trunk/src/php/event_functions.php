@@ -8,7 +8,7 @@
   //function to display people attending events
   function getAttendees($eventId) {
 	$status = 1;
-    $users = mysql_query("SELECT first_name FROM user, attend WHERE user.id=attend.attendee AND attend.id=$eventId AND attend.status=$status");
+    $users = mysql_query("SELECT first_name, user.id FROM user, attend WHERE user.id=attend.attendee AND attend.id=$eventId AND attend.status=$status");
     $total = mysql_num_rows($users);
     
     switch($total) {
@@ -16,12 +16,16 @@
         echo "No one";
         break;
       case 1: // One person going
+	    echo '<a href="/src/php/displayUserInfo.php?id='.mysql_result($users,0,'id').'" rel="facebox" >';
         echo mysql_result($users,0,'first_name');
+		echo '</a>';
         break;
       case 2: // Two people going
         $count = 0;
         while($row = mysql_fetch_array($users)) {
+		 echo '<a href="/src/php/displayUserInfo.php?id='. $row['id'].'" rel="facebox" >';
           echo $row['first_name'];
+		  echo '</a>';
           if($count == 0)
             echo " and ";
           
@@ -32,8 +36,10 @@
         $count = 0;
         while($row = mysql_fetch_array($users)) {
           if($count > 1) break;
-          
-          echo $row['first_name'] . ", ";
+           echo '<a href="/src/php/displayUserInfo.php?id='.$row['id'].'" rel="facebox" >';
+        
+          echo $row['first_name'] ;
+		  echo '</a>'. ', ';
           $count = $count + 1;
         }
         $rem = $total - 2;

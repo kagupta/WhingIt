@@ -1,5 +1,6 @@
   </div><!-- end .container -->
 
+</div><!-- end .container1 -->
   <div class="footer">
     <div class="left-align">
     Whingit © 2012 · English (US)
@@ -12,9 +13,5 @@
   </div><!-- end .footer -->
     
   <div class="clearfloat"></div>
-
-
-</div><!-- end .container1 -->
-
 </body>
 </html>

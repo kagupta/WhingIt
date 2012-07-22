@@ -17,94 +17,92 @@ session_start();
 							 
 ?>
 	<br>
- 
-
-<div  id="show1">
+<link rel="stylesheet" href="./src/css/crap1.css" type="text/css" media="screen">
+<link rel="stylesheet" href="./src/css/crap2.css" type="text/css" media="screen">
 <script LANGUAGE=JavaScript TYPE=text/javascript src="/src/javascript/check.js"></script>
- <table border="0" cellpadding="0" cellspacing="0" width="907" height="387" id="table1">
-	<!-- MSTableType="nolayout" -->
-	<tr>
-	  <td width="779">
-       <table width="100%" align=center cellpadding=5 cellspacing=1>
-       <tr>
-        <td valign=top>
+<script LANGUAGE=JavaScript TYPE=text/javascript src="/src/javascript/swfobject.js"></script>
+<script type="text/javascript">
+      var flashvars = {};
+      flashvars.cssSource = "/src/css/piecemaker.css";
+      flashvars.xmlSource = "/res/piecemaker.xml";
+                
+      var params = {};
+      params.play = "true";
+      params.menu = "false";
+      params.scale = "showall";
+      params.wmode = "transparent";
+      params.allowfullscreen = "true";
+      params.allowscriptaccess = "always";
+      params.allownetworking = "all";
+          
+      swfobject.embedSWF('/res/piecemaker.swf', 'piecemaker', '660', '500', '10', null, flashvars,    
+      params, null);
+    
+</script>
 
-        <!-- login box -->
-         <form action="./src/php/getin.php" method="post" name="login_user">
-        <div align="center">
-        <table class=form-noindent cellspacing=3 cellpadding=5 width="52%" border=1 bordercolordark=#0000FF bgcolor=#E8EEFA>
-          <tr bgcolor=#E8EEFA>
-            <td valign=top style=text-align:center nowrap=nowrap>
-
-						<div id=login>
-                         <div id="gaia_loginbox" class="body">
-                             <table cellpadding="1" cellspacing="0" align="center" border="0" id="gaia_table"> 
-                              <tr> <td colspan="2" align="center">  <b>  
-								<font size="4">  Sign In</font></b></td> </tr>
- 
-                               <tr> <td nowrap> <div align="right"> <b> <span class="gaia le lbl"> Email: </span> 
-								</b> </div> </td> 
-                                    <td>     
-                                         <input name="email" class="gaia le val" id="Email" size="18" style="font-weight: 700"><b>
-											</b>  
-                                       
-                                    </td> 
-                                </tr> 
-                                <tr> <td align="left">  </td> </tr> 
-                                <tr> <td align="right"> 
-									<p align="left"><b> <span class="gaia le lbl"> Password: </span> 
-									</b> </td> 
-                                     <td> 
-                                          <input type="password" name="password" class="gaia le val" id="Passwd" size="18" style="font-weight: 700" ><b>
-											</b>
-                                          
-                                     </td> 
-                                </tr>
-                                <tr> <td align="right" valign="top">      
-                                      <b>&nbsp; </b> </td>
-                                      <td align="right" valign="top">      
-                                      <b>&nbsp; 
-										</b> </td>  </tr>      
-                                     <tr> <td></td> <td align="left"> 
-                                  
-                                       <p align="center"> 
-                                  
-                                       <input type="submit" name="signin" value="Sign In" class="gaia le button" style="border-style: outset; border-width: 3px"  onclick="return validateLogin('login_user');"><b>
-										</b>
-                                       </td> </tr>     
-                                     <tr>
-										<td align="center" height="33.0" valign="bottom" nowrap class="gaia le fpwd"> 
-										<p align="left"><b>New User:&nbsp; </b></td> 
-										<td align="center" height="33.0" valign="bottom" nowrap class="gaia le fpwd">  
-										<B><a href="./src/php/register.php"><font size="4">Sign Up</font></a></B></td> 
-								</tr>
-                              </table>
-                           
-                           </div>    
+	<div id="page-outer">
+        <div class="front-container " id="front-container">
+            <div class="front-card">
+                <div class="front-welcome">
+                    
+						<div id="piecemaker">
+								<p>Your browser does not support Flash content.</p>
 						</div>
-					</td>
-				</tr>
-        </table>
-        </div>
-        </form>
-		</td>
-	</tr>
-	</table>
-	</td>
-	</tr>
-</table>
- </div>
-
- </div>
-
-<?
-if(isset($HTTP_POST_VARS['signin']))
-{
-
-        if(!get_magic_quotes_gpc())
-        {
-                $username=addslashes($username);
-                $password=addslashes($password);
-        }
-}
-?>
+                    
+                </div>
+			
+				<div class="front-signin js-front-signin">
+                <form action="./src/php/getin.php" method="post" name="login_user" >
+                  <div class="placeholding-input username">
+                    <input type="text" value="Your edu email" class="text-input email-input" name="email" id="Email" title="Username or email" autocomplete="on" onclick="javascript:if(document.login_user.Email.value == 'Your edu email')document.login_user.Email.value='';" >
+                  </div>
+          
+                  <table class="flex-table password-signin">
+                    <tbody>
+                      <tr>
+                        <td class="flex-table-primary">
+                          <div class="placeholding-input password flex-table-form">
+                            <input type="password" class="text-input flex-table-input" name="password" id="Passwd" title="Password" onclick="javascript:if(document.login_user.password.value=='Password')document.login_user.password.value='';">
+                          
+						  </div>
+                        </td>
+                        <td class="flex-table-secondary">
+                          <button type="submit" class="submit btn primary-btn flex-table-btn js-submit" tabindex="0" onclick="return validateLogin('login_user');">Sign in</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+          
+                  <div class="remember-forgot">
+                    <label class="remember">
+                      <input type="checkbox" value="1" name="remember_me">
+                      <span>Remember me</span>
+					  </label>
+                    <span class="separator">.</span>
+					<a class="forgot" href="#">Forgot password?</a>
+                  </div>
+                </form>
+            </div>
+			 
+				<div class="front-signup js-front-signup">
+                <h2><strong>New to WhingIt?</strong>             
+                   				
+					<button type="submit" class="btn signup-btn" onclick='window.location="./src/php/register.php"'>
+                    Signup for WhingIt
+                  </button>
+				</h2>
+				<div>
+				<div style="text-align:left;">
+					<h2><strong>Or choose facebook to login</strong></h2>
+				</div>
+					<div style="text-align:right;padding-right:18px;">
+						<?php include("/src/php/facebook_button.php") ?>
+					</div>
+				</div>
+				
+				
+            </div>
+			</div>
+		</div>
+    </div>
+	</div>

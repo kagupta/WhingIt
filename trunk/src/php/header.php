@@ -19,6 +19,14 @@
   <script type="text/javascript" src="/src/javascript/loadscroll.js"></script>
   <script type="text/javascript" src="/src/javascript/check.js"></script>
   <script type="text/javascript" src="/src/javascript/feed_updates.js"></script>
+  <link href="/src/css/facebox.css" media="screen" rel="stylesheet" type="text/css" />
+  <script src="/src/javascript/facebox.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+      $('a[rel*=facebox]').facebox() 
+    })
+</script>
   <script type="text/javascript">
     animatedcollapse.addDiv('countdown_outer', 'fade=1,speed=300')
     animatedcollapse.addDiv('feed_outer', 'fade=1,speed=300')
@@ -47,7 +55,7 @@ function popitup(url) {
     <a href="/"><img src="/res/images/logo.gif" height="30px"/></a>
   </div>
 
-  <div class="menu_bar">
+  <div class="menu_bar" >
 <?php if(isset($_SESSION['LOGGEDIN']) && $_SESSION['LOGGEDIN']==1)
 		
 		 {
@@ -59,53 +67,47 @@ function popitup(url) {
 		}
 ?>
   </div>
-
-<?php if(isset($_SESSION['LOGGEDIN']) && $_SESSION['LOGGEDIN']==1)
-			{
-				?>
-				<!--<b><br><font color="#000000">Welcome </font> <i>
-				<font size="3" color="#000000"><?php echo $_SESSION['username']?></font></i></b>
-				-->
-	         <?php 
-		    }
-			if(isset($_SESSION['REGISTER']) && $_SESSION['REGISTER']==1)
-			{
-				$_SESSION['REGISTER']=0;
-				?>
-				<b><br><font color="#FFFFFF">Successful Registration.</font></b><p><br>
-			<?php 
-		    }
-			if(isset($_SESSION['updated']) && $_SESSION['updated']==1 && isset($_SESSION['LOGGEDIN']) && $_SESSION['LOGGEDIN']==1)
-			{
-				$_SESSION['updated']=0;
-				?>
-				<font color="#FFFFFF">Profile Successfully Updated.</font><br>
-			<?php 
-		    }
-			if(isset($_SESSION['createEvent']) && $_SESSION['createEvent']==1)
-			{
-				$_SESSION['createEvent']=0;
-				?>
-				<font color="#FFFFFF">Event Created!</font><br>
-			<?php 
-		    }
-			if(isset($_SESSION['updateEvent']) && $_SESSION['updateEvent']==1)
-			{
-				$_SESSION['updateEvent']=0;
-				?>
-				<font color="#FFFFFF">Event Updated!</font><br>
-			<?php 
-		    }
-			if(isset($_SESSION['deleteEvent']) && $_SESSION['deleteEvent']==1)
-			{
-				$_SESSION['deleteEvent']=0;
-				?>
-				<font color="#FFFFFF">Event Deleted!</font><br>
-			<?php 
-		    }
-			?>
+  <?php if(isset($_SESSION['LOGGEDIN']) && $_SESSION['LOGGEDIN']==1)
+		
+		 {
+?>
+  <div id="searchBoxOne" style="padding-left:300px;">
+<form action="/src/php/search.php" method="post" class="searchform">
+	<input class="searchfield" type="text" name="term" id="term" value="Search for hashtags or keywords" onfocus="if (this.value == 'Search for hashtags or keywords') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search for hashtags or keywords';}">
+	<input type="submit" class="searchbutton" type="button" value="Go">
+</form>
+</div>
+<?php
+		}
+?>
 
   <br>
   </div>
 
   <div class="container">
+  <style type="text/css">.info, .success, .warning, .error, .validation {
+border: 1px solid;
+margin: 10px 0px;
+padding:15px 10px 15px 50px;
+background-repeat: no-repeat;
+background-position: 10px center;
+}
+.info {
+color: #00529B;
+background-color: #BDE5F8;
+background-image: url('/images/trinity/icons/info.png');
+}
+</style>
+	 
+				
+  <?php if(isset($_SESSION['msg']) && $_SESSION['msg'] <> "")
+	       {
+		   ?>
+					<div style="text-align: center" id="msg_bar" class="info">
+						<font color="#FF0000" style="font-size: 2em;padding-right:50px"><?php echo $_SESSION['msg'] ?></font>
+					</div>
+				<?php
+				$_SESSION['msg'] = "";
+				unset($_SESSION['msg']);
+			}
+	?>

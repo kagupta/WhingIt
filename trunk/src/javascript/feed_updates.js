@@ -67,9 +67,10 @@ jQuery(function($){
 function updateRowCount(divID) {
   i = (divID == 'feed_notify') ? 0 : 1;
   $oldRowCount[i] = $newRowCount[i];
-  
+ 
   if (i == 0) {
     var ID=$(".eventbox_feed:first").attr("id");
+	 
     $.post("/src/php/feed.php?action=push&last_msg_id"+ID,
 
     function(data){

@@ -4,16 +4,21 @@ $last_msg_id = $_GET['last_msg_id'];
 
 switch($mode) {
   case 'first':
-    $str = "ORDER BY feedID DESC LIMIT 6";
+    $str = "group by eventID ORDER BY maxfeedID DESC LIMIT 4";
     break;
   case 'second':
-    $str = "WHERE feedID < '$last_msg_id' ORDER BY feedID DESC LIMIT 5";
+	if($last_msg_id == 0)
+	  $last_msg_id = 9999; //hack
+    $str = "WHERE feedID < 999999 group by eventID ORDER BY maxfeedID DESC LIMIT 15";
     break;
   case 'new':
-    $str = "WHERE feedID > '$last_msg_id' ORDER BY feedID DESC";
+    if($last_msg_id == "")
+	  $last_msg_id = 0; //hack
+    $str = "WHERE feedID > 0 group by eventID ORDER BY maxfeedID DESC";
     break;
 }
 
-$sql = mysql_query("SELECT * FROM eventsfeed ".$str);
+$sql = mysql_query("SELECT  max(feedID) as maxfeedID, eventID, attendID FROM eventsfeed ".$str);
+
 $_GET['sql'] = $sql;
 ?>

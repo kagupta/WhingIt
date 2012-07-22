@@ -64,16 +64,17 @@ function ValidateAltEmail() {
 
 function echeck(str) {
 
-		var at="@"
-		var dot="."
-		var lat=str.indexOf(at)
-		var lstr=str.length
-		var ldot=str.indexOf(dot)
+		var at="@";
+		var dot=".";
+		var lat=str.indexOf(at);
+		var lstr=str.length;
+		var ldot=str.lastIndexOf(dot);
+		
 		if (str.indexOf(at)==-1){
 		   alert("Invalid Email address")
 		   return false
 		}
-
+	
 		if (str.indexOf(at)==-1 || str.indexOf(at)==0 || str.indexOf(at)==lstr){
 		   alert("Invalid Email address")
 		   return false
@@ -103,7 +104,11 @@ function echeck(str) {
 		    alert("Invalid Email address")
 		    return false
 		 }
-		
+		if(str.substring(ldot+1,lstr) != "edu")
+		 {
+		    alert("Please enter edu email id.");
+			return false;
+		 }
  		 return true					
 	}
 
@@ -227,24 +232,19 @@ function checkPass()
 }
 function checkEmail()
 {
-
-	var str = document.forms[0].Email.value;
-	if ((str == "") || (str.length < 1))
-	{
-		alert("\nPlease enter your email.")
-		document.forms[0].Email.focus();
-		return false;
-	}
-	return true;
+	return ValidateAltEmail();
+	 
 }
 
 
 function validateLogin(FormName)	{
 
- // check altemail Address
-		if(!checkEmail()) {
-			return false;
+
+	if(!checkEmail()) 
+	{
+		return false;
 	}
+	
 	if (checkPass() == false)	{	// Checks the password and Confirm Password
 		return false;
 	}

@@ -42,23 +42,24 @@ $event = $id;
  $year = date('Y', $phpdate);
 ?>
 <title><?php echo $data['name'];?></title>
-<div class="eventbox eventbox_feed">
+<div >
+
 <table width="300" border="0" cellspacing="2" cellpadding="0" align=center> 
 <input type="hidden" name="eventNumber" value="<?php echo $event?>"/>
 <tr> 
 <td height="15"></td>
 </tr>
 <tr>
-<td width="29%" class="bodytext">Event name:
+<td width="29%" class="bodytext"><b>Event name:</p>
 </td> 
-<td colspan="5" width="71%"><p><?php echo $data['name']?></p>
+<td  width="71%"><b><?php echo $data['name']?></p>
 </td> 
 </tr> 
 
 <tr> 
-<td class="bodytext">Tags:
+<td class="bodytext"><b>Tags:</p>
 </td> 
-<td colspan="5">
+<td >
 <?php 
 while($row = mysql_fetch_array($tagsTable))
   {
@@ -79,7 +80,7 @@ while($row = mysql_fetch_array($tagsTable))
 </tr>
 
 <tr>
-<td>Date:</td>
+<td><b>Date:</p></td>
 <td > 
 <?php echo "$month, $day, $year" ?>
 </td>
@@ -87,7 +88,7 @@ while($row = mysql_fetch_array($tagsTable))
 </tr>
 
 <tr>
-<td class ="bodytext">Time:
+<td class ="bodytext"><b>Time:</p>
 </td>
 <td width="30px"><?php echo $mysqldate = date( 'h:i', $phpdate ); echo " $ampm" ?>
 </td>
@@ -95,27 +96,22 @@ while($row = mysql_fetch_array($tagsTable))
 </tr>
 
 <tr> 
-<td class="bodytext">Location:</td> 
-<td colspan="5"><?php echo $data['location']?>
+<td class="bodytext"><b>Location:</p></td> 
+<td ><?php echo $data['location']?>
 </tr>  
 
 <tr> 
-<td class="bodytext">Description:</td> 
+<td class="bodytext"><b>Description:</p></td> 
 <td><?php echo $data2['about']?></td> 
 </tr> 
 
 
 <tr> 
 <td class="bodytext"> </td> 
-<td align="left" valign="top" colspan="3"></td> 
+<td align="left" valign="top" ></td> 
 
 
 </tr> 
 </table> 
-</form>
+
 <br/>
-<td></td>
-
-</div>
-
-<p><a href="javascript:window.close()">Close</a></p>

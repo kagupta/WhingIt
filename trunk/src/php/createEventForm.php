@@ -166,7 +166,7 @@ Use Current Time/Date:
 </td>
 <td>
 <!-- <input id="toggleElement" type="button" name="toggle" value="Now" onclick="toggleStatus()" /> -->
-<input type="button" value="Now" onclick="toggleStatus()" />
+<input type="button" class="submit btn primary-btn flex-table-btn js-submit" value="Now" onclick="toggleStatus()" />
 </td>
 </tr>
 

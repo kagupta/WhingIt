@@ -112,7 +112,7 @@ if($worked){
 				echo $result;
 			} 
 
-	$_SESSION['updateEvent']=1;
+	$_SESSION['msg']="Event Updated!";
 	header("Location: myEventsPage.php");
 
 

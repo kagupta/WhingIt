@@ -61,7 +61,7 @@ if($worked)
 
 					if($result)
 					{
-						   $_SESSION['updated']=1;
+						   $_SESSION['msg']="Profile Successfully Updated.";
 						  
 						header("Location: ../../index.php");
 					} 

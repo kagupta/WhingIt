@@ -17,6 +17,7 @@
   $attending = 1;
   $notAttending = 2;
   $maybe = 3;
+
 ?>
 <script type ="text/javascript">
 
@@ -38,37 +39,40 @@ function attending(eventID, status)
 		{
 			if(xmlhttp.responseText == "FAILURE")
 				alert(xmlhttp.responseText);
-		}
-    else {
-        var elem = document.getElementById('attend'+eventID);
-        var parent = elem.parentNode;
-        var newNode = document.createElement("div");
-        
-        if(status == 1) {
-          var aTag = "<a href=\"#\" action=\"attending.php\" onclick=\"attending("+eventID+", 2);return false;\" > Not Attending </a>";
-          newNode.innerHTML = "<div id =\"attend"+eventID+"\"	> <span><b> Attending </b></span> | " + aTag + "</div>";
-        }
-        else {
-          var aTag = "<a href=\"#\" action=\"attending.php\" onclick=\"attending("+eventID+", 1);return false;\" > Attending </a>";
-          newNode.innerHTML = "<div id =\"attend"+eventID+"\"	>"+aTag+ " | <span><b> Not Attending </b></span></div>";
-        }
+			else 
+		   {
+			var elem = document.getElementById('attend'+eventID);
+			var parent = elem.parentNode;
+			var newNode = document.createElement("div");
+			
+			if(status == 1) {
+			  var aTag = "<a href=\"#\" action=\"attending.php\" onclick=\"attending("+eventID+", 2);return false;\" > Not Attending </a>";
+			  newNode.innerHTML = "<div id =\"attend"+eventID+"\"	> <span><b> Attending </b></span> | " + aTag + "</div>";
+			}
+			else {
+			  var aTag = "<a href=\"#\" action=\"attending.php\" onclick=\"attending("+eventID+", 1);return false;\" > Attending </a>";
+			  newNode.innerHTML = "<div id =\"attend"+eventID+"\"	>"+aTag+ " | <span><b> Not Attending </b></span></div>";
+			}
 
-        parent.replaceChild(newNode,elem);
-       
-      }
+			parent.replaceChild(newNode,elem);
+		   
+		  }
+	  }
+
 	}
 	xmlhttp.open("GET","/src/php/attending.php?eventID="+eventID+"&status="+status,true);
+	xmlhttp.timeout = 100000;
 	xmlhttp.send();
 }
 
 </script>
 
-<div class="eventbox eventbox_feed" id="<?php echo $eventfeed_row['feedID']; ?>">
+<div class="eventbox eventbox_feed" id="<?php echo $eventfeed_row['maxfeedID']; ?>" >
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr><td>
-<a href="/src/php/displayEvent.php?eventId=<?php echo $id?>" class="lbOn" title="Click for details!" onclick="return popitup('/src/php/displayEvent.php?eventId=<?php echo $id?>')">
+<a href="/src/php/displayEvent.php?eventId=<?php echo $id?>" rel="facebox" class="lbOn" title="Click for details!" >
 <img  src="/src/php/image.php?eid=<?php echo $id;?>" width="70" height="70" style="margin: 5px 10px 10px 0px; float:left;vertical-align: bottom;"></a>
-<a href="/src/php/displayEvent.php?eventId=<?php echo $id?>" class="lbOn" title="Click for details!" onclick="return popitup('/src/php/displayEvent.php?eventId=<?php echo $id?>')">
+<a href="/src/php/displayEvent.php?eventId=<?php echo $id?>" rel="facebox" class="lbOn" title="Click for details!" >
 <?php
       echo "<h1 class=\"eventbox_text\">" . $event_row['name'] . "</h1></a>";
       echo "<h2 class=\"eventbox_text\">" . $event_row['location'] . "</h2>"; 
@@ -86,11 +90,11 @@ function attending(eventID, status)
   } else {
     //attendee update.
     $aID = $eventfeed_row['attendID'];
-    $user = mysql_query("SELECT first_name, last_name FROM user WHERE user.id = $aID");
+    $user = mysql_query("SELECT first_name, last_name, id FROM user WHERE user.id = $aID");
     $user_row = mysql_fetch_array($user);
 
-    echo "<h3 class=\"eventbox_text\">" . getAttendees($eID). $user_row['first_name'].
-    ' '.$user_row['last_name']." has joined."."</h3>"; 
+    echo  '<a href="/src/php/displayUserInfo.php?id='.$user_row['id'].'" rel="facebox" >'.' '.$user_row['first_name'].' '.$user_row['last_name']."</a> has joined. " ;
+    echo  getAttendees($eID); 
   }
 ?>
 </td><td align="right" width="30%">
@@ -98,15 +102,47 @@ function attending(eventID, status)
   if ($event_row['sean'] != 1) {
 ?>
     <div id = "attend<?php echo $event_row['id'] ?>" >
-    <a href="#" action="attending.php" onclick="attending(<?php echo $event_row['id']; ?>, <?php echo $attending; ?>);return false;"> Attending </a> | 
-    <a href="#" action="attending.php" onclick="attending(<?php echo $event_row['id']; ?>, <?php echo $notAttending; ?>);return false;"> Not Attending </a>
+    
+<?php
+     $currentStatus = mysql_query("SELECT status FROM attend WHERE attend.id=$id AND attend.attendee=$userID");
+	 $totalRows = 0;
+	 if(isset($currentStatus) &&!empty($currentStatus))
+		$totalRows = mysql_num_rows($currentStatus);
+		
+	if($totalRows != 0)
+		{
+
+	       $attStatus = mysql_result($currentStatus, 0, 'status');
+		   if($attStatus == 1)
+			{
+				?>
+			    Attending </a> | 
+				   <a href="#" action="attending.php" onclick="attending(<?php echo $id; ?>, <?php echo $notAttending; ?>);return false;"> Not Attending </a>
+				<?php
+		    }
+		   else
+			{
+			   ?>
+				<a href="#" action="attending.php" onclick="attending(<?php echo $id; ?>, <?php echo $attending; ?>);return false;"> Attending </a> 
+			    | Not Attending 
+				<?php
+			}
+
+		}
+    else
+
+       { 
+
+?>
+<a href="#" action="attending.php" onclick="attending(<?php echo $id; ?>, <?php echo $attending; ?>);return false;"> Attending </a> | 
+<a href="#" action="attending.php" onclick="attending(<?php echo $id; ?>, <?php echo $notAttending; ?>);return false;"> Not Attending </a>
+<?php
+	   }
+?>
+
      </div>
 
-<!--<a href="/" action="attending.php" onclick="attending(<?php echo $event_row['id']; ?>, <?php echo $maybe; ?>)"> Maybe </a>-->
-<!--<button onclick="attending()"> Attending </button>
-<button onclick="notAttending()"> Not Attending </button>
-<button onclick="maybe()"> Maybe </button>
--->
+
 <?php
   }
 ?>

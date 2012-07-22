@@ -52,7 +52,7 @@ while(1){
 	$i++;
 }
 
-$_SESSION['deleteEvent']=1;
+$_SESSION['msg']="Event Deleted!";
 header("Location: myEventsPage.php");
 
   

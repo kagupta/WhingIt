@@ -16,10 +16,12 @@
   $_GET['mode'] = "first";
   include('feed_query.php');
   $eventTab = $_GET['sql'];
-  
+  $eventsSeenSofar = array();
   while($row = mysql_fetch_array($eventTab)) {
     $_GET['event_info'] = $row;
+
     include("eventBox_feed.php");
+	
   }
 ?>
 

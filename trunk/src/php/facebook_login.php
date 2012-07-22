@@ -26,11 +26,19 @@ require("dbconnect.php");
                 if($num_results!=0)
                 { //echo mysql_result($result,$i,"user_id"),"  ",$_POST['login']; 
                         //echo "name is not unique";
-                                $flag=1;
-								$_SESSION['fail_reg']=1;
-								//echo "User email already taken up";
-								header("Location: register.php");
-								break;
+                                $_SESSION['LOGGEDIN']=1;
+   $sql="Select id, first_name, last_name from user where user_email='$user_email'
+   ";
+   $result=mysql_query($sql) or die("query failed:".mysql_error());
+   
+   $_SESSION['id'] = mysql_result($result,0,'id');
+   $_SESSION['username']=mysql_result($result,0,'first_name')." ".mysql_result($result,0,'last_name');
+	$_SESSION['email']	= $user_email;
+   $loggedin =1 ; 
+   $_SESSION['msg'] = "";
+	header("Location: ../../index.php");
+
+	exit;
 								
                         
 						
@@ -38,14 +46,17 @@ require("dbconnect.php");
                 if($flag==0)
                 {
 				     
-                    $name=addslashes($_POST['name']);
+                    $fname=addslashes($_POST['fname']);
 					$lname=addslashes($_POST['lname']);
-					$dob_year=addslashes($_POST['DOB_Year']);
-					$dob_month=addslashes($_POST['DOB_Month']);
-					$dob_day=addslashes($_POST['DOB_Day']);
-					$location=addslashes($_POST['country']);
+					$bday = $_POST['birthday'];
+					$pieces = explode("/", $bday);
+					$dob_year=addslashes($pieces[2]);
+					$dob_month=addslashes($pieces[0]);
+					$dob_day=addslashes($pieces[1]);
+					
+					//$location=addslashes($_POST['country']);
 					$email=addslashes($_POST['email']);
-					$user_password=addslashes($_POST['passwd']);
+					//$user_password=addslashes($_POST['passwd']);
 					$city=addslashes($_POST['city']);
 					
 					$gender=addslashes($_POST['gender']);
@@ -53,14 +64,16 @@ require("dbconnect.php");
 					#integrity test of the information entered ends here
 
 					#Entering the information in the table to sign up
-				  $query ="INSERT INTO user ( first_name, last_name, dob_year, dob_month, dob_day , user_location , user_email , user_password, city, gender ) 
-				  VALUES ('$name' , '$lname', '$dob_year', '$dob_month', '$dob_day', '$location' , '$email' , '$user_password', '$city'  , '$gender'  )";
+				  $query ="INSERT INTO user ( first_name, last_name, dob_year, dob_month, dob_day , user_location , user_email , city, gender ) 
+				  VALUES ('$fname' , '$lname', '$dob_year', '$dob_month', '$dob_day', '$location' , '$email' , '$city'  , '$gender'  )";
 					//echo $query;		
 					$result=mysql_query($query) or die("query failed:".mysql_error());
 			
 					
 					$result = MYSQL_QUERY("SELECT id from user WHERE user_email='$email' ");
 					$id = mysql_result($result,0,'id');
+					
+
 					
 					if($result && $_FILES['userfile']['size'] > 0)
 					{
@@ -74,10 +87,10 @@ require("dbconnect.php");
 						$result=mysql_query($query) or die('Inserting image failed');
 						
 					} 
-
+					
 					if($result)
 					{
-						   $_SESSION['msg']="Successful Registration.";
+						   $_SESSION['REGISTER']=1;
 						  
 							header("Location: ../../index.php");
 					}
